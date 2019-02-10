@@ -37,12 +37,38 @@ public class CompoundElement extends Element
 	
 	public List<Element> getElementsByAttribute(String attribute, String value)
 	{
+		if(attribute == null)
+		{
+			throw new NullPointerException();
+		}
 		return getElementsByAttribute(elements, attribute, value);
 	}
 	
 	public List<Element> getEndElementsByAttribute(String attribute, String value)
 	{
+		if(attribute == null)
+		{
+			throw new NullPointerException();
+		}
 		return getElementsByAttribute(endElements, attribute, value);
+	}
+	
+	public List<Element> getElementsByTag(String tag)
+	{
+		if(tag == null)
+		{
+			throw new NullPointerException();
+		}
+		return getElementsByTag(elements, tag);
+	}
+	
+	public List<Element> getEndElementsByTag(String tag)
+	{
+		if(tag == null)
+		{
+			throw new NullPointerException();
+		}
+		return getElementsByTag(endElements, tag);
 	}
 	
 	public List<Element> getElements()
@@ -53,6 +79,16 @@ public class CompoundElement extends Element
 	public List<Element> getEndElements()
 	{
 		return endElements;
+	}
+	
+	public void addElement(int index, Element e)
+	{
+		if(e == null)
+		{
+			throw new NullPointerException();
+		}
+		
+		elements.add(index, e);
 	}
 	
 	public void addElement(Element e)
@@ -75,6 +111,12 @@ public class CompoundElement extends Element
 		elements.remove(e);
 	}
 	
+	public void removeElement(int index)
+	{	
+		elements.remove(index);
+	}
+	
+	
 	public void addEndElement(Element e)
 	{
 		if(e == null)
@@ -85,6 +127,16 @@ public class CompoundElement extends Element
 		endElements.add(e);
 	}
 	
+	public void addEndElement(int index, Element e)
+	{
+		if(e == null)
+		{
+			throw new NullPointerException();
+		}
+		
+		endElements.add(index, e);
+	}
+	
 	public void removeEndElement(Element e)
 	{
 		if(e == null)
@@ -93,6 +145,11 @@ public class CompoundElement extends Element
 		}
 		
 		endElements.remove(e);
+	}
+	
+	public void removeEndElement(int index)
+	{	
+		endElements.remove(index);
 	}
 	
 	@Override
@@ -127,6 +184,26 @@ public class CompoundElement extends Element
 			{
 				results.addAll(((CompoundElement) e).getElementsByAttribute(((CompoundElement) e).getElements(), attribute, value));
 				results.addAll(((CompoundElement) e).getElementsByAttribute(((CompoundElement) e).getEndElements(), attribute, value));
+			}
+		}
+		
+		return results;
+	}
+	
+	private List<Element> getElementsByTag(List<Element> list, String tag)
+	{
+		List<Element> results = new LinkedList<Element>();
+		
+		for(Element e : list)
+		{
+			if(e.getTag().equals(tag))
+			{
+				results.add(e);
+			}
+			if(e instanceof CompoundElement)
+			{
+				results.addAll(((CompoundElement) e).getElementsByTag(((CompoundElement) e).getElements(), tag));
+				results.addAll(((CompoundElement) e).getElementsByTag(((CompoundElement) e).getEndElements(), tag));
 			}
 		}
 		
