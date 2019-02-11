@@ -1,6 +1,5 @@
 package html;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -72,6 +71,14 @@ public class Element
 		this.tag = tag;
 	}
 	
+	public void addClasses(String... classes)
+	{
+		for(String c : classes)
+		{
+			addClass(c);
+		}
+	}
+	
 	public void addClass(String classString)
 	{
 		if(classString == null)
@@ -118,10 +125,7 @@ public class Element
 		{
 			if(attributes.containsKey("class"))
 			{
-				for(String c : Arrays.asList(attributes.get("class").split(" ")))
-				{
-					addClass(c);
-				}
+				addClasses(attributes.get("class").split(" "));
 				attributes.remove("class");
 			}
 			this.attributes = attributes;
@@ -141,11 +145,8 @@ public class Element
 		}
 		
 		if(value.equals("class"))
-		{
-			for(String c : Arrays.asList(value.split(" ")))
-			{
-				addClass(c);
-			}
+		{	
+			addClasses(value.split(" "));
 		}
 		else
 		{
