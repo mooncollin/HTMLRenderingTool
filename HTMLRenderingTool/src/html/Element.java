@@ -29,10 +29,10 @@ public class Element
 	
 	public Element(String tag, String data, Map<String, String> attributes)
 	{
+		setClasses(null);
 		setTag(tag);
 		setData(data);
 		setAttributes(attributes);
-		setClasses(null);
 	}
 	
 	public String getData()
