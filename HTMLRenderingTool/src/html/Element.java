@@ -66,9 +66,12 @@ public class Element
 	{
 		if(tag == null)
 		{
-			throw new NullPointerException();
+			this.tag = "";
 		}
-		this.tag = tag;
+		else
+		{
+			this.tag = tag;
+		}
 	}
 	
 	public void addClasses(String... classes)

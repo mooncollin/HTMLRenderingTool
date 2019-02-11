@@ -45,7 +45,11 @@ public class HTML
 	
 	public static String tag(String tag, String data, Map<String, String> attributes)
 	{
-		String tagCreation = "<" + tag + " ";
+		String tagCreation = "";
+		if(!tag.isEmpty())
+		{
+			tagCreation = "<" + tag + " ";
+		}
 		if(attributes != null)
 		{
 			for(String key : attributes.keySet())
@@ -60,7 +64,10 @@ public class HTML
 		}
 		else
 		{
-			tagCreation += "> ";
+			if(!tag.isEmpty())
+			{
+				tagCreation += "> ";
+			}
 			if(data != null)
 			{
 				tagCreation += data;
@@ -72,7 +79,7 @@ public class HTML
 	
 	public static String endTag(String tag)
 	{
-		if(SELF_CLOSING_TAGS.contains(tag))
+		if(SELF_CLOSING_TAGS.contains(tag) || tag.isEmpty())
 		{
 			return "";
 		}
