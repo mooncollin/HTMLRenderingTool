@@ -3,6 +3,7 @@ package html;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class CompoundElement extends Element
 {
@@ -185,7 +186,9 @@ public class CompoundElement extends Element
 	@Override
 	public String getHTML()
 	{
-		String html = HTML.tag(getTag(), getData(), getAttributes());
+		Map<String, String> fullAttributes = new TreeMap<String, String>(getAttributes());
+		fullAttributes.put("class", String.join(" ", getClasses()));
+		String html = HTML.tag(getTag(), getData(), fullAttributes);
 		
 		for(Element e : elements)
 		{
