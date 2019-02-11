@@ -123,12 +123,11 @@ public class Element
 		}
 		else
 		{
-			if(attributes.containsKey("class"))
+			this.attributes = new TreeMap<String, String>(attributes);
+			if(this.attributes.containsKey("class"))
 			{
-				addClasses(attributes.get("class").split(" "));
-				attributes.remove("class");
+				addClasses(this.attributes.remove("class").split(" "));
 			}
-			this.attributes = attributes;
 		}
 	}
 	
