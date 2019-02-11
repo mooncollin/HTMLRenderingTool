@@ -11,12 +11,22 @@ public class CompoundElement extends Element
 	
 	public CompoundElement(String tag)
 	{
-		this(tag, null);
+		this(tag, null, null);
+	}
+	
+	public CompoundElement(String tag, String data)
+	{
+		this(tag, data, null);
 	}
 	
 	public CompoundElement(String tag, Map<String, String> attributes)
 	{
-		super(tag, attributes);
+		this(tag, null, attributes);
+	}
+	
+	public CompoundElement(String tag, String data, Map<String, String> attributes)
+	{
+		super(tag, data, attributes);
 		if(HTML.SELF_CLOSING_TAGS.contains(tag))
 		{
 			throw new IllegalArgumentException(String.format("<%s /> cannot be a compound element", tag));
@@ -33,6 +43,26 @@ public class CompoundElement extends Element
 	public Element getEndElement(int index)
 	{
 		return endElements.get(index);
+	}
+	
+	public List<Element> getElementsByClass(String c)
+	{
+		if(c == null)
+		{
+			throw new NullPointerException();
+		}
+		
+		return getElementsByClass(elements, c);
+	}
+	
+	public List<Element> getEndElementsByClass(String c)
+	{
+		if(c == null)
+		{
+			throw new NullPointerException();
+		}
+		
+		return getElementsByClass(endElements, c);
 	}
 	
 	public List<Element> getElementsByAttribute(String attribute, String value)
@@ -204,6 +234,26 @@ public class CompoundElement extends Element
 			{
 				results.addAll(((CompoundElement) e).getElementsByTag(((CompoundElement) e).getElements(), tag));
 				results.addAll(((CompoundElement) e).getElementsByTag(((CompoundElement) e).getEndElements(), tag));
+			}
+		}
+		
+		return results;
+	}
+	
+	private List<Element> getElementsByClass(List<Element> list, String c)
+	{
+		List<Element> results = new LinkedList<Element>();
+		
+		for(Element e : list)
+		{
+			if(e.getClasses().contains(c))
+			{
+				results.add(e);
+			}
+			if(e instanceof CompoundElement)
+			{
+				results.addAll(((CompoundElement) e).getElementsByClass(((CompoundElement) e).getElements(), c));
+				results.addAll(((CompoundElement) e).getElementsByClass(((CompoundElement) e).getEndElements(), c));
 			}
 		}
 		

@@ -1,11 +1,15 @@
 package html;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class Element
 {
 	private Map<String, String> attributes;
+	private List<String> classes;
 	private String tag;
 	private String data;
 	
@@ -29,6 +33,7 @@ public class Element
 		setTag(tag);
 		setData(data);
 		setAttributes(attributes);
+		setClasses(null);
 	}
 	
 	public String getData()
@@ -67,6 +72,42 @@ public class Element
 		this.tag = tag;
 	}
 	
+	public void addClass(String classString)
+	{
+		if(classString == null)
+		{
+			throw new NullPointerException();
+		}
+		classes.add(classString);
+	}
+	
+	public void removeClass(String classString)
+	{
+		if(classString == null)
+		{
+			throw new NullPointerException();
+		}
+		
+		classes.remove(classString);
+	}
+	
+	public void setClasses(List<String> classes)
+	{
+		if(classes == null)
+		{
+			this.classes = new LinkedList<String>();
+		}
+		else
+		{
+			this.classes = classes;
+		}
+	}
+	
+	public List<String> getClasses()
+	{
+		return classes;
+	}
+	
 	public void setAttributes(Map<String, String> attributes)
 	{
 		if(attributes == null)
@@ -75,6 +116,14 @@ public class Element
 		}
 		else
 		{
+			if(attributes.containsKey("class"))
+			{
+				for(String c : Arrays.asList(attributes.get("class").split(" ")))
+				{
+					addClass(c);
+				}
+				attributes.remove("class");
+			}
 			this.attributes = attributes;
 		}
 	}
@@ -91,7 +140,17 @@ public class Element
 			value = "";
 		}
 		
-		this.attributes.put(key, value);
+		if(value.equals("class"))
+		{
+			for(String c : Arrays.asList(value.split(" ")))
+			{
+				addClass(c);
+			}
+		}
+		else
+		{
+			this.attributes.put(key, value);
+		}
 	}
 	
 	public String getAttribute(String key)
@@ -101,10 +160,15 @@ public class Element
 			throw new NullPointerException();
 		}
 		
+		if(key.equals("class"))
+		{
+			return String.join(" ", this.classes);
+		}
+		
 		return this.attributes.get(key);
 	}
 	
-	public String updateAttribute(String key, String value)
+	public void updateAttribute(String key, String value)
 	{
 		if(key == null)
 		{
@@ -112,10 +176,17 @@ public class Element
 		}
 		if(!attributes.containsKey(key))
 		{
-			return null;
+			return;
 		}
 		
-		return attributes.replace(key, String.format("%s %s", attributes.get(key), value));
+		if(key.equals("class"))
+		{
+			addClass(value);
+		}
+		else
+		{
+			attributes.replace(key, String.format("%s %s", attributes.get(key), value));
+		}
 	}
 	
 	public String getHTML()
