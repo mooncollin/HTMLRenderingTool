@@ -126,7 +126,10 @@ public class Element
 		}
 		else
 		{
-			this.attributes = new TreeMap<String, String>(attributes);
+			for(String key : attributes.keySet())
+			{
+				setAttribute(key, attributes.get(key));
+			}
 			if(this.attributes.containsKey("class"))
 			{
 				addClasses(this.attributes.remove("class").split(" "));
@@ -169,27 +172,6 @@ public class Element
 		}
 		
 		return this.attributes.get(key);
-	}
-	
-	public void updateAttribute(String key, String value)
-	{
-		if(key == null)
-		{
-			throw new NullPointerException();
-		}
-		if(!attributes.containsKey(key))
-		{
-			return;
-		}
-		
-		if(key.equals("class"))
-		{
-			addClass(value);
-		}
-		else
-		{
-			attributes.replace(key, String.format("%s %s", attributes.get(key), value));
-		}
 	}
 	
 	public String getHTML()
