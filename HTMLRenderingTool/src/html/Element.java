@@ -30,7 +30,7 @@ public class Element
 	public Element(String tag, String data, Map<String, String> attributes)
 	{
 		this.attributes = new TreeMap<String, String>();
-		setClasses(null);
+		this.classes = new LinkedList<String>();
 		_setTag(tag);
 		setData(data);
 		setAttributes(attributes);
@@ -102,6 +102,7 @@ public class Element
 			throw new NullPointerException();
 		}
 		classes.add(classString);
+		_setAttribute("class", String.join(" ", classes));
 	}
 	
 	public void removeClass(String classString)
@@ -112,6 +113,7 @@ public class Element
 		}
 		
 		classes.remove(classString);
+		_setAttribute("class", String.join(" ", classes));
 	}
 	
 	public void setClasses(List<String> classes)
@@ -143,10 +145,6 @@ public class Element
 			{
 				setAttribute(key, attributes.get(key));
 			}
-			if(this.attributes.containsKey("class"))
-			{
-				addClasses(this.attributes.remove("class").split(" "));
-			}
 		}
 	}
 	
@@ -168,7 +166,7 @@ public class Element
 		}
 		else
 		{
-			this.attributes.put(key, value);
+			attributes.put(key, value);
 		}
 	}
 	
@@ -179,12 +177,7 @@ public class Element
 			throw new NullPointerException();
 		}
 		
-		if(key.equals("class"))
-		{
-			return String.join(" ", this.classes);
-		}
-		
-		return this.attributes.get(key);
+		return attributes.get(key);
 	}
 	
 	public void removeAttribute(String key)
@@ -213,5 +206,30 @@ public class Element
 	public String toString()
 	{
 		return getHTML();
+	}
+	
+	protected void _setAttribute(String key, String value)
+	{
+		if(key == null)
+		{
+			throw new NullPointerException();
+		}
+		
+		if(value == null)
+		{
+			value = "";
+		}
+		
+		attributes.put(key, value);
+	}
+	
+	protected void _removeAttribute(String key, String value)
+	{
+		if(key == null)
+		{
+			throw new NullPointerException();
+		}
+		
+		attributes.remove(key);
 	}
 }
