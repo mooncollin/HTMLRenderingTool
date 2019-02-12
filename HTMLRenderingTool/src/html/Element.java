@@ -29,6 +29,7 @@ public class Element
 	
 	public Element(String tag, String data, Map<String, String> attributes)
 	{
+		this.attributes = new TreeMap<String, String>();
 		setClasses(null);
 		setTag(tag);
 		setData(data);
