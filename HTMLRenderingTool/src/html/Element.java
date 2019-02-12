@@ -174,6 +174,21 @@ public class Element
 		return this.attributes.get(key);
 	}
 	
+	public void removeAttribute(String key)
+	{
+		if(key == null)
+		{
+			throw new NullPointerException();
+		}
+		
+		if(key.equals("class"))
+		{
+			classes.clear();
+		}
+		
+		attributes.remove(key);
+	}
+	
 	public String getHTML()
 	{
 		Map<String, String> fullAttributes = new TreeMap<String, String>(attributes);
