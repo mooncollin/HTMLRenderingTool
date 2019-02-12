@@ -31,9 +31,21 @@ public class Element
 	{
 		this.attributes = new TreeMap<String, String>();
 		setClasses(null);
-		setTag(tag);
+		_setTag(tag);
 		setData(data);
 		setAttributes(attributes);
+	}
+	
+	protected void _setTag(String tag)
+	{
+		if(tag == null)
+		{
+			this.tag = "";
+		}
+		else
+		{
+			this.tag = tag;
+		}
 	}
 	
 	public String getData()
