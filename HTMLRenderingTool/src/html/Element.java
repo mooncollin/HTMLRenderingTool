@@ -223,7 +223,7 @@ public class Element
 		attributes.put(key, value);
 	}
 	
-	protected void _removeAttribute(String key, String value)
+	protected void _removeAttribute(String key)
 	{
 		if(key == null)
 		{
