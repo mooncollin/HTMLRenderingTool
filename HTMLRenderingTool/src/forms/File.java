@@ -36,8 +36,7 @@ public class File extends Input
 		return Collections.unmodifiableList(files);
 	}
 	
-	@SuppressWarnings("unused")
-	private void parseAccept(String acceptString)
+	public void parseAccept(String acceptString)
 	{
 		if(acceptString == null)
 		{

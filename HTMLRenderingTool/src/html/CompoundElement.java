@@ -1,5 +1,6 @@
 package html;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -104,12 +105,12 @@ public class CompoundElement extends Element
 	
 	public List<Element> getElements()
 	{
-		return elements;
+		return Collections.unmodifiableList(elements);
 	}
 	
 	public List<Element> getEndElements()
 	{
-		return endElements;
+		return Collections.unmodifiableList(endElements);
 	}
 	
 	public void addElement(int index, Element e)
