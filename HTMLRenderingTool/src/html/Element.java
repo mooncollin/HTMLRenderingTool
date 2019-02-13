@@ -1,13 +1,19 @@
 package html;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import util.Default;
+
 public class Element
 {
 	private Map<String, String> attributes;
+	private Map<String, Object[]> properties;
 	private List<String> classes;
 	private String tag;
 	private String data;
@@ -31,6 +37,7 @@ public class Element
 	{
 		this.attributes = new TreeMap<String, String>();
 		this.classes = new LinkedList<String>();
+		this.properties = new HashMap<String, Object[]>();
 		_setTag(tag);
 		setData(data);
 		setAttributes(attributes);
@@ -164,6 +171,19 @@ public class Element
 		{	
 			addClasses(value.split(" "));
 		}
+		else if(properties.containsKey(key))
+		{
+			Object[] props = properties.get(key);
+			Object parameter = props[1] instanceof Default ? value : props[1];
+			try
+			{
+				((Method) props[0]).invoke(this, parameter);
+			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
+			{
+				e.printStackTrace();
+				throw new RuntimeException();
+			}
+		}
 		else
 		{
 			attributes.put(key, value);
@@ -191,8 +211,22 @@ public class Element
 		{
 			classes.clear();
 		}
-		
-		attributes.remove(key);
+		else if(properties.containsKey(key))
+		{
+			Object[] props = properties.get(key);
+			try
+			{
+				((Method) props[0]).invoke(this, props[2]);
+			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
+			{
+				e.printStackTrace();
+				throw new RuntimeException();
+			}
+		}
+		else
+		{
+			attributes.remove(key);
+		}
 	}
 	
 	public String getHTML()
