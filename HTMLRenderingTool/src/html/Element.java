@@ -12,7 +12,7 @@ import util.Default;
 
 public class Element
 {
-	private Map<String, String> attributes;
+	protected Map<String, String> attributes;
 	private Map<String, Object[]> properties;
 	private List<String> classes;
 	private String tag;
