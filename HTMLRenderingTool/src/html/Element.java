@@ -167,8 +167,8 @@ public class Element
 			value = "";
 		}
 		
-		if(value.equals("class"))
-		{	
+		if(key.equals("class"))
+		{
 			addClasses(value.split(" "));
 		}
 		else if(properties.containsKey(key))
