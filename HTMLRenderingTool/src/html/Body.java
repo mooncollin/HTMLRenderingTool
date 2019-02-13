@@ -19,6 +19,6 @@ public class Body extends CompoundElement
 	{
 		Map<String, String> attributes = new TreeMap<String, String>();
 		attributes.put("src", src);
-		getEndElements().add(new Element("script", attributes));
+		addEndElement(new Element("script", attributes));
 	}
 }

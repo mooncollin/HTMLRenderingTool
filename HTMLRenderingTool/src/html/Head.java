@@ -28,7 +28,7 @@ public class Head extends CompoundElement
 	{
 		Map<String, String> attributes = new TreeMap<String, String>();
 		attributes.put("src", src);
-		getElements().add(new Element("script", attributes));
+		addElement(new Element("script", attributes));
 	}
 	
 	public void addStylesheet(String sheet)
@@ -37,6 +37,6 @@ public class Head extends CompoundElement
 		attributes.put("rel", "stylesheet");
 		attributes.put("typ", "text/css");
 		attributes.put("href", sheet);
-		getElements().add(new Element("link", attributes));
+		addElement(new Element("link", attributes));
 	}
 }

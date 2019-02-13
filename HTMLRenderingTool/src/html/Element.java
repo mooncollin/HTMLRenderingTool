@@ -2,6 +2,7 @@ package html;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -74,7 +75,7 @@ public class Element
 	
 	public Map<String, String> getAttributes()
 	{
-		return attributes;
+		return Collections.unmodifiableMap(attributes);
 	}
 	
 	public String getTag()
@@ -137,7 +138,7 @@ public class Element
 	
 	public List<String> getClasses()
 	{
-		return classes;
+		return Collections.unmodifiableList(classes);
 	}
 	
 	public void setAttributes(Map<String, String> attributes)
@@ -230,9 +231,9 @@ public class Element
 	
 	public String getHTML()
 	{
-		Map<String, String> fullAttributes = new TreeMap<String, String>(attributes);
-		fullAttributes.put("class", String.join(" ", classes));
-		return HTML.tag(tag, data, fullAttributes) + HTML.endTag(tag);
+//		Map<String, String> fullAttributes = new TreeMap<String, String>(attributes);
+//		fullAttributes.put("class", String.join(" ", classes));
+		return HTML.tag(tag, data, attributes) + HTML.endTag(tag);
 	}
 	
 	@Override
