@@ -12,8 +12,8 @@ import util.Default;
 
 public class Element
 {
-	protected Map<String, String> attributes;
-	private Map<String, Object[]> properties;
+	private Map<String, String> attributes;
+	protected Map<String, Object[]> properties;
 	private List<String> classes;
 	private String tag;
 	private String data;
