@@ -162,12 +162,7 @@ public class Element
 			throw new NullPointerException();
 		}
 		
-		if(value == null)
-		{
-			value = "";
-		}
-		
-		if(key.equals("class"))
+		if(key.equals("class") && value != null)
 		{
 			addClasses(value.split(" "));
 		}
@@ -186,6 +181,10 @@ public class Element
 		}
 		else
 		{
+			if(value == null)
+			{
+				value = "";
+			}
 			attributes.put(key, value);
 		}
 	}
