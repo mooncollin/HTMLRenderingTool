@@ -231,8 +231,6 @@ public class Element
 	
 	public String getHTML()
 	{
-//		Map<String, String> fullAttributes = new TreeMap<String, String>(attributes);
-//		fullAttributes.put("class", String.join(" ", classes));
 		return HTML.tag(tag, data, attributes) + HTML.endTag(tag);
 	}
 	

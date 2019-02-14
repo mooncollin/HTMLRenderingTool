@@ -1,8 +1,10 @@
 package forms;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import html.CompoundElement;
 import html.Element;
@@ -21,6 +23,34 @@ public class Form extends CompoundElement
 	private String name;
 	private boolean novalidate;
 	private String target;
+	public static final Map<String, Class<? extends Input>> formTypeToClass;
+	
+	static
+	{
+		formTypeToClass = new HashMap<String, Class<? extends Input>>();
+		formTypeToClass.put("button", Button.class);
+		formTypeToClass.put("checkbox", Checkbox.class);
+		formTypeToClass.put("color", Color.class);
+		formTypeToClass.put("date", Date.class);
+		formTypeToClass.put("datetime-local", Datetime_Local.class);
+		formTypeToClass.put("email", Email.class);
+		formTypeToClass.put("file", File.class);
+		formTypeToClass.put("hidden", Hidden.class);
+		formTypeToClass.put("image", Image.class);
+		formTypeToClass.put("month", Month.class);
+		formTypeToClass.put("number", Number.class);
+		formTypeToClass.put("password", Password.class);
+		formTypeToClass.put("radio", Radio.class);
+		formTypeToClass.put("range", Range.class);
+		formTypeToClass.put("reset", Reset.class);
+		formTypeToClass.put("search", Search.class);
+		formTypeToClass.put("submit", Submit.class);
+		formTypeToClass.put("tel", Telephone.class);
+		formTypeToClass.put("text", TextField.class);
+		formTypeToClass.put("time", Time.class);
+		formTypeToClass.put("url", Url.class);
+		formTypeToClass.put("week", Week.class);
+	}
 	
 	public Form()
 	{
@@ -311,13 +341,18 @@ public class Form extends CompoundElement
 		{
 			if(e.getTag().equals("input"))
 			{
+				Input addedInput = null;
 				if(!(e instanceof Input))
 				{
-					throw new IllegalArgumentException("Input element needs to be of type Input");
+					addedInput = parseInput(e);
 				}
 				
-				addInput((Input) e);
+				addInput(addedInput == null ? (Input) e : addedInput);
 				return;
+			}
+			if(e instanceof CompoundElement)
+			{
+				inputs.addAll(findInputs((CompoundElement) e));
 			}
 		}
 		
@@ -331,13 +366,18 @@ public class Form extends CompoundElement
 		{
 			if(e.getTag().equals("input"))
 			{
+				Input addedInput = null;
 				if(!(e instanceof Input))
 				{
-					throw new IllegalArgumentException("Input element needs to be of type Input");
+					addedInput = parseInput(e);
 				}
 				
-				addEndInput((Input) e);
+				addEndInput(addedInput == null ? (Input) e : addedInput);
 				return;
+			}
+			if(e instanceof CompoundElement)
+			{
+				endInputs.addAll(findInputs((CompoundElement) e));
 			}
 		}
 		
@@ -347,10 +387,25 @@ public class Form extends CompoundElement
 	@Override
 	public void removeElement(Element e)
 	{
-		if(e != null && e instanceof Input)
+		if(e != null)
 		{
-			removeInput((Input) e);
-			return;
+			if(e instanceof Input)
+			{
+				removeInput((Input) e);
+				return;
+			}
+			if(e.getTag().equals("input"))
+			{	
+				Input removedInput = parseInput(e);
+				if(removedInput != null)
+				{
+					removeInput(removedInput);
+				}
+			}
+			if(e instanceof CompoundElement && getElements().contains(e))
+			{
+				inputs.removeAll(findInputs((CompoundElement) e));
+			}
 		}
 		
 		super.removeElement(e);
@@ -359,10 +414,25 @@ public class Form extends CompoundElement
 	@Override
 	public void removeEndElement(Element e)
 	{
-		if(e != null && e instanceof Input)
+		if(e != null)
 		{
-			removeEndInput((Input) e);
-			return;
+			if(e instanceof Input)
+			{
+				removeEndInput((Input) e);
+				return;
+			}
+			if(e.getTag().equals("input"))
+			{	
+				Input removedInput = parseInput(e);
+				if(removedInput != null)
+				{
+					removeEndInput(removedInput);
+				}
+			}
+			if(e instanceof CompoundElement && getEndElements().contains(e))
+			{
+				endInputs.removeAll(findInputs((CompoundElement) e));
+			}
 		}
 		
 		super.removeEndElement(e);
@@ -372,25 +442,102 @@ public class Form extends CompoundElement
 	public void removeElement(int index)
 	{
 		Element found = getElement(index);
-		if(found instanceof Input)
+		if(found != null)
 		{
-			removeInput((Input) found);
-			return;
+			removeElement(found);
 		}
-		
-		super.removeElement(index);
 	}
 	
 	@Override
 	public void removeEndElement(int index)
 	{
 		Element found = getEndElement(index);
-		if(found instanceof Input)
+		if(found != null)
 		{
-			removeEndInput((Input) found);
-			return;
+			removeEndElement(found);
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Input parseInput(Element e)
+	{
+		if(e.getAttribute("type") == null)
+		{
+			return null;
+		}
+		Class<Input> foundClass = (Class<Input>) formTypeToClass.get(e.getAttribute("type"));
+		if(foundClass == null)
+		{
+			return null;
 		}
 		
-		super.removeEndElement(index);
+		Input createdInput;
+		
+		try
+		{
+			createdInput = foundClass.newInstance();
+		} catch (InstantiationException | IllegalAccessException e1)
+		{
+			return null;
+		}
+		
+		for(String key : e.getAttributes().keySet())
+		{
+			try
+			{
+				createdInput.setAttribute(key, e.getAttribute(key));
+			}
+			catch(IllegalArgumentException e1)
+			{
+				
+			}
+		}
+		
+		return createdInput;
+	}
+	
+	@Override
+	public void clearElements()
+	{
+		inputs.clear();
+		super.clearElements();
+	}
+	
+	@Override
+	public void clearEndElements()
+	{
+		endInputs.clear();
+		super.clearEndElements();
+	}
+	
+	private List<Input> findInputs(CompoundElement e)
+	{
+		List<Input> foundInputs = new LinkedList<Input>();
+		List<Element> allElements = new LinkedList<Element>(e.getElements());
+		allElements.addAll(e.getEndElements());
+		for(Element el : allElements)
+		{
+			if(el instanceof CompoundElement)
+			{
+				foundInputs.addAll(findInputs((CompoundElement) el));
+			}
+			if(el instanceof Input)
+			{
+				foundInputs.add((Input) el);
+			}
+			else
+			{
+				if(el.getTag().equals("input"))
+				{
+					Input parsedInput = parseInput(el);
+					if(parsedInput != null)
+					{
+						foundInputs.add(parsedInput);
+					}
+				}
+			}
+		}
+		
+		return foundInputs;
 	}
 }

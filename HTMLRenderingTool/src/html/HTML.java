@@ -1,6 +1,7 @@
 package html;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -48,13 +49,25 @@ public class HTML
 		String tagCreation = "";
 		if(!tag.isEmpty())
 		{
-			tagCreation = "<" + tag + " ";
+			tagCreation = "<" + tag;
 		}
 		if(attributes != null)
 		{
-			for(String key : attributes.keySet())
+			if(!attributes.isEmpty())
 			{
-				tagCreation += key + "=\"" + attributes.get(key) + "\" ";
+				tagCreation += " ";
+			}
+			
+			Iterator<String> it = attributes.keySet().iterator();
+			
+			while(it.hasNext())
+			{
+				String key = it.next();
+				tagCreation += key + "=\"" + attributes.get(key) + "\"";
+				if(it.hasNext())
+				{
+					tagCreation += " ";
+				}
 			}
 		}
 		
@@ -66,7 +79,7 @@ public class HTML
 		{
 			if(!tag.isEmpty())
 			{
-				tagCreation += "> ";
+				tagCreation += ">";
 			}
 			if(data != null)
 			{

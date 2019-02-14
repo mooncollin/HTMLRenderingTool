@@ -4,7 +4,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class CompoundElement extends Element
 {
@@ -187,9 +186,7 @@ public class CompoundElement extends Element
 	@Override
 	public String getHTML()
 	{
-		Map<String, String> fullAttributes = new TreeMap<String, String>(getAttributes());
-		fullAttributes.put("class", String.join(" ", getClasses()));
-		String html = HTML.tag(getTag(), getData(), fullAttributes);
+		String html = HTML.tag(getTag(), getData(), getAttributes());
 		
 		for(Element e : elements)
 		{
@@ -202,6 +199,22 @@ public class CompoundElement extends Element
 		
 		html += HTML.endTag(getTag());
 		return html;
+	}
+	
+	public void clearElements()
+	{
+		elements.clear();
+	}
+	
+	public void clearEndElements()
+	{
+		endElements.clear();
+	}
+	
+	public void clearAllElements()
+	{
+		clearElements();
+		clearEndElements();
 	}
 	
 	private List<Element> getElementsByAttribute(List<Element> list, String attribute, String value)
