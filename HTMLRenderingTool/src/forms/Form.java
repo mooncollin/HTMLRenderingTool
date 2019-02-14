@@ -510,6 +510,30 @@ public class Form extends CompoundElement
 		super.clearEndElements();
 	}
 	
+	public Element getElementByName(String name)
+	{
+		if(name == null)
+		{
+			throw new NullPointerException();
+		}
+		
+		Element foundElement = null;
+		
+		List<Input> allInputs = new LinkedList<Input>(inputs);
+		allInputs.addAll(endInputs);
+		
+		for(Input i : allInputs)
+		{
+			if(i.getName().equals(name))
+			{
+				foundElement = i;
+				break;
+			}
+		}
+		
+		return foundElement;
+	}
+	
 	private List<Input> findInputs(CompoundElement e)
 	{
 		List<Input> foundInputs = new LinkedList<Input>();

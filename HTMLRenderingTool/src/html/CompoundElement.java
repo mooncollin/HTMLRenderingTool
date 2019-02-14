@@ -53,17 +53,10 @@ public class CompoundElement extends Element
 			throw new NullPointerException();
 		}
 		
-		return getElementsByClass(elements, c);
-	}
-	
-	public List<Element> getEndElementsByClass(String c)
-	{
-		if(c == null)
-		{
-			throw new NullPointerException();
-		}
+		List<Element> allElements = getElementsByClass(elements, c);
+		allElements.addAll(getElementsByClass(endElements, c));
 		
-		return getElementsByClass(endElements, c);
+		return allElements;
 	}
 	
 	public List<Element> getElementsByAttribute(String attribute, String value)
@@ -72,16 +65,11 @@ public class CompoundElement extends Element
 		{
 			throw new NullPointerException();
 		}
-		return getElementsByAttribute(elements, attribute, value);
-	}
-	
-	public List<Element> getEndElementsByAttribute(String attribute, String value)
-	{
-		if(attribute == null)
-		{
-			throw new NullPointerException();
-		}
-		return getElementsByAttribute(endElements, attribute, value);
+		
+		List<Element> allElements = getElementsByAttribute(elements, attribute, value);
+		allElements.addAll(getElementsByAttribute(endElements, attribute, value));
+		
+		return allElements;
 	}
 	
 	public List<Element> getElementsByTag(String tag)
@@ -90,16 +78,27 @@ public class CompoundElement extends Element
 		{
 			throw new NullPointerException();
 		}
-		return getElementsByTag(elements, tag);
+		
+		List<Element> allElements = getElementsByTag(elements, tag);
+		allElements.addAll(getElementsByTag(endElements, tag));
+		
+		return allElements;
 	}
 	
-	public List<Element> getEndElementsByTag(String tag)
+	public Element getElementById(String id)
 	{
-		if(tag == null)
+		if(id == null)
 		{
 			throw new NullPointerException();
 		}
-		return getElementsByTag(endElements, tag);
+		
+		Element foundElement = getElementById(elements, id);
+		if(foundElement == null)
+		{
+			foundElement = getElementById(endElements, id);
+		}
+		
+		return foundElement;
 	}
 	
 	public List<Element> getElements()
@@ -275,5 +274,37 @@ public class CompoundElement extends Element
 		}
 		
 		return results;
+	}
+	
+	private Element getElementById(List<Element> list, String id)
+	{
+		Element foundElement = null;
+		for(Element e : list)
+		{
+			String currentId = e.getAttribute("id");
+			if(currentId != null && id.equals(currentId))
+			{
+				foundElement = e;
+				break;
+			}
+			
+			if(e instanceof CompoundElement)
+			{
+				Element compoundElementResult = ((CompoundElement) e).getElementById(((CompoundElement) e).getElements(), id);
+				if(compoundElementResult != null)
+				{
+					foundElement = compoundElementResult;
+					break;
+				}
+				Element compoundEndElementResult = ((CompoundElement) e).getElementById(((CompoundElement) e).getEndElements(), id);
+				if(compoundEndElementResult != null)
+				{
+					foundElement = compoundEndElementResult;
+					break;
+				}
+			}
+		}
+		
+		return foundElement;
 	}
 }
