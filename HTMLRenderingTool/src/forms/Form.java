@@ -510,14 +510,55 @@ public class Form extends CompoundElement
 		super.clearEndElements();
 	}
 	
-	public Element getElementByName(String name)
+	public void clearValues()
+	{
+		inputs.forEach(i -> i.setValue(""));
+		endInputs.forEach(i -> i.setValue(""));
+	}
+	
+	public boolean isValid()
+	{
+		return inputs.stream().filter(i -> i.getRequired() && i.getValue().isEmpty())
+					   .count() == 0;
+	}
+	
+	public boolean validate(Map<String, String[]> parameters)
+	{
+		for(String key : parameters.keySet())
+		{
+			boolean inputFound = false;
+			for(Input i : inputs)
+			{
+				if(i.getName().equals(key))
+				{
+					inputFound = true;
+					i.setValue(String.join(",", parameters.get(key)));
+					break;
+				}
+			}
+			if(!inputFound)
+			{
+				for(Input i : endInputs)
+				{
+					if(i.getName().equals(key))
+					{
+						i.setValue(String.join(",", parameters.get(key)));
+						break;
+					}
+				}
+			}
+		}
+		return isValid();
+	}
+	
+	public Input getInputByName(String name)
 	{
 		if(name == null)
 		{
 			throw new NullPointerException();
 		}
 		
-		Element foundElement = null;
+		Input foundElement = null;
 		
 		List<Input> allInputs = new LinkedList<Input>(inputs);
 		allInputs.addAll(endInputs);
