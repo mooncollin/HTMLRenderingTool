@@ -2,14 +2,41 @@ package forms;
 
 import util.Default;
 
+/**
+ * This class represents a password input.
+ * @author colli
+ *
+ */
 public class Password extends Input
 {
+	/**
+	 * Minlength attribute.
+	 */
 	private int minLength;
+	
+	/**
+	 * Maxlength attribute.
+	 */
 	private int maxLength;
+	
+	/**
+	 * Size attribute.
+	 */
 	private int size;
+	
+	/**
+	 * Pattern attribute.
+	 */
 	private String pattern;
+	
+	/**
+	 * Placeholder attribute.
+	 */
 	private String placeholder;
 	
+	/**
+	 * Constructor. Creates an input of type "password".
+	 */
 	public Password()
 	{
 		setType("password");
@@ -27,11 +54,19 @@ public class Password extends Input
 		}
 	}
 	
+	/**
+	 * Gets the placeholder attribute.
+	 * @return placeholder value
+	 */
 	public String getPlaceholder()
 	{
 		return placeholder;
 	}
 	
+	/**
+	 * Sets the placeholder attribute. Null to remove.
+	 * @param p placeholder value
+	 */
 	public void setPlaceholder(String p)
 	{
 		this.placeholder = p;
@@ -45,11 +80,19 @@ public class Password extends Input
 		}
 	}
 	
+	/**
+	 * Gets the pattern attribute.
+	 * @return pattern value
+	 */
 	public String getPattern()
 	{
 		return pattern;
 	}
 	
+	/**
+	 * Sets the pattern attribute. Null to remove.
+	 * @param p pattern value
+	 */
 	public void setPattern(String p)
 	{
 		this.pattern = p;
@@ -63,11 +106,19 @@ public class Password extends Input
 		}
 	}
 	
+	/**
+	 * Gets the size attribute.
+	 * @return size value
+	 */
 	public int getSize()
 	{
 		return size;
 	}
 	
+	/**
+	 * Sets the size attribute. < 0 to remove.
+	 * @param i size value
+	 */
 	public void setSize(int i)
 	{
 		this.size = i < 0 ? -1 : i;
@@ -81,11 +132,19 @@ public class Password extends Input
 		}
 	}
 	
+	/**
+	 * Gets the max length attribute.
+	 * @return max length value
+	 */
 	public int getMaxLength()
 	{
 		return maxLength;
 	}
 	
+	/**
+	 * Sets the maxlength attribute. < 0 to remove.
+	 * @param l maxlength value
+	 */
 	public void setMaxLength(int l)
 	{
 		this.maxLength = l;
@@ -100,11 +159,19 @@ public class Password extends Input
 		}
 	}
 	
+	/**
+	 * Gets the minlength attribute.
+	 * @return minlength value
+	 */
 	public int getMinLength()
 	{
 		return minLength;
 	}
 	
+	/**
+	 * Sets the minlength attribute. < 0 to remove.
+	 * @param l minlength value
+	 */
 	public void setMinLength(int l)
 	{
 		this.minLength = l;
@@ -119,16 +186,31 @@ public class Password extends Input
 		}
 	}
 	
+	/**
+	 * Parses the string as a number and sets the size
+	 * attribute.
+	 * @param size number as a string
+	 */
 	public void parseSize(String size)
 	{		
 		setSize(size == null ? -1 : Integer.parseInt(size));
 	}
 	
+	/**
+	 * Parses the string as a number and sets the max
+	 * attribute.
+	 * @param maxLength number as a string
+	 */
 	public void parseMaxLength(String maxLength)
 	{
 		setMaxLength(maxLength == null ? -1 : Integer.parseInt(maxLength));
 	}
 	
+	/**
+	 * Parses the string as a number and sets the min
+	 * attribute.
+	 * @param minLength number as a string
+	 */
 	public void parseMinLength(String minLength)
 	{
 		setMinLength(minLength == null ? -1 : Integer.parseInt(minLength));

@@ -5,26 +5,74 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * A CompoundElement is an Element, but can contain other Elements
+ * within itself. This renders in HTML as nested tags within this Element.
+ * This class allows for nesting element within it in the order of the elements
+ * list. It also allows for elements to always be added at the end of this element,
+ * regardless of the amount of elements inside the main list. These elements are 
+ * called endElements, and <code>endElement</code> associated methods affect these.
+ * 
+ * Data added to this element will always appear before all nested elements. If wanting
+ * to add text data, then html tags, and then more text data, it is recommended to add
+ * an element that contains all this data. This is unfortunately a limitation of the data
+ * section.
+ * 
+ * Self-closing elements cannot be a CompoundElement.
+ * @author colli
+ *
+ */
 public class CompoundElement extends Element
 {
+	/**
+	 * A list of regular nested elements.
+	 */
 	private List<Element> elements;
+	
+	/**
+	 * A list of end nested elements.
+	 */
 	private List<Element> endElements;
 	
+	/**
+	 * Constructor. Creates a CompoundElement with the given
+	 * tag, no data, and no attributes.
+	 * @param tag a tag for this element
+	 */
 	public CompoundElement(String tag)
 	{
 		this(tag, null, null);
 	}
 	
+	/**
+	 * Constructor. Creates a CompoundElement with the given tag, given
+	 * data, and no attributes.
+	 * @param tag a tag for this element
+	 * @param data data for this element
+	 */
 	public CompoundElement(String tag, String data)
 	{
 		this(tag, data, null);
 	}
 	
+	/**
+	 * Constructor. Creates a CompoundElement with the given tag, no data,
+	 * and given attributes.
+	 * @param tag a tag for this element
+	 * @param attributes key-value attributes for this element
+	 */
 	public CompoundElement(String tag, Map<String, String> attributes)
 	{
 		this(tag, null, attributes);
 	}
 	
+	/**
+	 * Constructor. Creates a CompoundELement with the given tag, given data,
+	 * and given attributes.
+	 * @param tag a tag for this element
+	 * @param data data for this element
+	 * @param attributes key-value attributes for this element
+	 */
 	public CompoundElement(String tag, String data, Map<String, String> attributes)
 	{
 		super(tag, data, attributes);
@@ -36,16 +84,31 @@ public class CompoundElement extends Element
 		endElements = new LinkedList<Element>();
 	}
 	
+	/**
+	 * Gets the element from the main elements list at the given index.
+	 * @param index location for an element
+	 * @return an element
+	 */
 	public Element getElement(int index)
 	{
 		return elements.get(index);
 	}
 	
+	/**
+	 * Gets the element from the end elements list at the given index.
+	 * @param index location for an element
+	 * @return an element
+	 */
 	public Element getEndElement(int index)
 	{
 		return endElements.get(index);
 	}
 	
+	/**
+	 * Finds all elements (including end elements) that contain this singular class.
+	 * @param c a class
+	 * @return a list of elements that contain the given class
+	 */
 	public List<Element> getElementsByClass(String c)
 	{
 		if(c == null)
@@ -59,6 +122,14 @@ public class CompoundElement extends Element
 		return allElements;
 	}
 	
+	/**
+	 * Finds all elements (including end elements) that contain the given attribute's value.
+	 * Attributes that do not have specific values (such as boolean-type attributes) will contain
+	 * a blank string.
+	 * @param attribute the attribute to find
+	 * @param value the value to find
+	 * @return a list of elements that contain the attribute's value
+	 */
 	public List<Element> getElementsByAttribute(String attribute, String value)
 	{
 		if(attribute == null)
@@ -72,6 +143,11 @@ public class CompoundElement extends Element
 		return allElements;
 	}
 	
+	/**
+	 * Finds all elements (including end elements) that contain the given tag.
+	 * @param tag the tag to find
+	 * @return a list of elements that contain the given tag
+	 */
 	public List<Element> getElementsByTag(String tag)
 	{
 		if(tag == null)
@@ -85,6 +161,12 @@ public class CompoundElement extends Element
 		return allElements;
 	}
 	
+	/**
+	 * Find an element (including end elements) that contain the given id.
+	 * If multiple elements have the same id, it will find the first occurance.
+	 * @param id the id to find
+	 * @return a list of elements that contain the given id
+	 */
 	public Element getElementById(String id)
 	{
 		if(id == null)
@@ -101,16 +183,29 @@ public class CompoundElement extends Element
 		return foundElement;
 	}
 	
+	/**
+	 * Gets an unmodifiable list of all the main elements.
+	 * @return a list of the main elements
+	 */
 	public List<Element> getElements()
 	{
 		return Collections.unmodifiableList(elements);
 	}
 	
+	/**
+	 * Gets an unmodifiable list of all the end elements.
+	 * @return a list of the end elements
+	 */
 	public List<Element> getEndElements()
 	{
 		return Collections.unmodifiableList(endElements);
 	}
 	
+	/**
+	 * Adds the element into the main list at the given index.
+	 * @param index location to add the element into
+	 * @param e element to add
+	 */
 	public void addElement(int index, Element e)
 	{
 		if(e == null)
@@ -121,6 +216,10 @@ public class CompoundElement extends Element
 		elements.add(index, e);
 	}
 	
+	/**
+	 * Adds the element to the end of the main list.
+	 * @param e element to add
+	 */
 	public void addElement(Element e)
 	{
 		if(e == null)
@@ -131,6 +230,10 @@ public class CompoundElement extends Element
 		elements.add(e);
 	}
 	
+	/**
+	 * Removes the given element from the main list.
+	 * @param e element to remove
+	 */
 	public void removeElement(Element e)
 	{
 		if(e == null)
@@ -141,12 +244,19 @@ public class CompoundElement extends Element
 		elements.remove(e);
 	}
 	
+	/**
+	 * Removes an element from the main list at a given index.
+	 * @param index location to remove
+	 */
 	public void removeElement(int index)
 	{	
 		elements.remove(index);
 	}
 	
-	
+	/**
+	 * Adds an element to the end of the end elements list.
+	 * @param e element to add
+	 */
 	public void addEndElement(Element e)
 	{
 		if(e == null)
@@ -157,6 +267,11 @@ public class CompoundElement extends Element
 		endElements.add(e);
 	}
 	
+	/**
+	 * Adds an element to the end elements list at the given index.
+	 * @param index location to add
+	 * @param e element to add
+	 */
 	public void addEndElement(int index, Element e)
 	{
 		if(e == null)
@@ -167,6 +282,10 @@ public class CompoundElement extends Element
 		endElements.add(index, e);
 	}
 	
+	/**
+	 * Removes the given element from the end elements list.
+	 * @param e element to remove
+	 */
 	public void removeEndElement(Element e)
 	{
 		if(e == null)
@@ -177,11 +296,19 @@ public class CompoundElement extends Element
 		endElements.remove(e);
 	}
 	
+	/**
+	 * Removes an element from the end element list at the given index.
+	 * @param index location to remove
+	 */
 	public void removeEndElement(int index)
 	{	
 		endElements.remove(index);
 	}
 	
+	/**
+	 * Returns the rendered html of this element.
+	 * @return html of this element
+	 */
 	@Override
 	public String getHTML()
 	{
@@ -200,22 +327,38 @@ public class CompoundElement extends Element
 		return html;
 	}
 	
+	/**
+	 * Removes all elements from the main elements list.
+	 */
 	public void clearElements()
 	{
-		elements.clear();
+		elements.forEach(this::removeElement);
 	}
 	
+	/**
+	 * Removes all element from the end elements list.
+	 */
 	public void clearEndElements()
 	{
-		endElements.clear();
+		endElements.forEach(this::removeEndElement);
 	}
 	
+	/**
+	 * Removes all elements.
+	 */
 	public void clearAllElements()
 	{
 		clearElements();
 		clearEndElements();
 	}
 	
+	/**
+	 * Finds elements by the given attribute and value from the given list.
+	 * @param list a list of elements to search
+	 * @param attribute attribute to find
+	 * @param value value to find
+	 * @return the list of elements that are contained within the elements from the given list
+	 */
 	private List<Element> getElementsByAttribute(List<Element> list, String attribute, String value)
 	{
 		List<Element> results = new LinkedList<Element>();
@@ -236,6 +379,12 @@ public class CompoundElement extends Element
 		return results;
 	}
 	
+	/**
+	 * Finds elements by the given tag from the given list.
+	 * @param list a list of elements to search
+	 * @param tag tag to find
+	 * @return the list of elements that are contained within the elements from the given list
+	 */
 	private List<Element> getElementsByTag(List<Element> list, String tag)
 	{
 		List<Element> results = new LinkedList<Element>();
@@ -256,6 +405,12 @@ public class CompoundElement extends Element
 		return results;
 	}
 	
+	/**
+	 * Finds elements by the given class from the given list.
+	 * @param list a list of elements to search
+	 * @param c the class to find
+	 * @return a list of elements that are contained within the elements from the given list
+	 */
 	private List<Element> getElementsByClass(List<Element> list, String c)
 	{
 		List<Element> results = new LinkedList<Element>();
@@ -276,6 +431,12 @@ public class CompoundElement extends Element
 		return results;
 	}
 	
+	/**
+	 * Finds an element by the given id from the given list.
+	 * @param list a list of elements to search
+	 * @param id the id to find
+	 * @return an element that contains the given id
+	 */
 	private Element getElementById(List<Element> list, String id)
 	{
 		Element foundElement = null;

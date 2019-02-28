@@ -2,14 +2,41 @@ package forms;
 
 import util.Default;
 
+/**
+ * This class represents a submit input.
+ * @author colli
+ *
+ */
 public class Submit extends Input
 {
+	/**
+	 * Formaction attribute.
+	 */
 	private String formaction;
+	
+	/**
+	 * Formenctype attribute.
+	 */
 	private String formenctype;
+	
+	/**
+	 * Formmethod attribute.
+	 */
 	private String formmethod;
+	
+	/**
+	 * Formnovalidate attribute.
+	 */
 	private boolean formnovalidate;
+	
+	/**
+	 * Formtarget attribute.
+	 */
 	private String formtarget;
 	
+	/**
+	 * Constructor. Creates an input of type "submit".
+	 */
 	public Submit()
 	{
 		setType("submit");
@@ -27,11 +54,19 @@ public class Submit extends Input
 		}
 	}
 	
+	/**
+	 * Gets the formtarget attribute.
+	 * @return formtarget value
+	 */
 	public String getFormTarget()
 	{
 		return formtarget;
 	}
 	
+	/**
+	 * Sets the formtarget attribute. Null to remove.
+	 * @param formTarget formtarget value
+	 */
 	public void setFormTarget(String formTarget)
 	{
 		this.formtarget = formTarget;
@@ -45,11 +80,19 @@ public class Submit extends Input
 		}
 	}
 	
+	/**
+	 * Sets the formnovalidate attribute.
+	 * @return formnovalidate value
+	 */
 	public boolean getFormNoValidate()
 	{
 		return formnovalidate;
 	}
 	
+	/**
+	 * Sets the formnovalidate attribute.
+	 * @param validate formnovalidate value
+	 */
 	public void setFormNoValidate(boolean validate)
 	{
 		this.formnovalidate = validate;
@@ -63,11 +106,19 @@ public class Submit extends Input
 		}
 	}
 	
+	/**
+	 * Gets the formmethod attribute.
+	 * @return formmethod value
+	 */
 	public String getFormMethod()
 	{
 		return formmethod;
 	}
 	
+	/**
+	 * Sets the formmethod attribute. Null to remove.
+	 * @param formMethod formmethod value
+	 */
 	public void setFormMethod(String formMethod)
 	{
 		this.formmethod = formMethod;
@@ -81,11 +132,19 @@ public class Submit extends Input
 		}
 	}
 	
+	/**
+	 * Gets formenctype attribute.
+	 * @return formenctype value
+	 */
 	public String getFormEncType()
 	{
 		return formenctype;
 	}
 	
+	/**
+	 * Sets formenctype attribute. Null to remove.
+	 * @param formEnc formenctype value
+	 */
 	public void setFormEncType(String formEnc)
 	{
 		this.formenctype = formEnc;
@@ -99,11 +158,19 @@ public class Submit extends Input
 		}
 	}
 	
+	/**
+	 * Gets the formaction attribute.
+	 * @return formaction value
+	 */
 	public String getFormAction()
 	{
 		return formaction;
 	}
 	
+	/**
+	 * Sets the formaction attribute. Null to remove.
+	 * @param formAction formaction value
+	 */
 	public void setFormAction(String formAction)
 	{
 		this.formaction = formAction;

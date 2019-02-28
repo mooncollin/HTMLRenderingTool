@@ -1,9 +1,20 @@
 package forms;
 
+/**
+ * This class represents a checkbox input.
+ * @author colli
+ *
+ */
 public class Checkbox extends Input
 {
+	/**
+	 * Whether this checkbox is currently checked.
+	 */
 	private boolean checked;
 	
+	/**
+	 * Constructor. Creates an input of type "checkbox".
+	 */
 	public Checkbox()
 	{
 		setType("checkbox");
@@ -17,6 +28,10 @@ public class Checkbox extends Input
 		}
 	}
 	
+	/**
+	 * Sets the checked status of this checkbox.
+	 * @param c true to have this checkbox be checked, false otherwise
+	 */
 	public void setChecked(boolean c)
 	{
 		this.checked = c;

@@ -2,12 +2,31 @@ package forms;
 
 import util.Default;
 
+/**
+ * This class represents a time input.
+ * @author colli
+ *
+ */
 public class Time extends Input
 {
+	/**
+	 * Max attribute.
+	 */
 	private int max;
+	
+	/**
+	 * Min attribute.
+	 */
 	private int min;
+	
+	/**
+	 * Step attribute.
+	 */
 	private int step;
 	
+	/**
+	 * Constructor. Creates an input of type "time".
+	 */
 	public Time()
 	{
 		setType("time");
@@ -23,11 +42,19 @@ public class Time extends Input
 		}
 	}
 	
+	/**
+	 * Gets the step attribute.
+	 * @return step value
+	 */
 	public int getStep()
 	{
 		return step;
 	}
 	
+	/**
+	 * Sets the step attribute. < 0 to remove.
+	 * @param step step value
+	 */
 	public void setStep(int step)
 	{
 		this.step = step < 0 ? -1 : step;
@@ -41,11 +68,19 @@ public class Time extends Input
 		}
 	}
 	
+	/**
+	 * Gets the min attribute.
+	 * @return min value
+	 */
 	public int getMin()
 	{
 		return min;
 	}
 	
+	/**
+	 * Sets the min attribute.
+	 * @param min min value
+	 */
 	public void setMin(int min)
 	{
 		this.min = min < 0 ? -1 : min;
@@ -59,11 +94,19 @@ public class Time extends Input
 		}
 	}
 	
+	/**
+	 * Gets the max attribute.
+	 * @return max value
+	 */
 	public int getMax()
 	{
 		return max;
 	}
 	
+	/**
+	 * Sets the max attribute. < 0 to remove.
+	 * @param max max value
+	 */
 	public void setMax(int max)
 	{
 		this.max = max < 0 ? -1 : max;
@@ -77,16 +120,31 @@ public class Time extends Input
 		}
 	}
 	
+	/**
+	 * Parses the string as a number and sets the step
+	 * attribute.
+	 * @param step number as a string
+	 */
 	public void parseStep(String step)
 	{
 		setStep(step == null ? -1 : Integer.parseInt(step));
 	}
 	
+	/**
+	 * Parses the string as a number and sets the min
+	 * attribute.
+	 * @param min number as a string
+	 */
 	public void parseMin(String min)
 	{
 		setMin(min == null ? -1 : Integer.parseInt(min));
 	}
 	
+	/**
+	 * Parses the string as a number and sets the max
+	 * attribute.
+	 * @param max number as a string
+	 */
 	public void parseMax(String max)
 	{
 		setMax(max == null ? -1 : Integer.parseInt(max));

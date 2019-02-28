@@ -2,11 +2,26 @@ package forms;
 
 import util.Default;
 
+/**
+ * This class represents a radio input.
+ * @author colli
+ *
+ */
 public class Radio extends Input
 {
+	/**
+	 * Checked attribute.
+	 */
 	private boolean checked;
+	
+	/**
+	 * Autocomplete attribute.
+	 */
 	private String autocomplete;
 	
+	/**
+	 * Constructor. Creates an input of type "radio".
+	 */
 	public Radio()
 	{
 		setType("radio");
@@ -21,6 +36,10 @@ public class Radio extends Input
 		}
 	}
 	
+	/**
+	 * Sets autocomplete attribute. Null to remove.
+	 * @param a autcomplete value
+	 */
 	public void setAutocomplete(String a)
 	{
 		this.autocomplete = a;
@@ -34,11 +53,19 @@ public class Radio extends Input
 		}
 	}
 	
+	/**
+	 * Gets the checked attribute.
+	 * @return checked value
+	 */
 	public boolean getChecked()
 	{
 		return checked;
 	}
 	
+	/**
+	 * Sets the checked attribute.
+	 * @param c checked value
+	 */
 	public void setChecked(boolean c)
 	{
 		this.checked = c;
