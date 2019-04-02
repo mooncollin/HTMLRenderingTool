@@ -710,7 +710,7 @@ public class Form extends CompoundElement
 	 */
 	public boolean isValid()
 	{
-		return inputs.stream().filter(i -> i.getRequired() && i.getValue().isEmpty())
+		return inputs.stream().filter(i -> i.getRequired() && i.getValue() != null && i.getValue().isEmpty())
 					   .count() == 0;
 	}
 	
