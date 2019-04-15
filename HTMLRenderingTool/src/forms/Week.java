@@ -12,17 +12,17 @@ public class Week extends Input
 	/**
 	 * Max attribute.
 	 */
-	private int max;
+	private double max;
 	
 	/**
 	 * Min attribute.
 	 */
-	private int min;
+	private double min;
 	
 	/**
 	 * Step attribute.
 	 */
-	private int step;
+	private double step;
 	
 	/**
 	 * Constructor. Creates an input of type "week".
@@ -46,7 +46,7 @@ public class Week extends Input
 	 * Gets the step attribute.
 	 * @return step value
 	 */
-	public int getStep()
+	public double getStep()
 	{
 		return step;
 	}
@@ -55,7 +55,7 @@ public class Week extends Input
 	 * Sets the step attribute. < 0 to remove.
 	 * @param step step value
 	 */
-	public void setStep(int step)
+	public void setStep(double step)
 	{
 		this.step = step < 0 ? -1 : step;
 		if(this.step < 0)
@@ -72,7 +72,7 @@ public class Week extends Input
 	 * Gets the min attribute.
 	 * @return min value
 	 */
-	public int getMin()
+	public double getMin()
 	{
 		return min;
 	}
@@ -81,7 +81,7 @@ public class Week extends Input
 	 * Sets the min attribute. < 0 to remove.
 	 * @param min min value
 	 */
-	public void setMin(int min)
+	public void setMin(double min)
 	{
 		this.min = min < 0 ? -1 : min;
 		if(this.min < 0)
@@ -98,7 +98,7 @@ public class Week extends Input
 	 * Gets the max attribute.
 	 * @return max value
 	 */
-	public int getMax()
+	public double getMax()
 	{
 		return max;
 	}
@@ -107,7 +107,7 @@ public class Week extends Input
 	 * Sets the max attribute. < 0 to remove.
 	 * @param max max value
 	 */
-	public void setMax(int max)
+	public void setMax(double max)
 	{
 		this.max = max < 0 ? -1 : max;
 		if(this.max < 0)
@@ -127,7 +127,7 @@ public class Week extends Input
 	 */
 	public void parseStep(String step)
 	{
-		setStep(step == null ? -1 : Integer.parseInt(step));
+		setStep(step == null ? -1 : Double.parseDouble(step));
 	}
 	
 	/**
@@ -137,7 +137,7 @@ public class Week extends Input
 	 */
 	public void parseMin(String min)
 	{
-		setMin(min == null ? -1 : Integer.parseInt(min));
+		setMin(min == null ? -1 : Double.parseDouble(min));
 	}
 	
 	/**
@@ -147,6 +147,6 @@ public class Week extends Input
 	 */
 	public void parseMax(String max)
 	{
-		setMax(max == null ? -1 : Integer.parseInt(max));
+		setMax(max == null ? -1 : Double.parseDouble(max));
 	}
 }
