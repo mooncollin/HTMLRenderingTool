@@ -85,10 +85,15 @@ public class Element
 	
 	/**
 	 * The information that will be fit inside this Element.
-	 * This goes inbetween the opening and closing tags.
+	 * This goes in-between the opening and closing tags.
 	 * Self-closing tags will not render this data.
 	 */
 	private String data;
+	
+	/**
+	 * The id of this element.
+	 */
+	private String id;
 	
 	/**
 	 * Constructor. Creates an Element with the given tag, with no
@@ -137,6 +142,15 @@ public class Element
 		_setTag(tag);
 		setData(data);
 		setAttributes(attributes);
+		
+		try
+		{
+			properties.put("id", new Object[] {getClass().getMethod("setID", String.class), new Default(), "-1"});
+		} catch (NoSuchMethodException | SecurityException e)
+		{
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
 	}
 	
 	/**
@@ -179,6 +193,28 @@ public class Element
 		else
 		{
 			this.data = data;
+		}
+	}
+	
+	/**
+	 * Returns the id of this element.
+	 * @return this element's id
+	 */
+	public String getID()
+	{
+		return id;
+	}
+	
+	public void setID(String id)
+	{
+		this.id = id;
+		if(this.id == null)
+		{
+			_removeAttribute("id");
+		}
+		else
+		{
+			_setAttribute("id", this.id);
 		}
 	}
 	
