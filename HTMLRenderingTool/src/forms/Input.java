@@ -86,28 +86,6 @@ abstract public class Input extends Element implements Attributes.Required, Attr
 	public Input(String name)
 	{
 		super("input");
-		
-		var required = Attributes.required(this);
-		var autofocus = Attributes.autofocus(this);
-		var disabled = Attributes.disabled(this);
-		var autocomplete = Attributes.autocomplete(this);
-		var form = Attributes.form(this);
-		var list = Attributes.list(this);
-		var nameA = Attributes.name(this);
-		var readonly = Attributes.readonly(this);
-		var tabindex = Attributes.tabindex(this);
-		var value = Attributes.value(this);
-		
-		properties.put(required.getKey(), required.getValue());
-		properties.put(autofocus.getKey(), autofocus.getValue());
-		properties.put(disabled.getKey(), disabled.getValue());
-		properties.put(autocomplete.getKey(), autocomplete.getValue());
-		properties.put(form.getKey(), form.getValue());
-		properties.put(list.getKey(), list.getValue());
-		properties.put(nameA.getKey(), nameA.getValue());
-		properties.put(readonly.getKey(), readonly.getValue());
-		properties.put(tabindex.getKey(), tabindex.getValue());
-		properties.put(value.getKey(), value.getValue());
 
 		setName(name);
 		label = new Element("label");

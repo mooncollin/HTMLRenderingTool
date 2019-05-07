@@ -1,10 +1,13 @@
 package html;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Type;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.TreeMap;
 import java.util.function.Consumer;
 
@@ -66,48 +69,50 @@ public class Element implements Attributes.ID
 	 */
 	public Element(String tag)
 	{
-		this(tag, null, null);
+		this(tag, null);
 	}
 	
 	/**
 	 * Constructor. Creates an Element with the given tag, given data,
-	 * and no starting attributes.
+	 * and given attributes.
 	 * @param tag the tag of this element
 	 * @param data the data of this element
+	 * @param attributes key-value attributes of this element
 	 */
+	@SuppressWarnings("unchecked")
 	public Element(String tag, String data)
-	{
-		this(tag, data, null);
-	}
-	
-	/**
-	 * Constructor. Creates an Element with the given tag, no data,
-	 * and given attributes.
-	 * @param tag the tag of this element
-	 * @param attributes key-value attributes of this element
-	 */
-	public Element(String tag, Map<String, String> attributes)
-	{
-		this(tag, null, attributes);
-	}
-	
-	/**
-	 * Constructor. Creates an Element with the given tag, given data,
-	 * and given attributes.
-	 * @param tag the tag of this element
-	 * @param data the data of this element
-	 * @param attributes key-value attributes of this element
-	 */
-	public Element(String tag, String data, Map<String, String> attributes)
 	{	
 		this.attributes = new TreeMap<String, String>();
 		this.classes = new LinkedList<String>();
 		this.properties = new HashMap<String, Attribute<? extends Object>>();
 		_setTag(tag);
 		setData(data);
-		setAttributes(attributes);
-		var id = Attributes.id(this);
-		properties.put(id.getKey(), id.getValue());
+		
+		
+		List<Class<?>> allClasses = new LinkedList<Class<?>>();
+		Class<?> currentClass = getClass();
+		while(currentClass != null)
+		{
+			allClasses.add(currentClass);
+			currentClass = currentClass.getSuperclass();
+		}
+		for(Class<?> clazz : allClasses)
+		{
+			for(Type t : clazz.getGenericInterfaces())
+			{
+				try
+				{
+					Class<?> interfaceClazz = Class.forName(t.getTypeName());
+					Entry<String, Attribute<? extends Object>> prop = (Map.Entry<String, Attribute<? extends Object>>) interfaceClazz.getMethod("getEntry", interfaceClazz).invoke(this, this);
+					properties.put(prop.getKey(), prop.getValue());
+				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException
+						| NoSuchMethodException | SecurityException | ClassNotFoundException e)
+				{
+					throw new RuntimeException("Error intializing attributes");
+				}
+				
+			}
+		}
 	}
 	
 	/**

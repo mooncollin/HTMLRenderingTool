@@ -19,8 +19,6 @@ public class Checkbox extends Input implements Attributes.Checked
 	public Checkbox()
 	{
 		setType("checkbox");
-		var checked = Attributes.checked(this);
-		properties.put(checked.getKey(), checked.getValue());
 	}
 	
 	/**

@@ -60,24 +60,6 @@ public class Image extends Input implements Attributes.Alt, Attributes.FormActio
 	public Image()
 	{
 		setType("image");
-		var alt = Attributes.alt(this);
-		var formaction = Attributes.formaction(this);
-		var formenctype = Attributes.formenctype(this);
-		var formmethod = Attributes.formmethod(this);
-		var formnovalidate = Attributes.formnovalidate(this);
-		var formtarget = Attributes.formtarget(this);
-		var height = Attributes.height(this);
-		var width = Attributes.width(this);
-		var src = Attributes.src(this);
-		properties.put(alt.getKey(), alt.getValue());
-		properties.put(formaction.getKey(), formaction.getValue());
-		properties.put(formmethod.getKey(), formmethod.getValue());
-		properties.put(formenctype.getKey(), formenctype.getValue());
-		properties.put(formnovalidate.getKey(), formnovalidate.getValue());
-		properties.put(formtarget.getKey(), formtarget.getValue());
-		properties.put(height.getKey(), height.getValue());
-		properties.put(width.getKey(), width.getValue());
-		properties.put(src.getKey(), src.getValue());
 	}
 	
 	/**

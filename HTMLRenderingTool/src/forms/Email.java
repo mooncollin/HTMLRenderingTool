@@ -50,20 +50,6 @@ public class Email extends Input implements Attributes.Multiple, Attributes.MinL
 	public Email()
 	{
 		setType("email");
-		var multiple = Attributes.multiple(this);
-		var minlength = Attributes.minlength(this);
-		var maxlength = Attributes.maxlength(this);
-		var size = Attributes.size(this);
-		var pattern = Attributes.pattern(this);
-		var placeholder = Attributes.placeholder(this);
-		var spellcheck = Attributes.spellcheck(this);
-		properties.put(multiple.getKey(), multiple.getValue());
-		properties.put(minlength.getKey(), minlength.getValue());
-		properties.put(maxlength.getKey(), maxlength.getValue());
-		properties.put(size.getKey(), size.getValue());
-		properties.put(pattern.getKey(), pattern.getValue());
-		properties.put(placeholder.getKey(), placeholder.getValue());
-		properties.put(spellcheck.getKey(), spellcheck.getValue());
 	}
 	
 	/**

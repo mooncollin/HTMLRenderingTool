@@ -3,7 +3,6 @@ package html;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * A CompoundElement is an Element, but can contain other Elements
@@ -41,29 +40,7 @@ public class CompoundElement extends Element
 	 */
 	public CompoundElement(String tag)
 	{
-		this(tag, null, null);
-	}
-	
-	/**
-	 * Constructor. Creates a CompoundElement with the given tag, given
-	 * data, and no attributes.
-	 * @param tag a tag for this element
-	 * @param data data for this element
-	 */
-	public CompoundElement(String tag, String data)
-	{
-		this(tag, data, null);
-	}
-	
-	/**
-	 * Constructor. Creates a CompoundElement with the given tag, no data,
-	 * and given attributes.
-	 * @param tag a tag for this element
-	 * @param attributes key-value attributes for this element
-	 */
-	public CompoundElement(String tag, Map<String, String> attributes)
-	{
-		this(tag, null, attributes);
+		this(tag, null);
 	}
 	
 	/**
@@ -73,9 +50,9 @@ public class CompoundElement extends Element
 	 * @param data data for this element
 	 * @param attributes key-value attributes for this element
 	 */
-	public CompoundElement(String tag, String data, Map<String, String> attributes)
+	public CompoundElement(String tag, String data)
 	{
-		super(tag, data, attributes);
+		super(tag, data);
 		if(HTML.SELF_CLOSING_TAGS.contains(tag))
 		{
 			throw new IllegalArgumentException(String.format("<%s /> cannot be a compound element", tag));

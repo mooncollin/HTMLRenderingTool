@@ -2,12 +2,17 @@ package misc;
 
 import static org.junit.Assert.*;
 
+import java.lang.reflect.Type;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
 import org.junit.Test;
 
 import forms.Button;
+import forms.Checkbox;
 import forms.Email;
 import forms.Form;
 import forms.Input;

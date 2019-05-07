@@ -30,12 +30,6 @@ public class Range extends Input implements Attributes.Max, Attributes.Min, Attr
 	public Range()
 	{
 		setType("range");
-		var max = Attributes.max(this);
-		var min = Attributes.min(this);
-		var step = Attributes.step(this);
-		properties.put(max.getKey(), max.getValue());
-		properties.put(min.getKey(), min.getValue());
-		properties.put(step.getKey(), step.getValue());
 	}
 	
 	/**

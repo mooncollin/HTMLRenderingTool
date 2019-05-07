@@ -40,16 +40,6 @@ public class Telephone extends Input implements Attributes.MinLength, Attributes
 	public Telephone()
 	{
 		setType("tel");
-		var minlength = Attributes.minlength(this);
-		var maxlength = Attributes.maxlength(this);
-		var size = Attributes.size(this);
-		var pattern = Attributes.pattern(this);
-		var placeholder = Attributes.placeholder(this);
-		properties.put(minlength.getKey(), minlength.getValue());
-		properties.put(maxlength.getKey(), maxlength.getValue());
-		properties.put(size.getKey(), size.getValue());
-		properties.put(pattern.getKey(), pattern.getValue());
-		properties.put(placeholder.getKey(), placeholder.getValue());
 	}
 	
 	/**

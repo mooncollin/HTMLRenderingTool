@@ -25,10 +25,6 @@ public class Radio extends Input implements Attributes.Checked, Attributes.AutoC
 	public Radio()
 	{
 		setType("radio");
-		var checked = Attributes.checked(this);
-		var autocomplete = Attributes.autocomplete(this);
-		properties.put(checked.getKey(), checked.getValue());
-		properties.put(autocomplete.getKey(), autocomplete.getValue());
 	}
 	
 	/**

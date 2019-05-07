@@ -35,14 +35,6 @@ public class Number extends Input implements Attributes.Max, Attributes.Min, Att
 	public Number()
 	{
 		setType("number");
-		var max = Attributes.max(this);
-		var min = Attributes.min(this);
-		var placeholder = Attributes.placeholder(this);
-		var step = Attributes.step(this);
-		properties.put(max.getKey(), max.getValue());
-		properties.put(min.getKey(), min.getValue());
-		properties.put(placeholder.getKey(), placeholder.getValue());
-		properties.put(step.getKey(), step.getValue());
 	}
 	
 	/**

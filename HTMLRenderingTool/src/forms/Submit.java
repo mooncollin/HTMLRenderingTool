@@ -40,16 +40,6 @@ public class Submit extends Input implements Attributes.FormAction, Attributes.F
 	public Submit()
 	{
 		setType("submit");
-		var formaction = Attributes.formaction(this);
-		var formenctype = Attributes.formenctype(this);
-		var formmethod = Attributes.formmethod(this);
-		var formtarget = Attributes.formtarget(this);
-		var formnovalidate = Attributes.formnovalidate(this);
-		properties.put(formaction.getKey(), formaction.getValue());
-		properties.put(formenctype.getKey(), formenctype.getValue());
-		properties.put(formmethod.getKey(), formmethod.getValue());
-		properties.put(formtarget.getKey(), formtarget.getValue());
-		properties.put(formnovalidate.getKey(), formnovalidate.getValue());
 	}
 	
 	/**

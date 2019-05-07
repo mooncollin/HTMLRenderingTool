@@ -120,24 +120,6 @@ public class Form extends CompoundElement implements Attributes.AcceptCharset, A
 		inputs = new LinkedList<Input>();
 		endInputs = new LinkedList<Input>();
 		acceptCharset = new LinkedList<String>();
-		var charset = Attributes.acceptCharset(this);
-		var action = Attributes.action(this);
-		var autocapitalize = Attributes.autocapitalize(this);
-		var autocomplete = Attributes.autocomplete(this);
-		var enctype = Attributes.enctype(this);
-		var method = Attributes.method(this);
-		var name = Attributes.name(this);
-		var novalidate = Attributes.novalidate(this);
-		var target = Attributes.target(this);
-		properties.put(charset.getKey(), charset.getValue());
-		properties.put(action.getKey(), action.getValue());
-		properties.put(autocapitalize.getKey(), action.getValue());
-		properties.put(enctype.getKey(), enctype.getValue());
-		properties.put(method.getKey(), method.getValue());
-		properties.put(name.getKey(), name.getValue());
-		properties.put(novalidate.getKey(), novalidate.getValue());
-		properties.put(target.getKey(), target.getValue());
-		properties.put(autocomplete.getKey(), autocomplete.getValue());
 	}
 	
 	/**

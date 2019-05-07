@@ -43,12 +43,6 @@ public class File extends Input implements Attributes.Accept, Attributes.Capture
 	public File()
 	{
 		setType("file");
-		var multiple = Attributes.multiple(this);
-		var capture = Attributes.capture(this);
-		var acceptA = Attributes.accept(this);
-		properties.put(multiple.getKey(), multiple.getValue());
-		properties.put(capture.getKey(), capture.getValue());
-		properties.put(acceptA.getKey(), acceptA.getValue());
 		
 		accept = new LinkedList<String>();
 		files = new LinkedList<HTMLFile>();

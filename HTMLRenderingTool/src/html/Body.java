@@ -1,30 +1,19 @@
 package html;
 
-import java.util.Map;
-import java.util.TreeMap;
-
 /**
  * This class represents a body element with extra functionality.
  * @author colli
  *
  */
 public class Body extends CompoundElement
-{
-	/**
-	 * Constructor. Creates a Body with no attributes.
-	 */
-	public Body()
-	{
-		this(null);
-	}
-	
+{	
 	/**
 	 * Constructor. Creates a Body with the given attributes.
 	 * @param attributes key-value attributes
 	 */
-	public Body(Map<String, String> attributes)
+	public Body()
 	{
-		super("head", attributes);
+		super("head");
 	}
 	
 	/**
@@ -33,8 +22,8 @@ public class Body extends CompoundElement
 	 */
 	public void addScript(String src)
 	{
-		Map<String, String> attributes = new TreeMap<String, String>();
-		attributes.put("src", src);
-		addEndElement(new Element("script", attributes));
+		Element script = new Element("script");
+		script.setAttribute("src", src);
+		addEndElement(script);
 	}
 }
