@@ -1,13 +1,13 @@
 package forms;
 
-import util.Default;
+import attributes.Attributes;
 
 /**
  * This class represents a password input.
  * @author colli
  *
  */
-public class Password extends Input
+public class Password extends Input implements Attributes.MinLength, Attributes.MaxLength, Attributes.Size, Attributes.Pattern, Attributes.PlaceHolder 
 {
 	/**
 	 * Minlength attribute.
@@ -40,25 +40,23 @@ public class Password extends Input
 	public Password()
 	{
 		setType("password");
-		try
-		{
-			properties.put("minlength", new Object[] {getClass().getMethod("parseMinLength", String.class), new Default(), "-1"});
-			properties.put("maxlength", new Object[] {getClass().getMethod("parseMaxLength", String.class), new Default(), "-1"});
-			properties.put("size", new Object[] {getClass().getMethod("parseSize", String.class), new Default(), "-1"});
-			properties.put("pattern", new Object[] {getClass().getMethod("setPattern", String.class), new Default(), null});
-			properties.put("placeholder", new Object[] {getClass().getMethod("setPlaceholder", String.class), new Default(), null});
-		} catch (NoSuchMethodException | SecurityException e)
-		{
-			e.printStackTrace();
-			throw new RuntimeException();
-		}
+		var minlength = Attributes.minlength(this);
+		var maxlength = Attributes.maxlength(this);
+		var size = Attributes.size(this);
+		var pattern = Attributes.pattern(this);
+		var placeholder = Attributes.placeholder(this);
+		properties.put(minlength.getKey(), minlength.getValue());
+		properties.put(maxlength.getKey(), maxlength.getValue());
+		properties.put(size.getKey(), size.getValue());
+		properties.put(pattern.getKey(), pattern.getValue());
+		properties.put(placeholder.getKey(), placeholder.getValue());
 	}
 	
 	/**
 	 * Gets the placeholder attribute.
 	 * @return placeholder value
 	 */
-	public String getPlaceholder()
+	public String getPlaceHolder()
 	{
 		return placeholder;
 	}
@@ -67,7 +65,7 @@ public class Password extends Input
 	 * Sets the placeholder attribute. Null to remove.
 	 * @param p placeholder value
 	 */
-	public void setPlaceholder(String p)
+	public void setPlaceHolder(String p)
 	{
 		this.placeholder = p;
 		if(this.placeholder == null)
@@ -184,35 +182,5 @@ public class Password extends Input
 		{
 			_setAttribute("minlength", String.valueOf(this.minLength));
 		}
-	}
-	
-	/**
-	 * Parses the string as a number and sets the size
-	 * attribute.
-	 * @param size number as a string
-	 */
-	public void parseSize(String size)
-	{		
-		setSize(size == null ? -1 : Integer.parseInt(size));
-	}
-	
-	/**
-	 * Parses the string as a number and sets the max
-	 * attribute.
-	 * @param maxLength number as a string
-	 */
-	public void parseMaxLength(String maxLength)
-	{
-		setMaxLength(maxLength == null ? -1 : Integer.parseInt(maxLength));
-	}
-	
-	/**
-	 * Parses the string as a number and sets the min
-	 * attribute.
-	 * @param minLength number as a string
-	 */
-	public void parseMinLength(String minLength)
-	{
-		setMinLength(minLength == null ? -1 : Integer.parseInt(minLength));
 	}
 }

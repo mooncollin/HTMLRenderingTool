@@ -1,13 +1,13 @@
 package forms;
 
-import util.Default;
+import attributes.Attributes;
 
 /**
  * This class represents an image input.
  * @author colli
  *
  */
-public class Image extends Input
+public class Image extends Input implements Attributes.Alt, Attributes.FormAction, Attributes.FormTarget, Attributes.FormEnctype, Attributes.FormMethod, Attributes.FormNoValidate, Attributes.Height, Attributes.Width, Attributes.Src 
 {
 	/**
 	 * Alternative text attribute.
@@ -60,22 +60,24 @@ public class Image extends Input
 	public Image()
 	{
 		setType("image");
-		try
-		{
-			properties.put("alt", new Object[] {getClass().getMethod("setAlt", String.class), new Default(), null});
-			properties.put("formaction", new Object[] {getClass().getMethod("setFormAction", String.class), new Default(), null});
-			properties.put("formenctype", new Object[] {getClass().getMethod("setFormEncType", String.class), new Default(), null});
-			properties.put("formmethod", new Object[] {getClass().getMethod("setFormMethod", String.class), new Default(), null});
-			properties.put("formtarget", new Object[] {getClass().getMethod("setFormTarget", String.class), new Default(), null});
-			properties.put("formnovalidate", new Object[] {getClass().getMethod("setFormNoValidate", boolean.class), true, false});
-			properties.put("height", new Object[] {getClass().getMethod("parseHeight", String.class), new Default(), "-1"});
-			properties.put("width", new Object[] {getClass().getMethod("parseWidth", String.class), new Default(), "-1"});
-			properties.put("src", new Object[] {getClass().getMethod("setSrc", String.class), new Default(), null});
-		} catch (NoSuchMethodException | SecurityException e)
-		{
-			e.printStackTrace();
-			throw new RuntimeException();
-		}
+		var alt = Attributes.alt(this);
+		var formaction = Attributes.formaction(this);
+		var formenctype = Attributes.formenctype(this);
+		var formmethod = Attributes.formmethod(this);
+		var formnovalidate = Attributes.formnovalidate(this);
+		var formtarget = Attributes.formtarget(this);
+		var height = Attributes.height(this);
+		var width = Attributes.width(this);
+		var src = Attributes.src(this);
+		properties.put(alt.getKey(), alt.getValue());
+		properties.put(formaction.getKey(), formaction.getValue());
+		properties.put(formmethod.getKey(), formmethod.getValue());
+		properties.put(formenctype.getKey(), formenctype.getValue());
+		properties.put(formnovalidate.getKey(), formnovalidate.getValue());
+		properties.put(formtarget.getKey(), formtarget.getValue());
+		properties.put(height.getKey(), height.getValue());
+		properties.put(width.getKey(), width.getValue());
+		properties.put(src.getKey(), src.getValue());
 	}
 	
 	/**
@@ -119,6 +121,11 @@ public class Image extends Input
 		{
 			_setAttribute("width", String.valueOf(this.width));
 		}
+	}
+	
+	public int getWidth()
+	{
+		return width;
 	}
 	
 	/**
@@ -229,7 +236,7 @@ public class Image extends Input
 	 * Gest the formenctype attribute.
 	 * @return formenctype value
 	 */
-	public String getFormEncType()
+	public String getFormEnctype()
 	{
 		return formenctype;
 	}
@@ -238,7 +245,7 @@ public class Image extends Input
 	 * Sets the formenctype attribute. Null to remove. 
 	 * @param formEnc formenctype value
 	 */
-	public void setFormEncType(String formEnc)
+	public void setFormEnctype(String formEnc)
 	{
 		this.formenctype = formEnc;
 		if(this.formenctype == null)
@@ -301,25 +308,5 @@ public class Image extends Input
 		{
 			_setAttribute("alt", this.alt);
 		}
-	}
-	
-	/**
-	 * Parses the given string as a number and sets the height
-	 * attribute.
-	 * @param height number as a string
-	 */
-	public void parseHeight(String height)
-	{
-		setHeight(height == null ? -1 : Integer.parseInt(height));
-	}
-	
-	/**
-	 * Parses the given string as a number and sets the width
-	 * attribute.
-	 * @param width number as a string
-	 */
-	public void parseWidth(String width)
-	{
-		setWidth(width == null ? -1 : Integer.parseInt(width));
 	}
 }

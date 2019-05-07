@@ -1,13 +1,13 @@
 package forms;
 
-import util.Default;
+import attributes.Attributes;
 
 /**
  * This class represents a submit input.
  * @author colli
  *
  */
-public class Submit extends Input
+public class Submit extends Input implements Attributes.FormAction, Attributes.FormEnctype, Attributes.FormMethod, Attributes.FormTarget, Attributes.FormNoValidate
 {
 	/**
 	 * Formaction attribute.
@@ -40,18 +40,16 @@ public class Submit extends Input
 	public Submit()
 	{
 		setType("submit");
-		try
-		{
-			properties.put("formaction", new Object[] {getClass().getMethod("setFormAction", String.class), new Default(), null});
-			properties.put("formenctype", new Object[] {getClass().getMethod("setFormEncType", String.class), new Default(), null});
-			properties.put("formmethod", new Object[] {getClass().getMethod("setFormMethod", String.class), new Default(), null});
-			properties.put("formtarget", new Object[] {getClass().getMethod("setFormTarget", String.class), new Default(), null});
-			properties.put("formnovalidate", new Object[] {getClass().getMethod("setFormNoValidate", boolean.class), true, false});
-		} catch (NoSuchMethodException | SecurityException e)
-		{
-			e.printStackTrace();
-			throw new RuntimeException();
-		}
+		var formaction = Attributes.formaction(this);
+		var formenctype = Attributes.formenctype(this);
+		var formmethod = Attributes.formmethod(this);
+		var formtarget = Attributes.formtarget(this);
+		var formnovalidate = Attributes.formnovalidate(this);
+		properties.put(formaction.getKey(), formaction.getValue());
+		properties.put(formenctype.getKey(), formenctype.getValue());
+		properties.put(formmethod.getKey(), formmethod.getValue());
+		properties.put(formtarget.getKey(), formtarget.getValue());
+		properties.put(formnovalidate.getKey(), formnovalidate.getValue());
 	}
 	
 	/**
@@ -136,7 +134,7 @@ public class Submit extends Input
 	 * Gets formenctype attribute.
 	 * @return formenctype value
 	 */
-	public String getFormEncType()
+	public String getFormEnctype()
 	{
 		return formenctype;
 	}
@@ -145,7 +143,7 @@ public class Submit extends Input
 	 * Sets formenctype attribute. Null to remove.
 	 * @param formEnc formenctype value
 	 */
-	public void setFormEncType(String formEnc)
+	public void setFormEnctype(String formEnc)
 	{
 		this.formenctype = formEnc;
 		if(this.formenctype == null)

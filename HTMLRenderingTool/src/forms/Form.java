@@ -1,5 +1,6 @@
 package forms;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -8,7 +9,7 @@ import java.util.Map;
 
 import html.CompoundElement;
 import html.Element;
-import util.Default;
+import attributes.Attributes;
 
 /**
  * This class represents a form tag. It allows for inputs
@@ -20,7 +21,7 @@ import util.Default;
  * @author colli
  *
  */
-public class Form extends CompoundElement
+public class Form extends CompoundElement implements Attributes.AcceptCharset, Attributes.Action, Attributes.AutoCapitalize, Attributes.AutoComplete, Attributes.Enctype, Attributes.Method, Attributes.Name, Attributes.NoValidate, Attributes.Target
 {
 	/**
 	 * List of main inputs.
@@ -119,22 +120,24 @@ public class Form extends CompoundElement
 		inputs = new LinkedList<Input>();
 		endInputs = new LinkedList<Input>();
 		acceptCharset = new LinkedList<String>();
-		try
-		{
-			properties.put("accept-charset", new Object[] {getClass().getMethod("parseCharset", String.class), new Default(), null});
-			properties.put("action", new Object[] {getClass().getMethod("setAction", String.class), new Default(), null});
-			properties.put("autocapitalize", new Object[] {getClass().getMethod("setAutocapitalize", String.class), new Default(), null});
-			properties.put("autocomplete", new Object[] {getClass().getMethod("setAutocomplete", String.class), new Default(), null});
-			properties.put("enctype", new Object[] {getClass().getMethod("setEnctype", String.class), new Default(), null});
-			properties.put("method", new Object[] {getClass().getMethod("setMethod", String.class), new Default(), null});
-			properties.put("name", new Object[] {getClass().getMethod("setName", String.class), new Default(), null});
-			properties.put("novalidate", new Object[] {getClass().getMethod("setNoValidate", boolean.class), true, false});
-			properties.put("target", new Object[] {getClass().getMethod("setTarget", String.class), new Default(), null});
-		} catch (NoSuchMethodException | SecurityException e)
-		{
-			e.printStackTrace();
-			throw new RuntimeException();
-		}
+		var charset = Attributes.acceptCharset(this);
+		var action = Attributes.action(this);
+		var autocapitalize = Attributes.autocapitalize(this);
+		var autocomplete = Attributes.autocomplete(this);
+		var enctype = Attributes.enctype(this);
+		var method = Attributes.method(this);
+		var name = Attributes.name(this);
+		var novalidate = Attributes.novalidate(this);
+		var target = Attributes.target(this);
+		properties.put(charset.getKey(), charset.getValue());
+		properties.put(action.getKey(), action.getValue());
+		properties.put(autocapitalize.getKey(), action.getValue());
+		properties.put(enctype.getKey(), enctype.getValue());
+		properties.put(method.getKey(), method.getValue());
+		properties.put(name.getKey(), name.getValue());
+		properties.put(novalidate.getKey(), novalidate.getValue());
+		properties.put(target.getKey(), target.getValue());
+		properties.put(autocomplete.getKey(), autocomplete.getValue());
 	}
 	
 	/**
@@ -271,7 +274,7 @@ public class Form extends CompoundElement
 	 * Gets the autocomplete attribute.
 	 * @return autocomplete value
 	 */
-	public String getAutocomplete()
+	public String getAutoComplete()
 	{
 		return autocomplete;
 	}
@@ -280,7 +283,7 @@ public class Form extends CompoundElement
 	 * Sets the autocomplete attribute. Null to remove.
 	 * @param auto autocomplete value
 	 */
-	public void setAutocomplete(String auto)
+	public void setAutoComplete(String auto)
 	{
 		this.autocomplete = auto;
 		if(this.autocomplete == null)
@@ -297,7 +300,7 @@ public class Form extends CompoundElement
 	 * Gets the autocapitalize attribute.
 	 * @return autocapitalize value
 	 */
-	public String getAutocapitalize()
+	public String getAutoCapitalize()
 	{
 		return autocapitalize;
 	}
@@ -306,7 +309,7 @@ public class Form extends CompoundElement
 	 * Sets the autocapitalize attribute. Null to remove.
 	 * @param auto autocapitalize value
 	 */
-	public void setAutocapitalize(String auto)
+	public void setAutoCapitalize(String auto)
 	{
 		this.autocapitalize = auto;
 		if(this.autocapitalize == null)
@@ -349,9 +352,14 @@ public class Form extends CompoundElement
 	 * Gets an unmodifiable list of the accepted character sets.
 	 * @return list of charsets
 	 */
-	public List<String> getAcceptCharset()
+	public List<String> getAcceptCharsetList()
 	{
 		return Collections.unmodifiableList(acceptCharset);
+	}
+	
+	public String getAcceptCharset()
+	{
+		return getAttribute("accept-charset");
 	}
 	
 	/**
@@ -396,7 +404,7 @@ public class Form extends CompoundElement
 	 * into the list of charsets.
 	 * @param charset space deliminated set of charsets
 	 */
-	public void parseCharset(String charset)
+	public void setAcceptCharset(String charset)
 	{
 		if(charset == null)
 		{
@@ -657,8 +665,8 @@ public class Form extends CompoundElement
 		
 		try
 		{
-			createdInput = foundClass.newInstance();
-		} catch (InstantiationException | IllegalAccessException e1)
+			createdInput = foundClass.getDeclaredConstructor().newInstance();
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e1)
 		{
 			return null;
 		}

@@ -1,13 +1,13 @@
 package forms;
 
-import util.Default;
+import attributes.Attributes;
 
 /**
  * This class represents an email input.
  * @author colli
  *
  */
-public class Email extends Input
+public class Email extends Input implements Attributes.Multiple, Attributes.MinLength, Attributes.MaxLength, Attributes.Size, Attributes.Pattern, Attributes.PlaceHolder, Attributes.SpellCheck
 {
 	/**
 	 * Allows for multiple values.
@@ -50,20 +50,20 @@ public class Email extends Input
 	public Email()
 	{
 		setType("email");
-		try
-		{
-			properties.put("multiple", new Object[] {getClass().getMethod("setMutiple", boolean.class), true, false});
-			properties.put("minlength", new Object[] {getClass().getMethod("parseMinLength", String.class), new Default(), "-1"});
-			properties.put("maxlength", new Object[] {getClass().getMethod("parseMaxLength", String.class), new Default(), "-1"});
-			properties.put("size", new Object[] {getClass().getMethod("parseSize", String.class), new Default(), "-1"});
-			properties.put("pattern", new Object[] {getClass().getMethod("setPattern", String.class), new Default(), null});
-			properties.put("placeholder", new Object[] {getClass().getMethod("setPlaceholder", String.class), new Default(), null});
-			properties.put("spellcheck", new Object[] {getClass().getMethod("setSpellcheck", String.class), new Default(), null});
-		} catch (NoSuchMethodException | SecurityException e)
-		{
-			e.printStackTrace();
-			throw new RuntimeException();
-		}
+		var multiple = Attributes.multiple(this);
+		var minlength = Attributes.minlength(this);
+		var maxlength = Attributes.maxlength(this);
+		var size = Attributes.size(this);
+		var pattern = Attributes.pattern(this);
+		var placeholder = Attributes.placeholder(this);
+		var spellcheck = Attributes.spellcheck(this);
+		properties.put(multiple.getKey(), multiple.getValue());
+		properties.put(minlength.getKey(), minlength.getValue());
+		properties.put(maxlength.getKey(), maxlength.getValue());
+		properties.put(size.getKey(), size.getValue());
+		properties.put(pattern.getKey(), pattern.getValue());
+		properties.put(placeholder.getKey(), placeholder.getValue());
+		properties.put(spellcheck.getKey(), spellcheck.getValue());
 	}
 	
 	/**
@@ -96,7 +96,7 @@ public class Email extends Input
 	 * Gets the spellcheck attribute.
 	 * @return spellcheck attribute
 	 */
-	public String getSpellcheck()
+	public String getSpellCheck()
 	{
 		return spellcheck;
 	}
@@ -105,7 +105,7 @@ public class Email extends Input
 	 * Sets the spellcheck attribute. Null to remove.
 	 * @param s spellcheck value
 	 */
-	public void setSpellcheck(String s)
+	public void setSpellCheck(String s)
 	{
 		this.spellcheck = s;
 		if(this.spellcheck == null)
@@ -122,7 +122,7 @@ public class Email extends Input
 	 * Gets the placeholder attribute.
 	 * @return
 	 */
-	public String getPlaceholder()
+	public String getPlaceHolder()
 	{
 		return placeholder;
 	}
@@ -131,7 +131,7 @@ public class Email extends Input
 	 * Sets the placeholder attribute. Null to remove.
 	 * @param p placeholder value
 	 */
-	public void setPlaceholder(String p)
+	public void setPlaceHolder(String p)
 	{
 		this.placeholder = p;
 		if(this.placeholder == null)
@@ -248,35 +248,5 @@ public class Email extends Input
 		{
 			_setAttribute("minlength", String.valueOf(this.minLength));
 		}
-	}
-	
-	/**
-	 * Converts the given string to a number and sets the size to
-	 * that number.
-	 * @param size number as a string
-	 */
-	public void parseSize(String size)
-	{		
-		setSize(size == null ? -1 : Integer.parseInt(size));
-	}
-	
-	/**
-	 * Converts the given string to a number and sets the max length
-	 * to that number.
-	 * @param maxLength number as a string
-	 */
-	public void parseMaxLength(String maxLength)
-	{
-		setMaxLength(maxLength == null ? -1 : Integer.parseInt(maxLength));
-	}
-	
-	/**
-	 * Converts the given string to number and sets the min length
-	 * to that number.
-	 * @param minLength number as a string
-	 */
-	public void parseMinLength(String minLength)
-	{
-		setMinLength(minLength == null ? -1 : Integer.parseInt(minLength));
 	}
 }

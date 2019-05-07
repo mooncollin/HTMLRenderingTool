@@ -1,13 +1,13 @@
 package forms;
 
-import util.Default;
+import attributes.Attributes;
 
 /**
  * This class represents a range input.
  * @author colli
  *
  */
-public class Range extends Input
+public class Range extends Input implements Attributes.Max, Attributes.Min, Attributes.Step
 {
 	/**
 	 * Max attribute.
@@ -30,16 +30,12 @@ public class Range extends Input
 	public Range()
 	{
 		setType("range");
-		try
-		{
-			properties.put("max", new Object[] {getClass().getMethod("parseMax", String.class), new Default(), "-1"});
-			properties.put("min", new Object[] {getClass().getMethod("parseMin", String.class), new Default(), "-1"});
-			properties.put("step", new Object[] {getClass().getMethod("parseStep", String.class), new Default(), "-1"});
-		} catch (NoSuchMethodException | SecurityException e)
-		{
-			e.printStackTrace();
-			throw new RuntimeException();
-		}
+		var max = Attributes.max(this);
+		var min = Attributes.min(this);
+		var step = Attributes.step(this);
+		properties.put(max.getKey(), max.getValue());
+		properties.put(min.getKey(), min.getValue());
+		properties.put(step.getKey(), step.getValue());
 	}
 	
 	/**
@@ -78,13 +74,13 @@ public class Range extends Input
 	}
 	
 	/**
-	 * Sets the min attribute. < 0 to remove.
+	 * Sets the min attribute. Double.MIN_VALUE to remove.
 	 * @param min min value
 	 */
 	public void setMin(double min)
 	{
-		this.min = min < 0 ? -1 : min;
-		if(this.min < 0)
+		this.min = min;
+		if(this.min == Double.MIN_VALUE)
 		{
 			_removeAttribute("min");
 		}
@@ -104,13 +100,13 @@ public class Range extends Input
 	}
 	
 	/**
-	 * Sets the max attribute. < 0 to remove.
+	 * Sets the max attribute. Double.MAX_VALUE to remove.
 	 * @param max max value
 	 */
 	public void setMax(double max)
 	{
-		this.max = max < 0 ? -1 : max;
-		if(this.max < 0)
+		this.max = max;
+		if(this.max == Double.MAX_VALUE)
 		{
 			_removeAttribute("max");
 		}
@@ -118,35 +114,5 @@ public class Range extends Input
 		{
 			_setAttribute("max", String.valueOf(this.max));
 		}
-	}
-	
-	/**
-	 * Parses the string as a number and sets the step
-	 * attribute.
-	 * @param step number as a string
-	 */
-	public void parseStep(String step)
-	{
-		setStep(step == null ? -1 : Double.parseDouble(step));
-	}
-	
-	/**
-	 * Parses the string as a number and sets the min
-	 * attribute.
-	 * @param min number as a string
-	 */
-	public void parseMin(String min)
-	{
-		setMin(min == null ? -1 : Double.parseDouble(min));
-	}
-	
-	/**
-	 * Parses the string as a number and sets the max
-	 * attribute.
-	 * @param max number as a string
-	 */
-	public void parseMax(String max)
-	{
-		setMax(max == null ? -1 : Double.parseDouble(max));
 	}
 }

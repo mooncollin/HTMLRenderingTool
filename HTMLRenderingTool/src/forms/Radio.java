@@ -1,13 +1,13 @@
 package forms;
 
-import util.Default;
+import attributes.Attributes;
 
 /**
  * This class represents a radio input.
  * @author colli
  *
  */
-public class Radio extends Input
+public class Radio extends Input implements Attributes.Checked, Attributes.AutoComplete
 {
 	/**
 	 * Checked attribute.
@@ -25,15 +25,10 @@ public class Radio extends Input
 	public Radio()
 	{
 		setType("radio");
-		try
-		{
-			properties.put("checked", new Object[] {getClass().getMethod("setChecked", boolean.class), true, false});
-			properties.put("autocomplete", new Object[] {getClass().getMethod("setAutocomplete", String.class), new Default(), null});
-		} catch (NoSuchMethodException | SecurityException e)
-		{
-			e.printStackTrace();
-			throw new RuntimeException();
-		}
+		var checked = Attributes.checked(this);
+		var autocomplete = Attributes.autocomplete(this);
+		properties.put(checked.getKey(), checked.getValue());
+		properties.put(autocomplete.getKey(), autocomplete.getValue());
 	}
 	
 	/**

@@ -151,7 +151,7 @@ public class HTML
 	{
 		Map<String, String> attributes = new TreeMap<String, String>();
 		attributes.put("rel", "stylesheet");
-		attributes.put("typ", "text/css");
+		attributes.put("type", "text/css");
 		attributes.put("href", sheet);
 		return tag("link", attributes);
 	}

@@ -1,7 +1,7 @@
 package forms;
 
+import attributes.Attributes;
 import html.Element;
-import util.Default;
 
 /**
  * All specific Inputs should extend from this class.
@@ -9,7 +9,7 @@ import util.Default;
  * @author colli
  *
  */
-abstract public class Input extends Element
+abstract public class Input extends Element implements Attributes.Required, Attributes.AutoFocus, Attributes.Disabled, Attributes.AutoComplete, Attributes.Form, Attributes.List, Attributes.Name, Attributes.ReadOnly, Attributes.TabIndex, Attributes.Value
 {
 	/**
 	 * Label that may be used for this input.
@@ -86,23 +86,28 @@ abstract public class Input extends Element
 	public Input(String name)
 	{
 		super("input");
-		try
-		{
-			properties.put("required", new Object[] {getClass().getMethod("setRequired", boolean.class), true, false});
-			properties.put("autofocus", new Object[] {getClass().getMethod("setAutoFocus", boolean.class), true, false});
-			properties.put("disabled", new Object[] {getClass().getMethod("setDisabled", boolean.class), true, false});
-			properties.put("autocomplete", new Object[] {getClass().getMethod("setAutocomplete", String.class), new Default(), null});
-			properties.put("form", new Object[] {getClass().getMethod("setForm", String.class), new Default(), null});
-			properties.put("list", new Object[] {getClass().getMethod("setList", String.class), new Default(), null});
-			properties.put("name", new Object[] {getClass().getMethod("setName", String.class), new Default(), null});
-			properties.put("readonly", new Object[] {getClass().getMethod("setReadonly", boolean.class), true, false});
-			properties.put("tabindex", new Object[] {getClass().getMethod("parseTabIndex", String.class), new Default(), "-1"});
-			properties.put("value", new Object[] {getClass().getMethod("setValue", String.class), new Default(), null});
-		} catch (NoSuchMethodException | SecurityException e)
-		{
-			e.printStackTrace();
-			throw new RuntimeException();
-		}
+		
+		var required = Attributes.required(this);
+		var autofocus = Attributes.autofocus(this);
+		var disabled = Attributes.disabled(this);
+		var autocomplete = Attributes.autocomplete(this);
+		var form = Attributes.form(this);
+		var list = Attributes.list(this);
+		var nameA = Attributes.name(this);
+		var readonly = Attributes.readonly(this);
+		var tabindex = Attributes.tabindex(this);
+		var value = Attributes.value(this);
+		
+		properties.put(required.getKey(), required.getValue());
+		properties.put(autofocus.getKey(), autofocus.getValue());
+		properties.put(disabled.getKey(), disabled.getValue());
+		properties.put(autocomplete.getKey(), autocomplete.getValue());
+		properties.put(form.getKey(), form.getValue());
+		properties.put(list.getKey(), list.getValue());
+		properties.put(nameA.getKey(), nameA.getValue());
+		properties.put(readonly.getKey(), readonly.getValue());
+		properties.put(tabindex.getKey(), tabindex.getValue());
+		properties.put(value.getKey(), value.getValue());
 
 		setName(name);
 		label = new Element("label");
@@ -175,11 +180,16 @@ abstract public class Input extends Element
 		}
 	}
 	
+	public int getTabIndex()
+	{
+		return tabindex;
+	}
+	
 	/**
 	 * Gets the readonly attribute.
 	 * @return readonly value
 	 */
-	public boolean getReadonly()
+	public boolean getReadOnly()
 	{
 		return readonly;
 	}
@@ -188,7 +198,7 @@ abstract public class Input extends Element
 	 * Sets the readonly attribute.
 	 * @param r readonly value
 	 */
-	public void setReadonly(boolean r)
+	public void setReadOnly(boolean r)
 	{
 		this.readonly = r;
 		if(this.readonly)
@@ -326,7 +336,7 @@ abstract public class Input extends Element
 	 * Gets the autocomplete attribute.
 	 * @return autocomplete value
 	 */
-	public String getAutocomplete()
+	public String getAutoComplete()
 	{
 		return autocomplete;
 	}
@@ -335,7 +345,7 @@ abstract public class Input extends Element
 	 * Sets the autocomplete attribute. Null to remove.
 	 * @param in autocomplete value
 	 */
-	public void setAutocomplete(String in)
+	public void setAutoComplete(String in)
 	{
 		autocomplete = in;
 		if(in == null)
@@ -399,7 +409,7 @@ abstract public class Input extends Element
 	}
 	
 	@Override
-	public void setAttribute(String key, String value)
+	public void setAttribute(String key, Object value)
 	{
 		if(key != null)
 		{
@@ -449,15 +459,5 @@ abstract public class Input extends Element
 	public Element getLabel()
 	{
 		return label;
-	}
-	
-	/**
-	 * Parses the given string as a number and sets the
-	 * tabindex attribute.
-	 * @param tabIndex number as a string
-	 */
-	public void parseTabIndex(String tabIndex)
-	{
-		setTabIndex(tabIndex == null ? -1 : Integer.parseInt(tabIndex));
 	}
 }

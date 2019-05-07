@@ -1,15 +1,15 @@
 package html;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.function.Consumer;
 
-import util.Default;
+import attributes.Attribute;
+import attributes.Attributes;
 
 /**
  * An Element represents a singular html tag. This can be self-closing
@@ -20,7 +20,7 @@ import util.Default;
  * @author colli
  *
  */
-public class Element
+public class Element implements Attributes.ID
 {
 	/**
 	 * Key-value attributes that this element has. This corresponds
@@ -33,44 +33,8 @@ public class Element
 	 * Children of the Element class may want to override setting
 	 * certain attributes to make easy setters and getters for specific
 	 * attributes. The properties map allows for this.
-	 * 
-	 * To override setting an attribute, the key to add to this map is the
-	 * name of the attribute to override. The value to add is an array of three
-	 * values.
-	 * 
-	 * The first value of the array is a java.lang.reflect.Method Object that
-	 * corresponds to the setter method responsible for that specific attribute.
-	 * This method must take only one parameter.
-	 * It is also HIGHLY RECOMMENDED that eventually that method used will add
-	 * that attribute into the attributes map by using various underscore methods
-	 * that will bypass the properties override. These methods include:
-	 * _setAttribute and _removeAttribute.
-	 * Failure to add or remove the correct attribute eventually will cause it
-	 * the render the html incorrectly according to the object's state.
-	 * 
-	 * The second value of the array is the default value when the attribute is
-	 * being set. For instance, Input element have a required field. This is either
-	 * existing or not. So by setting it, we can pass it a <code>true</code> if it
-	 * takes a boolean as a default value. If needed to use the value passed into the
-	 * <code>setAttribute</code> method, then have this value be an instance of the
-	 * util.Default class. This just checks whether it is of this class type to use
-	 * the value passed to <code>setAttribute</code> method.
-	 * NOTE: If the default value is used, the method used in the first value MUST
-	 * take a string. The current implementation will not convert that value to
-	 * another class. Try making a method to convert the String to another class for this.
-	 * 
-	 * The second value of the array is the default value when the attribute is being removed.
-	 * This cannot contain a default value, since there is no value passed to the <code>removeAttribute</code>
-	 * method. However, it still must match the class type of the method.
-	 * 
-	 * This implementation of overriding attribute setting and removing is only checked
-	 * at runtime of executing that specific attribute. So misspellings of the method name
-	 * or having incorrect default values will be a runtime exception and cannot be checked
-	 * at compile time.
-	 * 
-	 * The third value of the arra
 	 */
-	protected Map<String, Object[]> properties;
+	protected Map<String, Attribute<? extends Object>> properties;
 	
 	/**
 	 * A list of the currently used classes for the "class" attribute. This
@@ -135,22 +99,15 @@ public class Element
 	 * @param attributes key-value attributes of this element
 	 */
 	public Element(String tag, String data, Map<String, String> attributes)
-	{
+	{	
 		this.attributes = new TreeMap<String, String>();
 		this.classes = new LinkedList<String>();
-		this.properties = new HashMap<String, Object[]>();
+		this.properties = new HashMap<String, Attribute<? extends Object>>();
 		_setTag(tag);
 		setData(data);
 		setAttributes(attributes);
-		
-		try
-		{
-			properties.put("id", new Object[] {getClass().getMethod("setID", String.class), new Default(), "-1"});
-		} catch (NoSuchMethodException | SecurityException e)
-		{
-			e.printStackTrace();
-			throw new RuntimeException();
-		}
+		var id = Attributes.id(this);
+		properties.put(id.getKey(), id.getValue());
 	}
 	
 	/**
@@ -278,6 +235,7 @@ public class Element
 		{
 			throw new NullPointerException();
 		}
+		
 		classes.add(classString);
 		_setAttribute("class", String.join(" ", classes));
 	}
@@ -330,10 +288,10 @@ public class Element
 	 */
 	public void setAttributes(Map<String, String> attributes)
 	{
-		this.attributes.forEach((key, value) -> removeAttribute(key));
+		this.attributes = new HashMap<String, String>();
 		if(attributes != null)
 		{
-			attributes.forEach((key, value) -> setAttribute(key, value));
+			attributes.forEach(this::setAttribute);
 		}
 	}
 	
@@ -348,7 +306,8 @@ public class Element
 	 * @param key the name of the key to add
 	 * @param value the value to add
 	 */
-	public void setAttribute(String key, String value)
+	@SuppressWarnings("unchecked")
+	public void setAttribute(String key, Object value)
 	{
 		if(key == null)
 		{
@@ -363,21 +322,18 @@ public class Element
 			}
 			else
 			{
-				addClasses(value.split(" "));
+				if(value instanceof String)
+				{
+					addClasses(((String) value).split(" "));
+				}
 			}
 		}
 		else if(properties.containsKey(key))
 		{
-			Object[] props = properties.get(key);
-			Object parameter = props[1] instanceof Default ? value : props[1];
-			try
-			{
-				((Method) props[0]).invoke(this, parameter);
-			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
-			{
-				e.printStackTrace();
-				throw new RuntimeException();
-			}
+			Attribute<? extends Object> attribute = properties.get(key);
+			Object parameter = attribute.getDefaultSet() == null ? value : attribute.getDefaultSet();
+			Consumer<Object> calling = (Consumer<Object>) attribute.getSetterMethod();
+			calling.accept(attribute.convert(String.valueOf(parameter)));
 		}
 		else
 		{
@@ -385,7 +341,7 @@ public class Element
 			{
 				value = "";
 			}
-			attributes.put(key, value);
+			attributes.put(key, String.valueOf(value));
 		}
 	}
 	
@@ -408,6 +364,7 @@ public class Element
 	 * Removes the given attribute.
 	 * @param key attribute to remove
 	 */
+	@SuppressWarnings("unchecked")
 	public void removeAttribute(String key)
 	{
 		if(key == null)
@@ -421,15 +378,9 @@ public class Element
 		}
 		else if(properties.containsKey(key))
 		{
-			Object[] props = properties.get(key);
-			try
-			{
-				((Method) props[0]).invoke(this, props[2]);
-			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
-			{
-				e.printStackTrace();
-				throw new RuntimeException();
-			}
+			Attribute<? extends Object> attribute = properties.get(key);
+			Consumer<Object> calling = (Consumer<Object>) attribute.getSetterMethod();
+			calling.accept(attribute.getDefaultRemove());
 		}
 		else
 		{

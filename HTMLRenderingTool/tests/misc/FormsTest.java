@@ -7,8 +7,12 @@ import java.util.TreeMap;
 
 import org.junit.Test;
 
+import forms.Button;
+import forms.Email;
 import forms.Form;
+import forms.Input;
 import forms.TextField;
+import html.Element;
 
 public class FormsTest
 {
@@ -23,5 +27,32 @@ public class FormsTest
 		Map<String, String[]> parameters = new TreeMap<String, String[]>();
 		
 		assertTrue(f.validate(parameters));
+	}
+	
+	@Test
+	public void elementIDSet()
+	{
+		Input e = new Email();
+		e.setAttribute("id", "Hello!");
+		e.setAttribute("tabindex", "4");
+		e.setAttribute("woot", 10);
+		assertEquals("Hello!", e.getID());
+		assertEquals(4, e.getTabIndex());
+		assertEquals("10", e.getAttribute("woot"));
+		
+		e.removeAttribute("woot");
+		assertEquals(null, e.getAttribute("woot"));
+		
+		e.removeAttribute("id");
+		assertEquals(null, e.getID());
+		
+		e.removeAttribute("tabindex");
+		assertEquals(-1, e.getTabIndex());
+		
+		e.setRequired(true);
+		assertTrue(e.getRequired());
+		
+		e.setAttribute("required", 4);
+		System.out.println(e.getRequired());
 	}
 }

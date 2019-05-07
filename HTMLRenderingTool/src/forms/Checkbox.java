@@ -1,11 +1,12 @@
 package forms;
 
+import attributes.Attributes;
 /**
  * This class represents a checkbox input.
  * @author colli
  *
  */
-public class Checkbox extends Input
+public class Checkbox extends Input implements Attributes.Checked
 {
 	/**
 	 * Whether this checkbox is currently checked.
@@ -18,14 +19,8 @@ public class Checkbox extends Input
 	public Checkbox()
 	{
 		setType("checkbox");
-		try
-		{
-			properties.put("checked", new Object[] {getClass().getMethod("setChecked", boolean.class), true, false});
-		} catch (NoSuchMethodException | SecurityException e)
-		{
-			e.printStackTrace();
-			throw new RuntimeException();
-		}
+		var checked = Attributes.checked(this);
+		properties.put(checked.getKey(), checked.getValue());
 	}
 	
 	/**
@@ -43,5 +38,10 @@ public class Checkbox extends Input
 		{
 			_removeAttribute("checked");
 		}
+	}
+	
+	public boolean getChecked()
+	{
+		return checked;
 	}
 }

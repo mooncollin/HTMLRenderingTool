@@ -3,8 +3,7 @@ package forms;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-
-import util.Default;
+import attributes.Attributes;
 
 /**
  * This class represents a file input.
@@ -15,7 +14,7 @@ import util.Default;
  * @author colli
  *
  */
-public class File extends Input
+public class File extends Input implements Attributes.Accept, Attributes.Capture, Attributes.Multiple
 {
 	/**
 	 * A list of file types to accept.
@@ -44,16 +43,12 @@ public class File extends Input
 	public File()
 	{
 		setType("file");
-		try
-		{
-			properties.put("multiple", new Object[] {getClass().getMethod("setMultiple", boolean.class), true, false});
-			properties.put("capture", new Object[] {getClass().getMethod("setCapture", String.class), new Default(), null});
-			properties.put("accept", new Object[] {getClass().getDeclaredMethod("parseAccept", String.class), new Default(), null});
-		} catch (NoSuchMethodException | SecurityException e)
-		{
-			e.printStackTrace();
-			throw new RuntimeException();
-		}
+		var multiple = Attributes.multiple(this);
+		var capture = Attributes.capture(this);
+		var acceptA = Attributes.accept(this);
+		properties.put(multiple.getKey(), multiple.getValue());
+		properties.put(capture.getKey(), capture.getValue());
+		properties.put(acceptA.getKey(), acceptA.getValue());
 		
 		accept = new LinkedList<String>();
 		files = new LinkedList<HTMLFile>();
@@ -74,7 +69,7 @@ public class File extends Input
 	 * types.
 	 * @param acceptString comma separated string of tokens
 	 */
-	public void parseAccept(String acceptString)
+	public void setAccept(String acceptString)
 	{
 		if(acceptString == null)
 		{
@@ -93,9 +88,14 @@ public class File extends Input
 	 * Gets an unmodifiable list of the accepted file types.
 	 * @return list of accepted file types.
 	 */
-	public List<String> getAccept()
+	public List<String> getAcceptList()
 	{
 		return Collections.unmodifiableList(accept);
+	}
+	
+	public String getAccept()
+	{
+		return getAttribute("accept");
 	}
 	
 	/**
@@ -203,7 +203,7 @@ public class File extends Input
 	}
 	
 	@Override
-	public void setAttribute(String key, String value)
+	public void setAttribute(String key, Object value)
 	{
 		if(key != null)
 		{
