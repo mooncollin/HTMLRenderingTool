@@ -50,7 +50,7 @@ public class Head extends CompoundElement
 	public void addStylesheet(String sheet)
 	{
 		Element link = new Element("link");
-		link.setAttribute("ref", "stylesheet");
+		link.setAttribute("rel", "stylesheet");
 		link.setAttribute("type", "text/css");
 		link.setAttribute("href", sheet);
 		addElement(link);
