@@ -1,4 +1,6 @@
-package html;
+package tags;
+
+import html.CompoundElement;
 
 /**
  * This class represents a body element with extra functionality.
@@ -22,8 +24,8 @@ public class Body extends CompoundElement
 	 */
 	public void addScript(String src)
 	{
-		Element script = new Element("script");
-		script.setAttribute("src", src);
+		var script = new Script();
+		script.setSrc(src);
 		addEndElement(script);
 	}
 }

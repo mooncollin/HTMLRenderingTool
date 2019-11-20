@@ -116,7 +116,12 @@ public class Form extends CompoundElement implements Attributes.AcceptCharset, A
 	 */
 	public Form()
 	{
-		super("form");
+		this(null);
+	}
+	
+	public Form(Map<String, Object> attributes)
+	{
+		super("form", attributes);
 		inputs = new LinkedList<Input>();
 		endInputs = new LinkedList<Input>();
 		acceptCharset = new LinkedList<String>();
@@ -467,7 +472,7 @@ public class Form extends CompoundElement implements Attributes.AcceptCharset, A
 	 * @param index location of input
 	 * @return input found
 	 */
-	public Input getInput(int index)
+	public Object getInput(int index)
 	{
 		return inputs.get(index);
 	}
@@ -477,7 +482,7 @@ public class Form extends CompoundElement implements Attributes.AcceptCharset, A
 	 * @param index location of input
 	 * @return end input found
 	 */
-	public Input getEndInput(int index)
+	public Object getEndInput(int index)
 	{
 		return endInputs.get(index);
 	}
@@ -501,7 +506,7 @@ public class Form extends CompoundElement implements Attributes.AcceptCharset, A
 	}
 	
 	@Override
-	public void addElement(Element e)
+	public Form addElement(Element e)
 	{
 		if(e != null)
 		{
@@ -514,7 +519,7 @@ public class Form extends CompoundElement implements Attributes.AcceptCharset, A
 				}
 				
 				addInput(addedInput == null ? (Input) e : addedInput);
-				return;
+				return this;
 			}
 			if(e instanceof CompoundElement)
 			{
@@ -523,10 +528,10 @@ public class Form extends CompoundElement implements Attributes.AcceptCharset, A
 		}
 		
 		super.addElement(e);
+		return this;
 	}
-	
 	@Override
-	public void addEndElement(Element e)
+	public Form addEndElement(Element e)
 	{
 		if(e != null)
 		{
@@ -539,7 +544,7 @@ public class Form extends CompoundElement implements Attributes.AcceptCharset, A
 				}
 				
 				addEndInput(addedInput == null ? (Input) e : addedInput);
-				return;
+				return this;
 			}
 			if(e instanceof CompoundElement)
 			{
@@ -548,17 +553,18 @@ public class Form extends CompoundElement implements Attributes.AcceptCharset, A
 		}
 		
 		super.addEndElement(e);
+		return this;
 	}
 	
 	@Override
-	public void removeElement(Element e)
+	public Form removeElement(Element e)
 	{
 		if(e != null)
 		{
 			if(e instanceof Input)
 			{
 				removeInput((Input) e);
-				return;
+				return this;
 			}
 			if(e.getTag().equals("input"))
 			{	
@@ -575,6 +581,7 @@ public class Form extends CompoundElement implements Attributes.AcceptCharset, A
 		}
 		
 		super.removeElement(e);
+		return this;
 	}
 	
 	@Override
@@ -605,13 +612,15 @@ public class Form extends CompoundElement implements Attributes.AcceptCharset, A
 	}
 	
 	@Override
-	public void removeElement(int index)
+	public Form removeElement(int index)
 	{
 		Element found = getElement(index);
 		if(found != null)
 		{
 			removeElement(found);
 		}
+		
+		return this;
 	}
 	
 	@Override
@@ -776,10 +785,10 @@ public class Form extends CompoundElement implements Attributes.AcceptCharset, A
 	 */
 	private List<Input> findInputs(CompoundElement e)
 	{
-		List<Input> foundInputs = new LinkedList<Input>();
-		List<Element> allElements = new LinkedList<Element>(e.getElements());
+		var foundInputs = new LinkedList<Input>();
+		var allElements = new LinkedList<Element>(e.getElements());
 		allElements.addAll(e.getEndElements());
-		for(Element el : allElements)
+		for(var el : allElements)
 		{
 			if(el instanceof CompoundElement)
 			{

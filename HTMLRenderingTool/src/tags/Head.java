@@ -1,4 +1,7 @@
-package html;
+package tags;
+
+import html.CompoundElement;
+import html.Element;
 
 /**
  * This class represents a head element with extra functionality.
@@ -6,12 +9,7 @@ package html;
  *
  */
 public class Head extends CompoundElement
-{
-	/**
-	 * An element representing a title tag.
-	 */
-	private Element title;
-	
+{	
 	/**
 	 * Constructor. Creates a Head with the given attributes.
 	 * @param attributes key-value attributes
@@ -19,17 +17,8 @@ public class Head extends CompoundElement
 	public Head()
 	{
 		super("head");
-		title = new Element("title");
-		addElement(title);
-	}
-	
-	/**
-	 * Gets the title element.
-	 * @return title element
-	 */
-	public Element getTitle()
-	{
-		return title;
+		addElement(new Element("title"));
+		addElement(new Meta().setAttribute("charset", "UTF-8"));
 	}
 	
 	/**
@@ -38,8 +27,8 @@ public class Head extends CompoundElement
 	 */
 	public void addScript(String src)
 	{
-		Element script = new Element("script");
-		script.setAttribute("src", src);
+		var script = new Script();
+		script.setSrc(src);
 		addElement(script);
 	}
 	
@@ -49,10 +38,10 @@ public class Head extends CompoundElement
 	 */
 	public void addStylesheet(String sheet)
 	{
-		Element link = new Element("link");
-		link.setAttribute("rel", "stylesheet");
-		link.setAttribute("type", "text/css");
-		link.setAttribute("href", sheet);
+		var link = new Link();
+		link.setRel("stylesheet");
+		link.setType("text/css");
+		link.setHref(sheet);
 		addElement(link);
 	}
 }

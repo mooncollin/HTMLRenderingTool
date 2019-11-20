@@ -1,5 +1,6 @@
 package attributes;
 
+import java.util.Objects;
 import java.util.function.Consumer;
 
 public class Attribute<T>
@@ -39,7 +40,7 @@ public class Attribute<T>
 
 	public void setSetterMethod(Consumer<T> setterMethod)
 	{
-		this.setterMethod = setterMethod;
+		this.setterMethod = Objects.requireNonNull(setterMethod);
 	}
 
 	public void setDefaultSet(T defaultSet)
@@ -57,21 +58,24 @@ public class Attribute<T>
 		this.clazz = clazz;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public T convert(String original)
 	{
-		T value = (T) original;
+		T value;
 		if(this.clazz.equals(Boolean.class))
 		{
-			value = (T) Boolean.valueOf(original);
+			value = this.clazz.cast(Boolean.valueOf(original));
 		}
 		else if(this.clazz.equals(Integer.class))
 		{
-			value = (T) Integer.valueOf(original);
+			value = this.clazz.cast(Integer.valueOf(original));
 		}
 		else if(this.clazz.equals(Double.class))
 		{
-			value = (T) Double.valueOf(original);
+			value = this.clazz.cast(Double.valueOf(original));
+		}
+		else
+		{
+			value = this.clazz.cast(original);
 		}
 		
 		return value;

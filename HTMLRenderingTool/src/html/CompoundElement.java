@@ -3,6 +3,7 @@ package html;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A CompoundElement is an Element, but can contain other Elements
@@ -40,7 +41,7 @@ public class CompoundElement extends Element
 	 */
 	public CompoundElement(String tag)
 	{
-		this(tag, null);
+		this(tag, null, null);
 	}
 	
 	/**
@@ -52,13 +53,25 @@ public class CompoundElement extends Element
 	 */
 	public CompoundElement(String tag, String data)
 	{
-		super(tag, data);
+		this(tag, data, null);
+	}
+	
+	public CompoundElement(String tag, Map<String, Object> attributes)
+	{
+		this(tag, null, attributes);
+	}
+	
+	public CompoundElement(String tag, String data, Map<String, Object> attributes, Element... startingElements)
+	{
+		super(tag, data, attributes);
 		if(HTML.SELF_CLOSING_TAGS.contains(tag))
 		{
 			throw new IllegalArgumentException(String.format("<%s /> cannot be a compound element", tag));
 		}
 		elements = new LinkedList<Element>();
 		endElements = new LinkedList<Element>();
+		
+		addElements(startingElements);
 	}
 	
 	/**
@@ -197,7 +210,7 @@ public class CompoundElement extends Element
 	 * Adds the element to the end of the main list.
 	 * @param e element to add
 	 */
-	public void addElement(Element e)
+	public CompoundElement addElement(Element e)
 	{
 		if(e == null)
 		{
@@ -205,13 +218,25 @@ public class CompoundElement extends Element
 		}
 		
 		elements.add(e);
+		
+		return this;
+	}
+	
+	public CompoundElement addElements(Element... elements)
+	{
+		for(var e : elements)
+		{
+			addElement(e);
+		}
+		
+		return this;
 	}
 	
 	/**
 	 * Removes the given element from the main list.
 	 * @param e element to remove
 	 */
-	public void removeElement(Element e)
+	public CompoundElement removeElement(Element e)
 	{
 		if(e == null)
 		{
@@ -219,22 +244,24 @@ public class CompoundElement extends Element
 		}
 		
 		elements.remove(e);
+		return this;
 	}
 	
 	/**
 	 * Removes an element from the main list at a given index.
 	 * @param index location to remove
 	 */
-	public void removeElement(int index)
+	public CompoundElement removeElement(int index)
 	{	
 		elements.remove(index);
+		return this;
 	}
 	
 	/**
 	 * Adds an element to the end of the end elements list.
 	 * @param e element to add
 	 */
-	public void addEndElement(Element e)
+	public CompoundElement addEndElement(Element e)
 	{
 		if(e == null)
 		{
@@ -242,6 +269,7 @@ public class CompoundElement extends Element
 		}
 		
 		endElements.add(e);
+		return this;
 	}
 	
 	/**
@@ -249,7 +277,7 @@ public class CompoundElement extends Element
 	 * @param index location to add
 	 * @param e element to add
 	 */
-	public void addEndElement(int index, Element e)
+	public CompoundElement addEndElement(int index, Element e)
 	{
 		if(e == null)
 		{
@@ -257,6 +285,7 @@ public class CompoundElement extends Element
 		}
 		
 		endElements.add(index, e);
+		return this;
 	}
 	
 	/**
@@ -289,6 +318,7 @@ public class CompoundElement extends Element
 	@Override
 	public String getHTML()
 	{
+		setStyleString();
 		String html = HTML.tag(getTag(), getData(), getAttributes());
 		
 		for(Element e : elements)
@@ -327,6 +357,23 @@ public class CompoundElement extends Element
 	{
 		clearElements();
 		clearEndElements();
+	}
+	
+	/**
+	 * Adds the given classes to the list of classes. This will also change the
+	 * "class" attribute for rendering.
+	 * 
+	 * @param classes a list of classes
+	 */
+	@Override
+	public CompoundElement addClasses(String... classes)
+	{
+		for (var c : classes)
+		{
+			addClass(c);
+		}
+		
+		return this;
 	}
 	
 	/**

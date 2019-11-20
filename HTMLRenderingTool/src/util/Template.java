@@ -1,7 +1,9 @@
 package util;
 
-import html.Body;
-import html.Head;
+import java.util.Objects;
+
+import tags.Body;
+import tags.Head;
 
 /**
  * A Template represents a whole HTML file. It has the two main
@@ -47,6 +49,16 @@ public class Template
 	public Body getBody()
 	{
 		return body;
+	}
+	
+	public void setHead(Head head)
+	{
+		this.head = Objects.requireNonNull(head);
+	}
+	
+	public void setBody(Body body)
+	{
+		this.body = Objects.requireNonNull(body);
 	}
 	
 	/**

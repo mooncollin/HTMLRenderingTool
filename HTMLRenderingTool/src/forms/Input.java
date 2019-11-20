@@ -1,5 +1,7 @@
 package forms;
 
+import java.util.Map;
+
 import attributes.Attributes;
 import html.Element;
 
@@ -76,7 +78,7 @@ abstract public class Input extends Element implements Attributes.Required, Attr
 	 */
 	public Input()
 	{
-		this("");
+		this("", null);
 	}
 	
 	/**
@@ -85,8 +87,13 @@ abstract public class Input extends Element implements Attributes.Required, Attr
 	 */
 	public Input(String name)
 	{
-		super("input");
-
+		this(name, null);
+	}
+	
+	public Input(String name, Map<String, Object> attributes)
+	{
+		super("input", attributes);
+		
 		setName(name);
 		label = new Element("label");
 		setLabelText("");
@@ -369,7 +376,7 @@ abstract public class Input extends Element implements Attributes.Required, Attr
 	}
 	
 	@Override
-	public void removeAttribute(String key)
+	public Input removeAttribute(String key)
 	{
 		if(key != null)
 		{
@@ -384,10 +391,12 @@ abstract public class Input extends Element implements Attributes.Required, Attr
 		}
 		
 		super.removeAttribute(key);
+		
+		return this;
 	}
 	
 	@Override
-	public void setAttribute(String key, Object value)
+	public Input setAttribute(String key, Object value)
 	{
 		if(key != null)
 		{
@@ -401,6 +410,8 @@ abstract public class Input extends Element implements Attributes.Required, Attr
 			}
 		}
 		super.setAttribute(key, value);
+		
+		return this;
 	}
 	
 	/**

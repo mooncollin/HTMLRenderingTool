@@ -183,7 +183,7 @@ public class File extends Input implements Attributes.Accept, Attributes.Capture
 	}
 	
 	@Override
-	public void removeAttribute(String key)
+	public File removeAttribute(String key)
 	{
 		if(key != null)
 		{
@@ -193,11 +193,13 @@ public class File extends Input implements Attributes.Accept, Attributes.Capture
 			}
 		}
 		
-		super.removeAttribute(key);;
+		super.removeAttribute(key);
+		
+		return this;
 	}
 	
 	@Override
-	public void setAttribute(String key, Object value)
+	public File setAttribute(String key, Object value)
 	{
 		if(key != null)
 		{
@@ -208,5 +210,7 @@ public class File extends Input implements Attributes.Accept, Attributes.Capture
 		}
 		
 		super.setAttribute(key, value);
+		
+		return this;
 	}
 }
