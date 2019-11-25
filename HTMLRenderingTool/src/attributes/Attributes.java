@@ -11,8 +11,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "id";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setID(String e);
-		public String getID();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setID(String id)
+		{
+			if(id == null)
+			{
+				_removeAttribute(ID.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(ID.ATTRIBUTE_NAME, id);
+			}
+		}
+		public default String getID()
+		{
+			String attribute = getAttribute(ID.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(ID e)
 		{
@@ -25,8 +46,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "checked";
 		public static final Class<Boolean> ATTRIBUTE_TYPE = Boolean.class;
-		public void setChecked(boolean e);
-		public boolean getChecked();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setChecked(Boolean checked)
+		{
+			if(!checked)
+			{
+				_removeAttribute(Checked.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Checked.ATTRIBUTE_NAME, "");
+			}
+		}
+		public default Boolean getChecked()
+		{
+			String attribute = getAttribute(Checked.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return false;
+			}
+			return true;
+		}
 
 		public static Map.Entry<String, Attribute<Boolean>> getEntry(Checked e)
 		{
@@ -39,8 +81,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "multiple";
 		public static final Class<Boolean> ATTRIBUTE_TYPE = Boolean.class;
-		public void setMultiple(boolean e);
-		public boolean getMultiple();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setMultiple(Boolean multiple)
+		{
+			if(!multiple)
+			{
+				_removeAttribute(Multiple.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Multiple.ATTRIBUTE_NAME, "");
+			}
+		}
+		public default Boolean getMultiple()
+		{
+			String attribute = getAttribute(Multiple.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return false;
+			}
+			return true;
+		}
 
 		public static Map.Entry<String, Attribute<Boolean>> getEntry(Multiple e)
 		{
@@ -53,8 +116,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "minlength";
 		public static final Class<Integer> ATTRIBUTE_TYPE = Integer.class;
-		public void setMinLength(int e);
-		public int getMinLength();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setMinLength(Integer minlength)
+		{
+			if(minlength == null)
+			{
+				_removeAttribute(MinLength.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(MinLength.ATTRIBUTE_NAME, String.valueOf(minlength));
+			}
+		}
+		public default Integer getMinLength()
+		{
+			String attribute = getAttribute(MinLength.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return -1;
+			}
+			return Integer.valueOf(attribute);
+		}
 
 		public static Map.Entry<String, Attribute<Integer>> getEntry(MinLength e)
 		{
@@ -67,8 +151,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "maxlength";
 		public static final Class<Integer> ATTRIBUTE_TYPE = Integer.class;
-		public void setMaxLength(int e);
-		public int getMaxLength();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setMaxLength(Integer maxlength)
+		{
+			if(maxlength == null)
+			{
+				_removeAttribute(MaxLength.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(MaxLength.ATTRIBUTE_NAME, String.valueOf(maxlength));
+			}
+		}
+		public default Integer getMaxLength()
+		{
+			String attribute = getAttribute(MaxLength.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return -1;
+			}
+			return Integer.valueOf(attribute);
+		}
 
 		public static Map.Entry<String, Attribute<Integer>> getEntry(MaxLength e)
 		{
@@ -81,8 +186,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "size";
 		public static final Class<Integer> ATTRIBUTE_TYPE = Integer.class;
-		public void setSize(int e);
-		public int getSize();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setSize(Integer size)
+		{
+			if(size == null)
+			{
+				_removeAttribute(Size.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Size.ATTRIBUTE_NAME, String.valueOf(size));
+			}
+		}
+		public default Integer getSize()
+		{
+			String attribute = getAttribute(Size.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return -1;
+			}
+			return Integer.valueOf(attribute);
+		}
 
 		public static Map.Entry<String, Attribute<Integer>> getEntry(Size e)
 		{
@@ -95,8 +221,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "pattern";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setPattern(String e);
-		public String getPattern();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setPattern(String pattern)
+		{
+			if(pattern == null)
+			{
+				_removeAttribute(Pattern.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Pattern.ATTRIBUTE_NAME, pattern);
+			}
+		}
+		public default String getPattern()
+		{
+			String attribute = getAttribute(Pattern.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(Pattern e)
 		{
@@ -109,8 +256,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "placeholder";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setPlaceHolder(String e);
-		public String getPlaceHolder();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setPlaceHolder(String placeholder)
+		{
+			if(placeholder == null)
+			{
+				_removeAttribute(PlaceHolder.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(PlaceHolder.ATTRIBUTE_NAME, placeholder);
+			}
+		}
+		public default String getPlaceHolder()
+		{
+			String attribute = getAttribute(PlaceHolder.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(PlaceHolder e)
 		{
@@ -123,8 +291,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "spellcheck";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setSpellCheck(String e);
-		public String getSpellCheck();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setSpellCheck(String spellcheck)
+		{
+			if(spellcheck == null)
+			{
+				_removeAttribute(SpellCheck.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(SpellCheck.ATTRIBUTE_NAME, spellcheck);
+			}
+		}
+		public default String getSpellCheck()
+		{
+			String attribute = getAttribute(SpellCheck.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(SpellCheck e)
 		{
@@ -137,8 +326,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "required";
 		public static final Class<Boolean> ATTRIBUTE_TYPE = Boolean.class;
-		public void setRequired(boolean e);
-		public boolean getRequired();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setRequired(Boolean required)
+		{
+			if(!required)
+			{
+				_removeAttribute(Required.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Required.ATTRIBUTE_NAME, "");
+			}
+		}
+		public default Boolean getRequired()
+		{
+			String attribute = getAttribute(Required.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return false;
+			}
+			return true;
+		}
 
 		public static Map.Entry<String, Attribute<Boolean>> getEntry(Required e)
 		{
@@ -151,8 +361,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "autofocus";
 		public static final Class<Boolean> ATTRIBUTE_TYPE = Boolean.class;
-		public void setAutoFocus(boolean e);
-		public boolean getAutoFocus();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setAutoFocus(Boolean autofocus)
+		{
+			if(!autofocus)
+			{
+				_removeAttribute(AutoFocus.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(AutoFocus.ATTRIBUTE_NAME, "");
+			}
+		}
+		public default Boolean getAutoFocus()
+		{
+			String attribute = getAttribute(AutoFocus.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return false;
+			}
+			return true;
+		}
 
 		public static Map.Entry<String, Attribute<Boolean>> getEntry(AutoFocus e)
 		{
@@ -165,8 +396,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "disabled";
 		public static final Class<Boolean> ATTRIBUTE_TYPE = Boolean.class;
-		public void setDisabled(boolean e);
-		public boolean getDisabled();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setDisabled(Boolean disabled)
+		{
+			if(!disabled)
+			{
+				_removeAttribute(Disabled.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Disabled.ATTRIBUTE_NAME, "");
+			}
+		}
+		public default Boolean getDisabled()
+		{
+			String attribute = getAttribute(Disabled.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return false;
+			}
+			return true;
+		}
 
 		public static Map.Entry<String, Attribute<Boolean>> getEntry(Disabled e)
 		{
@@ -179,8 +431,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "autocomplete";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setAutoComplete(String e);
-		public String getAutoComplete();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setAutoComplete(String autocomplete)
+		{
+			if(autocomplete == null)
+			{
+				_removeAttribute(AutoComplete.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(AutoComplete.ATTRIBUTE_NAME, autocomplete);
+			}
+		}
+		public default String getAutoComplete()
+		{
+			String attribute = getAttribute(AutoComplete.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(AutoComplete e)
 		{
@@ -193,8 +466,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "form";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setForm(String e);
-		public String getForm();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setForm(String form)
+		{
+			if(form == null)
+			{
+				_removeAttribute(Form.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Form.ATTRIBUTE_NAME, form);
+			}
+		}
+		public default String getForm()
+		{
+			String attribute = getAttribute(Form.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(Form e)
 		{
@@ -207,8 +501,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "list";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setList(String e);
-		public String getList();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setList(String list)
+		{
+			if(list == null)
+			{
+				_removeAttribute(List.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(List.ATTRIBUTE_NAME, list);
+			}
+		}
+		public default String getList()
+		{
+			String attribute = getAttribute(List.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(List e)
 		{
@@ -221,8 +536,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "name";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setName(String e);
-		public String getName();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setName(String name)
+		{
+			if(name == null)
+			{
+				_removeAttribute(Name.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Name.ATTRIBUTE_NAME, name);
+			}
+		}
+		public default String getName()
+		{
+			String attribute = getAttribute(Name.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(Name e)
 		{
@@ -235,8 +571,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "readonly";
 		public static final Class<Boolean> ATTRIBUTE_TYPE = Boolean.class;
-		public void setReadOnly(boolean e);
-		public boolean getReadOnly();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setReadOnly(Boolean readonly)
+		{
+			if(!readonly)
+			{
+				_removeAttribute(ReadOnly.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(ReadOnly.ATTRIBUTE_NAME, "");
+			}
+		}
+		public default Boolean getReadOnly()
+		{
+			String attribute = getAttribute(ReadOnly.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return false;
+			}
+			return true;
+		}
 
 		public static Map.Entry<String, Attribute<Boolean>> getEntry(ReadOnly e)
 		{
@@ -249,8 +606,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "tabindex";
 		public static final Class<Integer> ATTRIBUTE_TYPE = Integer.class;
-		public void setTabIndex(int e);
-		public int getTabIndex();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setTabIndex(Integer tabindex)
+		{
+			if(tabindex == null)
+			{
+				_removeAttribute(TabIndex.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(TabIndex.ATTRIBUTE_NAME, String.valueOf(tabindex));
+			}
+		}
+		public default Integer getTabIndex()
+		{
+			String attribute = getAttribute(TabIndex.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return -1;
+			}
+			return Integer.valueOf(attribute);
+		}
 
 		public static Map.Entry<String, Attribute<Integer>> getEntry(TabIndex e)
 		{
@@ -263,8 +641,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "value";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setValue(String e);
-		public String getValue();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setValue(String value)
+		{
+			if(value == null)
+			{
+				_removeAttribute(Value.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Value.ATTRIBUTE_NAME, value);
+			}
+		}
+		public default String getValue()
+		{
+			String attribute = getAttribute(Value.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(Value e)
 		{
@@ -277,8 +676,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "accept";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setAccept(String e);
-		public String getAccept();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setAccept(String accept)
+		{
+			if(accept == null)
+			{
+				_removeAttribute(Accept.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Accept.ATTRIBUTE_NAME, accept);
+			}
+		}
+		public default String getAccept()
+		{
+			String attribute = getAttribute(Accept.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(Accept e)
 		{
@@ -291,8 +711,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "capture";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setCapture(String e);
-		public String getCapture();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setCapture(String capture)
+		{
+			if(capture == null)
+			{
+				_removeAttribute(Capture.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Capture.ATTRIBUTE_NAME, capture);
+			}
+		}
+		public default String getCapture()
+		{
+			String attribute = getAttribute(Capture.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(Capture e)
 		{
@@ -305,8 +746,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "accept-charset";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setAcceptCharset(String e);
-		public String getAcceptCharset();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setAcceptCharset(String acceptcharset)
+		{
+			if(acceptcharset == null)
+			{
+				_removeAttribute(AcceptCharset.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(AcceptCharset.ATTRIBUTE_NAME, acceptcharset);
+			}
+		}
+		public default String getAcceptCharset()
+		{
+			String attribute = getAttribute(AcceptCharset.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(AcceptCharset e)
 		{
@@ -319,8 +781,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "action";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setAction(String e);
-		public String getAction();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setAction(String action)
+		{
+			if(action == null)
+			{
+				_removeAttribute(Action.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Action.ATTRIBUTE_NAME, action);
+			}
+		}
+		public default String getAction()
+		{
+			String attribute = getAttribute(Action.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(Action e)
 		{
@@ -333,8 +816,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "autocapitalize";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setAutoCapitalize(String e);
-		public String getAutoCapitalize();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setAutoCapitalize(String autocapitalize)
+		{
+			if(autocapitalize == null)
+			{
+				_removeAttribute(AutoCapitalize.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(AutoCapitalize.ATTRIBUTE_NAME, autocapitalize);
+			}
+		}
+		public default String getAutoCapitalize()
+		{
+			String attribute = getAttribute(AutoCapitalize.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(AutoCapitalize e)
 		{
@@ -347,8 +851,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "enctype";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setEnctype(String e);
-		public String getEnctype();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setEnctype(String enctype)
+		{
+			if(enctype == null)
+			{
+				_removeAttribute(Enctype.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Enctype.ATTRIBUTE_NAME, enctype);
+			}
+		}
+		public default String getEnctype()
+		{
+			String attribute = getAttribute(Enctype.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(Enctype e)
 		{
@@ -361,8 +886,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "method";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setMethod(String e);
-		public String getMethod();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setMethod(String method)
+		{
+			if(method == null)
+			{
+				_removeAttribute(Method.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Method.ATTRIBUTE_NAME, method);
+			}
+		}
+		public default String getMethod()
+		{
+			String attribute = getAttribute(Method.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(Method e)
 		{
@@ -375,8 +921,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "novalidate";
 		public static final Class<Boolean> ATTRIBUTE_TYPE = Boolean.class;
-		public void setNoValidate(boolean e);
-		public boolean getNoValidate();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setNoValidate(Boolean novalidate)
+		{
+			if(!novalidate)
+			{
+				_removeAttribute(NoValidate.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(NoValidate.ATTRIBUTE_NAME, "");
+			}
+		}
+		public default Boolean getNoValidate()
+		{
+			String attribute = getAttribute(NoValidate.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return false;
+			}
+			return true;
+		}
 
 		public static Map.Entry<String, Attribute<Boolean>> getEntry(NoValidate e)
 		{
@@ -389,8 +956,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "target";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setTarget(String e);
-		public String getTarget();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setTarget(String target)
+		{
+			if(target == null)
+			{
+				_removeAttribute(Target.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Target.ATTRIBUTE_NAME, target);
+			}
+		}
+		public default String getTarget()
+		{
+			String attribute = getAttribute(Target.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(Target e)
 		{
@@ -403,8 +991,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "alt";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setAlt(String e);
-		public String getAlt();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setAlt(String alt)
+		{
+			if(alt == null)
+			{
+				_removeAttribute(Alt.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Alt.ATTRIBUTE_NAME, alt);
+			}
+		}
+		public default String getAlt()
+		{
+			String attribute = getAttribute(Alt.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(Alt e)
 		{
@@ -417,8 +1026,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "formaction";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setFormAction(String e);
-		public String getFormAction();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setFormAction(String formaction)
+		{
+			if(formaction == null)
+			{
+				_removeAttribute(FormAction.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(FormAction.ATTRIBUTE_NAME, formaction);
+			}
+		}
+		public default String getFormAction()
+		{
+			String attribute = getAttribute(FormAction.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(FormAction e)
 		{
@@ -431,8 +1061,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "formenctype";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setFormEnctype(String e);
-		public String getFormEnctype();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setFormEnctype(String formenctype)
+		{
+			if(formenctype == null)
+			{
+				_removeAttribute(FormEnctype.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(FormEnctype.ATTRIBUTE_NAME, formenctype);
+			}
+		}
+		public default String getFormEnctype()
+		{
+			String attribute = getAttribute(FormEnctype.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(FormEnctype e)
 		{
@@ -445,8 +1096,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "formmethod";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setFormMethod(String e);
-		public String getFormMethod();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setFormMethod(String formmethod)
+		{
+			if(formmethod == null)
+			{
+				_removeAttribute(FormMethod.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(FormMethod.ATTRIBUTE_NAME, formmethod);
+			}
+		}
+		public default String getFormMethod()
+		{
+			String attribute = getAttribute(FormMethod.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(FormMethod e)
 		{
@@ -459,8 +1131,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "formtarget";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setFormTarget(String e);
-		public String getFormTarget();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setFormTarget(String formtarget)
+		{
+			if(formtarget == null)
+			{
+				_removeAttribute(FormTarget.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(FormTarget.ATTRIBUTE_NAME, formtarget);
+			}
+		}
+		public default String getFormTarget()
+		{
+			String attribute = getAttribute(FormTarget.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(FormTarget e)
 		{
@@ -473,8 +1166,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "formnovalidate";
 		public static final Class<Boolean> ATTRIBUTE_TYPE = Boolean.class;
-		public void setFormNoValidate(boolean e);
-		public boolean getFormNoValidate();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setFormNoValidate(Boolean formnovalidate)
+		{
+			if(!formnovalidate)
+			{
+				_removeAttribute(FormNoValidate.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(FormNoValidate.ATTRIBUTE_NAME, "");
+			}
+		}
+		public default Boolean getFormNoValidate()
+		{
+			String attribute = getAttribute(FormNoValidate.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return false;
+			}
+			return true;
+		}
 
 		public static Map.Entry<String, Attribute<Boolean>> getEntry(FormNoValidate e)
 		{
@@ -487,8 +1201,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "height";
 		public static final Class<Integer> ATTRIBUTE_TYPE = Integer.class;
-		public void setHeight(int e);
-		public int getHeight();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setHeight(Integer height)
+		{
+			if(height == null)
+			{
+				_removeAttribute(Height.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Height.ATTRIBUTE_NAME, String.valueOf(height));
+			}
+		}
+		public default Integer getHeight()
+		{
+			String attribute = getAttribute(Height.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return -1;
+			}
+			return Integer.valueOf(attribute);
+		}
 
 		public static Map.Entry<String, Attribute<Integer>> getEntry(Height e)
 		{
@@ -501,8 +1236,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "width";
 		public static final Class<Integer> ATTRIBUTE_TYPE = Integer.class;
-		public void setWidth(int e);
-		public int getWidth();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setWidth(Integer width)
+		{
+			if(width == null)
+			{
+				_removeAttribute(Width.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Width.ATTRIBUTE_NAME, String.valueOf(width));
+			}
+		}
+		public default Integer getWidth()
+		{
+			String attribute = getAttribute(Width.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return -1;
+			}
+			return Integer.valueOf(attribute);
+		}
 
 		public static Map.Entry<String, Attribute<Integer>> getEntry(Width e)
 		{
@@ -515,8 +1271,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "src";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setSrc(String e);
-		public String getSrc();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setSrc(String src)
+		{
+			if(src == null)
+			{
+				_removeAttribute(Src.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Src.ATTRIBUTE_NAME, src);
+			}
+		}
+		public default String getSrc()
+		{
+			String attribute = getAttribute(Src.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(Src e)
 		{
@@ -529,8 +1306,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "max";
 		public static final Class<Double> ATTRIBUTE_TYPE = Double.class;
-		public void setMax(double e);
-		public double getMax();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setMax(Double max)
+		{
+			if(max == null)
+			{
+				_removeAttribute(Max.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Max.ATTRIBUTE_NAME, String.valueOf(max));
+			}
+		}
+		public default Double getMax()
+		{
+			String attribute = getAttribute(Max.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return Double.MAX_VALUE;
+			}
+			return Double.valueOf(attribute);
+		}
 
 		public static Map.Entry<String, Attribute<Double>> getEntry(Max e)
 		{
@@ -543,8 +1341,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "min";
 		public static final Class<Double> ATTRIBUTE_TYPE = Double.class;
-		public void setMin(double e);
-		public double getMin();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setMin(Double min)
+		{
+			if(min == null)
+			{
+				_removeAttribute(Min.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Min.ATTRIBUTE_NAME, String.valueOf(min));
+			}
+		}
+		public default Double getMin()
+		{
+			String attribute = getAttribute(Min.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return Double.MAX_VALUE;
+			}
+			return Double.valueOf(attribute);
+		}
 
 		public static Map.Entry<String, Attribute<Double>> getEntry(Min e)
 		{
@@ -557,8 +1376,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "step";
 		public static final Class<Double> ATTRIBUTE_TYPE = Double.class;
-		public void setStep(double e);
-		public double getStep();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setStep(Double step)
+		{
+			if(step == null)
+			{
+				_removeAttribute(Step.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Step.ATTRIBUTE_NAME, String.valueOf(step));
+			}
+		}
+		public default Double getStep()
+		{
+			String attribute = getAttribute(Step.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return -1d;
+			}
+			return Double.valueOf(attribute);
+		}
 
 		public static Map.Entry<String, Attribute<Double>> getEntry(Step e)
 		{
@@ -571,8 +1411,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "onclick";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setOnClick(String e);
-		public String getOnClick();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnClick(String onclick)
+		{
+			if(onclick == null)
+			{
+				_removeAttribute(OnClick.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnClick.ATTRIBUTE_NAME, onclick);
+			}
+		}
+		public default String getOnClick()
+		{
+			String attribute = getAttribute(OnClick.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(OnClick e)
 		{
@@ -585,8 +1446,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "ondblclick";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setOnDblClick(String e);
-		public String getOnDblClick();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnDblClick(String ondblclick)
+		{
+			if(ondblclick == null)
+			{
+				_removeAttribute(OnDblClick.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnDblClick.ATTRIBUTE_NAME, ondblclick);
+			}
+		}
+		public default String getOnDblClick()
+		{
+			String attribute = getAttribute(OnDblClick.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(OnDblClick e)
 		{
@@ -599,8 +1481,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "onmousedown";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setOnMouseDown(String e);
-		public String getOnMouseDown();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnMouseDown(String onmousedown)
+		{
+			if(onmousedown == null)
+			{
+				_removeAttribute(OnMouseDown.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnMouseDown.ATTRIBUTE_NAME, onmousedown);
+			}
+		}
+		public default String getOnMouseDown()
+		{
+			String attribute = getAttribute(OnMouseDown.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(OnMouseDown e)
 		{
@@ -613,8 +1516,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "onmouseup";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setOnMouseUp(String e);
-		public String getOnMouseUp();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnMouseUp(String onmouseup)
+		{
+			if(onmouseup == null)
+			{
+				_removeAttribute(OnMouseUp.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnMouseUp.ATTRIBUTE_NAME, onmouseup);
+			}
+		}
+		public default String getOnMouseUp()
+		{
+			String attribute = getAttribute(OnMouseUp.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(OnMouseUp e)
 		{
@@ -627,8 +1551,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "onmouseover";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setOnMouseOver(String e);
-		public String getOnMouseOver();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnMouseOver(String onmouseover)
+		{
+			if(onmouseover == null)
+			{
+				_removeAttribute(OnMouseOver.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnMouseOver.ATTRIBUTE_NAME, onmouseover);
+			}
+		}
+		public default String getOnMouseOver()
+		{
+			String attribute = getAttribute(OnMouseOver.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(OnMouseOver e)
 		{
@@ -641,8 +1586,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "onmousemove";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setOnMouseMove(String e);
-		public String getOnMouseMove();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnMouseMove(String onmousemove)
+		{
+			if(onmousemove == null)
+			{
+				_removeAttribute(OnMouseMove.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnMouseMove.ATTRIBUTE_NAME, onmousemove);
+			}
+		}
+		public default String getOnMouseMove()
+		{
+			String attribute = getAttribute(OnMouseMove.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(OnMouseMove e)
 		{
@@ -655,8 +1621,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "onmouseout";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setOnMouseOut(String e);
-		public String getOnMouseOut();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnMouseOut(String onmouseout)
+		{
+			if(onmouseout == null)
+			{
+				_removeAttribute(OnMouseOut.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnMouseOut.ATTRIBUTE_NAME, onmouseout);
+			}
+		}
+		public default String getOnMouseOut()
+		{
+			String attribute = getAttribute(OnMouseOut.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(OnMouseOut e)
 		{
@@ -669,8 +1656,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "onkeypress";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setOnKeyPress(String e);
-		public String getOnKeyPress();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnKeyPress(String onkeypress)
+		{
+			if(onkeypress == null)
+			{
+				_removeAttribute(OnKeyPress.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnKeyPress.ATTRIBUTE_NAME, onkeypress);
+			}
+		}
+		public default String getOnKeyPress()
+		{
+			String attribute = getAttribute(OnKeyPress.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(OnKeyPress e)
 		{
@@ -683,8 +1691,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "onkeydown";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setOnKeyDown(String e);
-		public String getOnKeyDown();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnKeyDown(String onkeydown)
+		{
+			if(onkeydown == null)
+			{
+				_removeAttribute(OnKeyDown.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnKeyDown.ATTRIBUTE_NAME, onkeydown);
+			}
+		}
+		public default String getOnKeyDown()
+		{
+			String attribute = getAttribute(OnKeyDown.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(OnKeyDown e)
 		{
@@ -697,8 +1726,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "onkeyup";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setOnKeyUp(String e);
-		public String getOnKeyUp();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnKeyUp(String onkeyup)
+		{
+			if(onkeyup == null)
+			{
+				_removeAttribute(OnKeyUp.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnKeyUp.ATTRIBUTE_NAME, onkeyup);
+			}
+		}
+		public default String getOnKeyUp()
+		{
+			String attribute = getAttribute(OnKeyUp.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(OnKeyUp e)
 		{
@@ -711,8 +1761,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "style";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setStyle(String e);
-		public String getStyle();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setStyle(String style)
+		{
+			if(style == null)
+			{
+				_removeAttribute(Style.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Style.ATTRIBUTE_NAME, style);
+			}
+		}
+		public default String getStyle()
+		{
+			String attribute = getAttribute(Style.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(Style e)
 		{
@@ -725,8 +1796,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "title";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setTitle(String e);
-		public String getTitle();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setTitle(String title)
+		{
+			if(title == null)
+			{
+				_removeAttribute(Title.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Title.ATTRIBUTE_NAME, title);
+			}
+		}
+		public default String getTitle()
+		{
+			String attribute = getAttribute(Title.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(Title e)
 		{
@@ -739,8 +1831,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "href";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setHref(String e);
-		public String getHref();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setHref(String href)
+		{
+			if(href == null)
+			{
+				_removeAttribute(Href.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Href.ATTRIBUTE_NAME, href);
+			}
+		}
+		public default String getHref()
+		{
+			String attribute = getAttribute(Href.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(Href e)
 		{
@@ -753,8 +1866,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "async";
 		public static final Class<Boolean> ATTRIBUTE_TYPE = Boolean.class;
-		public void setAsync(boolean e);
-		public boolean getAsync();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setAsync(Boolean async)
+		{
+			if(!async)
+			{
+				_removeAttribute(Async.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Async.ATTRIBUTE_NAME, "");
+			}
+		}
+		public default Boolean getAsync()
+		{
+			String attribute = getAttribute(Async.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return false;
+			}
+			return true;
+		}
 
 		public static Map.Entry<String, Attribute<Boolean>> getEntry(Async e)
 		{
@@ -767,8 +1901,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "crossorigin";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setCrossOrigin(String e);
-		public String getCrossOrigin();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setCrossOrigin(String crossorigin)
+		{
+			if(crossorigin == null)
+			{
+				_removeAttribute(CrossOrigin.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(CrossOrigin.ATTRIBUTE_NAME, crossorigin);
+			}
+		}
+		public default String getCrossOrigin()
+		{
+			String attribute = getAttribute(CrossOrigin.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(CrossOrigin e)
 		{
@@ -781,8 +1936,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "defer";
 		public static final Class<Boolean> ATTRIBUTE_TYPE = Boolean.class;
-		public void setDefer(boolean e);
-		public boolean getDefer();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setDefer(Boolean defer)
+		{
+			if(!defer)
+			{
+				_removeAttribute(Defer.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Defer.ATTRIBUTE_NAME, "");
+			}
+		}
+		public default Boolean getDefer()
+		{
+			String attribute = getAttribute(Defer.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return false;
+			}
+			return true;
+		}
 
 		public static Map.Entry<String, Attribute<Boolean>> getEntry(Defer e)
 		{
@@ -795,8 +1971,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "integrity";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setIntegrity(String e);
-		public String getIntegrity();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setIntegrity(String integrity)
+		{
+			if(integrity == null)
+			{
+				_removeAttribute(Integrity.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Integrity.ATTRIBUTE_NAME, integrity);
+			}
+		}
+		public default String getIntegrity()
+		{
+			String attribute = getAttribute(Integrity.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(Integrity e)
 		{
@@ -809,8 +2006,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "nomodule";
 		public static final Class<Boolean> ATTRIBUTE_TYPE = Boolean.class;
-		public void setNoModule(boolean e);
-		public boolean getNoModule();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setNoModule(Boolean nomodule)
+		{
+			if(!nomodule)
+			{
+				_removeAttribute(NoModule.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(NoModule.ATTRIBUTE_NAME, "");
+			}
+		}
+		public default Boolean getNoModule()
+		{
+			String attribute = getAttribute(NoModule.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return false;
+			}
+			return true;
+		}
 
 		public static Map.Entry<String, Attribute<Boolean>> getEntry(NoModule e)
 		{
@@ -823,8 +2041,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "nonce";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setNonce(String e);
-		public String getNonce();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setNonce(String nonce)
+		{
+			if(nonce == null)
+			{
+				_removeAttribute(Nonce.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Nonce.ATTRIBUTE_NAME, nonce);
+			}
+		}
+		public default String getNonce()
+		{
+			String attribute = getAttribute(Nonce.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(Nonce e)
 		{
@@ -837,8 +2076,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "referrerpolicy";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setReferrerPolicy(String e);
-		public String getReferrerPolicy();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setReferrerPolicy(String referrerpolicy)
+		{
+			if(referrerpolicy == null)
+			{
+				_removeAttribute(ReferrerPolicy.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(ReferrerPolicy.ATTRIBUTE_NAME, referrerpolicy);
+			}
+		}
+		public default String getReferrerPolicy()
+		{
+			String attribute = getAttribute(ReferrerPolicy.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(ReferrerPolicy e)
 		{
@@ -851,8 +2111,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "type";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setType(String e);
-		public String getType();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setType(String type)
+		{
+			if(type == null)
+			{
+				_removeAttribute(Type.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Type.ATTRIBUTE_NAME, type);
+			}
+		}
+		public default String getType()
+		{
+			String attribute = getAttribute(Type.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(Type e)
 		{
@@ -865,8 +2146,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "as";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setAs(String e);
-		public String getAs();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setAs(String as)
+		{
+			if(as == null)
+			{
+				_removeAttribute(As.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(As.ATTRIBUTE_NAME, as);
+			}
+		}
+		public default String getAs()
+		{
+			String attribute = getAttribute(As.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(As e)
 		{
@@ -879,8 +2181,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "hreflang";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setHrefLang(String e);
-		public String getHrefLang();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setHrefLang(String hreflang)
+		{
+			if(hreflang == null)
+			{
+				_removeAttribute(HrefLang.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(HrefLang.ATTRIBUTE_NAME, hreflang);
+			}
+		}
+		public default String getHrefLang()
+		{
+			String attribute = getAttribute(HrefLang.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(HrefLang e)
 		{
@@ -893,8 +2216,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "importance";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setImportance(String e);
-		public String getImportance();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setImportance(String importance)
+		{
+			if(importance == null)
+			{
+				_removeAttribute(Importance.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Importance.ATTRIBUTE_NAME, importance);
+			}
+		}
+		public default String getImportance()
+		{
+			String attribute = getAttribute(Importance.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(Importance e)
 		{
@@ -907,8 +2251,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "media";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setMedia(String e);
-		public String getMedia();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setMedia(String media)
+		{
+			if(media == null)
+			{
+				_removeAttribute(Media.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Media.ATTRIBUTE_NAME, media);
+			}
+		}
+		public default String getMedia()
+		{
+			String attribute = getAttribute(Media.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(Media e)
 		{
@@ -921,8 +2286,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "rel";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setRel(String e);
-		public String getRel();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setRel(String rel)
+		{
+			if(rel == null)
+			{
+				_removeAttribute(Rel.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Rel.ATTRIBUTE_NAME, rel);
+			}
+		}
+		public default String getRel()
+		{
+			String attribute = getAttribute(Rel.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(Rel e)
 		{
@@ -935,8 +2321,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "sizes";
 		public static final Class<Double> ATTRIBUTE_TYPE = Double.class;
-		public void setSizes(double e);
-		public double getSizes();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setSizes(Double sizes)
+		{
+			if(sizes == null)
+			{
+				_removeAttribute(Sizes.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Sizes.ATTRIBUTE_NAME, String.valueOf(sizes));
+			}
+		}
+		public default Double getSizes()
+		{
+			String attribute = getAttribute(Sizes.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return Double.MAX_VALUE;
+			}
+			return Double.valueOf(attribute);
+		}
 
 		public static Map.Entry<String, Attribute<Double>> getEntry(Sizes e)
 		{
@@ -949,8 +2356,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "cols";
 		public static final Class<Integer> ATTRIBUTE_TYPE = Integer.class;
-		public void setCols(int e);
-		public int getCols();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setCols(Integer cols)
+		{
+			if(cols == null)
+			{
+				_removeAttribute(Cols.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Cols.ATTRIBUTE_NAME, String.valueOf(cols));
+			}
+		}
+		public default Integer getCols()
+		{
+			String attribute = getAttribute(Cols.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return -1;
+			}
+			return Integer.valueOf(attribute);
+		}
 
 		public static Map.Entry<String, Attribute<Integer>> getEntry(Cols e)
 		{
@@ -963,8 +2391,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "rows";
 		public static final Class<Integer> ATTRIBUTE_TYPE = Integer.class;
-		public void setRows(int e);
-		public int getRows();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setRows(Integer rows)
+		{
+			if(rows == null)
+			{
+				_removeAttribute(Rows.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Rows.ATTRIBUTE_NAME, String.valueOf(rows));
+			}
+		}
+		public default Integer getRows()
+		{
+			String attribute = getAttribute(Rows.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return -1;
+			}
+			return Integer.valueOf(attribute);
+		}
 
 		public static Map.Entry<String, Attribute<Integer>> getEntry(Rows e)
 		{
@@ -977,8 +2426,29 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "wrap";
 		public static final Class<String> ATTRIBUTE_TYPE = String.class;
-		public void setWrap(String e);
-		public String getWrap();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setWrap(String wrap)
+		{
+			if(wrap == null)
+			{
+				_removeAttribute(Wrap.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Wrap.ATTRIBUTE_NAME, wrap);
+			}
+		}
+		public default String getWrap()
+		{
+			String attribute = getAttribute(Wrap.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
 
 		public static Map.Entry<String, Attribute<String>> getEntry(Wrap e)
 		{
@@ -991,14 +2461,33 @@ public class Attributes
 	{
 		public static final String ATTRIBUTE_NAME = "hidden";
 		public static final Class<Boolean> ATTRIBUTE_TYPE = Boolean.class;
-		public void setHidden(boolean e);
-		public boolean getHidden();
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setHidden(Boolean hidden)
+		{
+			if(!hidden)
+			{
+				_removeAttribute(Hidden.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Hidden.ATTRIBUTE_NAME, "");
+			}
+		}
+		public default Boolean getHidden()
+		{
+			String attribute = getAttribute(Hidden.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return false;
+			}
+			return true;
+		}
 
 		public static Map.Entry<String, Attribute<Boolean>> getEntry(Hidden e)
 		{
 			return Map.entry(Hidden.ATTRIBUTE_NAME, new Attribute<Boolean>(Hidden.ATTRIBUTE_TYPE, e::setHidden, true, false));
 		}
 	}
-	
-
 }

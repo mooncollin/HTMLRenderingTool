@@ -3,6 +3,7 @@ package tags;
 import java.util.Map;
 
 import html.CompoundElement;
+import html.Element;
 
 public class UL extends CompoundElement
 {
@@ -33,4 +34,18 @@ public class UL extends CompoundElement
 	{
 		throw new UnsupportedOperationException("Cannot change tag");
 	}
+	
+	@Override
+    public UL addElements(Element... elements)
+    {
+        super.addElements(elements);
+        return this;
+    }
+
+    @Override
+    public UL addClasses(String... classes)
+    {
+        super.addClasses(classes);
+        return this;
+    }
 }

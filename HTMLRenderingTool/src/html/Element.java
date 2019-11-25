@@ -9,25 +9,10 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
 import java.util.function.Consumer;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import attributes.Attribute;
 import attributes.Attributes;
-import attributes.Attributes.Hidden;
-import attributes.Attributes.ID;
-import attributes.Attributes.OnClick;
-import attributes.Attributes.OnDblClick;
-import attributes.Attributes.OnKeyDown;
-import attributes.Attributes.OnKeyPress;
-import attributes.Attributes.OnKeyUp;
-import attributes.Attributes.OnMouseDown;
-import attributes.Attributes.OnMouseMove;
-import attributes.Attributes.OnMouseOut;
-import attributes.Attributes.OnMouseOver;
-import attributes.Attributes.OnMouseUp;
-import attributes.Attributes.Style;
-import attributes.Attributes.Title;
 
 /**
  * An Element represents a singular html tag. This can be self-closing or not. A
@@ -198,279 +183,7 @@ public class Element implements Attributes.ID, Attributes.OnClick, Attributes.On
 	public Styles getStyles()
 	{
 		return styles;
-	}
-
-
-	public void setID(String id)
-	{
-		if (id == null)
-		{
-			_removeAttribute(ID.ATTRIBUTE_NAME);
-		}
-		else
-		{
-			_setAttribute(ID.ATTRIBUTE_NAME, id);
-		}
-	}
-	
-
-	public String getID()
-	{
-		return getAttribute(ID.ATTRIBUTE_NAME);
-	}
-	
-
-	public void setOnClick(String onclick)
-	{
-		if (onclick == null)
-		{
-			_removeAttribute(OnClick.ATTRIBUTE_NAME);
-		}
-		else
-		{
-			_setAttribute(OnClick.ATTRIBUTE_NAME, onclick);
-		}
-	}
-	
-
-	public String getOnClick()
-	{
-		return getAttribute(OnClick.ATTRIBUTE_NAME);
-	}
-	
-
-	public void setOnDblClick(String ondblclick)
-	{
-		if (ondblclick == null)
-		{
-			_removeAttribute(OnDblClick.ATTRIBUTE_NAME);
-		}
-		else
-		{
-			_setAttribute(OnDblClick.ATTRIBUTE_NAME, ondblclick);
-		}
-	}
-	
-
-	public String getOnDblClick()
-	{
-		return getAttribute(OnDblClick.ATTRIBUTE_NAME);
-	}
-	
-
-	public void setOnMouseDown(String onmousedown)
-	{
-		if (onmousedown == null)
-		{
-			_removeAttribute(OnMouseDown.ATTRIBUTE_NAME);
-		}
-		else
-		{
-			_setAttribute(OnMouseDown.ATTRIBUTE_NAME, onmousedown);
-		}
-	}
-	
-
-	public String getOnMouseDown()
-	{
-		return getAttribute(OnMouseDown.ATTRIBUTE_NAME);
-	}
-	
-
-	public void setOnMouseUp(String onmouseup)
-	{
-		if (onmouseup == null)
-		{
-			_removeAttribute(OnMouseUp.ATTRIBUTE_NAME);
-		}
-		else
-		{
-			_setAttribute(OnMouseUp.ATTRIBUTE_NAME, onmouseup);
-		}
-	}
-	
-
-	public String getOnMouseUp()
-	{
-		return getAttribute(OnMouseUp.ATTRIBUTE_NAME);
-	}
-	
-
-	public void setOnMouseOver(String onmouseover)
-	{
-		if (onmouseover == null)
-		{
-			_removeAttribute(OnMouseOver.ATTRIBUTE_NAME);
-		}
-		else
-		{
-			_setAttribute(OnMouseOver.ATTRIBUTE_NAME, onmouseover);
-		}
-	}
-	
-
-	public String getOnMouseOver()
-	{
-		return getAttribute(OnMouseOver.ATTRIBUTE_NAME);
-	}
-	
-
-	public void setOnMouseMove(String onmousemove)
-	{
-		if (onmousemove == null)
-		{
-			_removeAttribute(OnMouseMove.ATTRIBUTE_NAME);
-		}
-		else
-		{
-			_setAttribute(OnMouseMove.ATTRIBUTE_NAME, onmousemove);
-		}
-	}
-	
-
-	public String getOnMouseMove()
-	{
-		return getAttribute(OnMouseMove.ATTRIBUTE_NAME);
-	}
-	
-
-	public void setOnMouseOut(String onmouseout)
-	{
-		if (onmouseout == null)
-		{
-			_removeAttribute(OnMouseOut.ATTRIBUTE_NAME);
-		}
-		else
-		{
-			_setAttribute(OnMouseOut.ATTRIBUTE_NAME, onmouseout);
-		}
-	}
-	
-
-	public String getOnMouseOut()
-	{
-		return getAttribute(OnMouseOut.ATTRIBUTE_NAME);
-	}
-	
-
-	public void setOnKeyPress(String onkeypress)
-	{
-		if (onkeypress == null)
-		{
-			_removeAttribute(OnKeyPress.ATTRIBUTE_NAME);
-		}
-		else
-		{
-			_setAttribute(OnKeyPress.ATTRIBUTE_NAME, onkeypress);
-		}
-	}
-	
-
-	public String getOnKeyPress()
-	{
-		return getAttribute(OnKeyPress.ATTRIBUTE_NAME);
-	}
-	
-
-	public void setOnKeyDown(String onkeydown)
-	{
-		if (onkeydown == null)
-		{
-			_removeAttribute(OnKeyDown.ATTRIBUTE_NAME);
-		}
-		else
-		{
-			_setAttribute(OnKeyDown.ATTRIBUTE_NAME, onkeydown);
-		}
-	}
-	
-
-	public String getOnKeyDown()
-	{
-		return getAttribute(OnKeyDown.ATTRIBUTE_NAME);
-	}
-	
-
-	public void setOnKeyUp(String onkeyup)
-	{
-		if (onkeyup == null)
-		{
-			_removeAttribute(OnKeyUp.ATTRIBUTE_NAME);
-		}
-		else
-		{
-			_setAttribute(OnKeyUp.ATTRIBUTE_NAME, onkeyup);
-		}
-	}
-	
-
-	public String getOnKeyUp()
-	{
-		return getAttribute(OnKeyUp.ATTRIBUTE_NAME);
-	}
-	
-
-	public void setTitle(String title)
-	{
-		if (title == null)
-		{
-			_removeAttribute(Title.ATTRIBUTE_NAME);
-		}
-		else
-		{
-			_setAttribute(Title.ATTRIBUTE_NAME, title);
-		}
-	}
-	
-
-	public String getTitle()
-	{
-		return getAttribute(Title.ATTRIBUTE_NAME);
-	}
-	
-
-	public void setHidden(boolean hidden)
-	{
-		if (!hidden)
-		{
-			_removeAttribute(Hidden.ATTRIBUTE_NAME);
-		}
-		else
-		{
-			_setAttribute(Hidden.ATTRIBUTE_NAME, "");
-		}
-	}
-	
-
-	public boolean getHidden()
-	{
-		String attribute = getAttribute(Hidden.ATTRIBUTE_NAME);
-		if (attribute == null)
-		{
-			return false;
-		}
-		return true;
-	}
-	
-	
-	public void setStyle(String style)
-	{
-		if (style == null)
-		{
-			_removeAttribute(Style.ATTRIBUTE_NAME);
-		}
-		else
-		{
-			_setAttribute(Style.ATTRIBUTE_NAME, style);
-		}
-	}
-	
-
-	public String getStyle()
-	{
-		return getAttribute(Style.ATTRIBUTE_NAME);
-	}
-	
+	}	
 
 
 	/**
@@ -688,7 +401,7 @@ public class Element implements Attributes.ID, Attributes.OnClick, Attributes.On
 	
 	protected void setStyleString()
 	{
-		String styleString = String.join(";", styles.getStyles()
+		var styleString = String.join(";", styles.getStyles()
 			    .entrySet()
 		 	    .stream()
 		        .map(e -> String.format("%s: %s", e.getKey(), e.getValue()))
@@ -707,7 +420,7 @@ public class Element implements Attributes.ID, Attributes.OnClick, Attributes.On
 	 * @param key   attribute to set
 	 * @param value value to set
 	 */
-	protected void _setAttribute(String key, String value)
+	public void _setAttribute(String key, String value)
 	{
 		Objects.requireNonNull(key);
 
@@ -719,7 +432,7 @@ public class Element implements Attributes.ID, Attributes.OnClick, Attributes.On
 		{
 			if(key == "style")
 			{
-				Matcher m = STYLE_REGEX.matcher(value);
+				var m = STYLE_REGEX.matcher(value);
 				while(m.find())
 				{
 					String styleName = m.group("name");
@@ -740,7 +453,7 @@ public class Element implements Attributes.ID, Attributes.OnClick, Attributes.On
 	 * 
 	 * @param key attribute to remove
 	 */
-	protected void _removeAttribute(String key)
+	public void _removeAttribute(String key)
 	{
 		Objects.requireNonNull(key);
 		attributes.remove(key);

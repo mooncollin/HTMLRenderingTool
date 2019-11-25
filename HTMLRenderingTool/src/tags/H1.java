@@ -1,5 +1,7 @@
 package tags;
 
+import java.util.Map;
+
 import html.CompoundElement;
 
 public class H1 extends CompoundElement
@@ -8,12 +10,22 @@ public class H1 extends CompoundElement
 
 	public H1()
 	{
-		this(null);
+		this(null, null);
 	}
 	
 	public H1(String data)
 	{
-		super(TAG, data);
+		this(data, null);
+	}
+	
+	public H1(Map<String, Object> attributes)
+	{
+		this(null, attributes);
+	}
+	
+	public H1(String data, Map<String, Object> attributes)
+	{
+		super(TAG, data, attributes);
 	}
 
 	@Override

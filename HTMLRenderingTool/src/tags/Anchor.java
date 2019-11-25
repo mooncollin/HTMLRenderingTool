@@ -3,8 +3,6 @@ package tags;
 import java.util.Map;
 
 import attributes.Attributes;
-import attributes.Attributes.Href;
-import attributes.Attributes.Target;
 import html.CompoundElement;
 import html.Element;
 
@@ -51,43 +49,4 @@ public class Anchor extends CompoundElement implements Attributes.Href, Attribut
 		super.addClasses(classes);
 		return this;
 	}
-
-	public void setHref(String href)
-	{
-		if (href == null)
-		{
-			_removeAttribute(Href.ATTRIBUTE_NAME);
-		}
-		else
-		{
-			_setAttribute(Href.ATTRIBUTE_NAME, href);
-		}
-	}
-	
-
-	public String getHref()
-	{
-		return getAttribute(Href.ATTRIBUTE_NAME);
-	}
-	
-
-	public void setTarget(String target)
-	{
-		if (target == null)
-		{
-			_removeAttribute(Target.ATTRIBUTE_NAME);
-		}
-		else
-		{
-			_setAttribute(Target.ATTRIBUTE_NAME, target);
-		}
-	}
-	
-
-	public String getTarget()
-	{
-		return getAttribute(Target.ATTRIBUTE_NAME);
-	}
-	
-
 }

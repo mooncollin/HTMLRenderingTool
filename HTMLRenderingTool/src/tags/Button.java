@@ -35,45 +35,4 @@ public class Button extends CompoundElement implements Disabled, Type
 	{
 		throw new UnsupportedOperationException("Cannot change tag");
 	}
-	
-	public void setDisabled(boolean disabled)
-	{
-		if (!disabled)
-		{
-			_removeAttribute(Disabled.ATTRIBUTE_NAME);
-		}
-		else
-		{
-			_setAttribute(Disabled.ATTRIBUTE_NAME, "");
-		}
-	}
-	
-
-	public boolean getDisabled()
-	{
-		String attribute = getAttribute(Disabled.ATTRIBUTE_NAME);
-		if (attribute == null)
-		{
-			return false;
-		}
-		return true;
-	}
-	
-	public void setType(String type)
-	{
-		if (type == null)
-		{
-			_removeAttribute(Type.ATTRIBUTE_NAME);
-		}
-		else
-		{
-			_setAttribute(Type.ATTRIBUTE_NAME, type);
-		}
-	}
-	
-
-	public String getType()
-	{
-		return getAttribute(Type.ATTRIBUTE_NAME);
-	}
 }

@@ -1,5 +1,7 @@
 package tags;
 
+import java.util.Map;
+
 import html.CompoundElement;
 
 public class TableData extends CompoundElement
@@ -8,12 +10,22 @@ public class TableData extends CompoundElement
 
 	public TableData()
 	{
-		this(null);
+		this(null, null);
 	}
 	
 	public TableData(String data)
 	{
-		super(TAG, data);
+		this(data, null);
+	}
+	
+	public TableData(Map<String, Object> attributes)
+	{
+		this(null, attributes);
+	}
+	
+	public TableData(String data, Map<String, Object> attributes)
+	{
+		super(TAG, data, attributes);
 	}
 
 	@Override

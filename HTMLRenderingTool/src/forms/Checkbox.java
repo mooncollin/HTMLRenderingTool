@@ -7,39 +7,12 @@ import attributes.Attributes;
  *
  */
 public class Checkbox extends Input implements Attributes.Checked
-{
-	/**
-	 * Whether this checkbox is currently checked.
-	 */
-	private boolean checked;
-	
+{	
 	/**
 	 * Constructor. Creates an input of type "checkbox".
 	 */
 	public Checkbox()
 	{
 		setType("checkbox");
-	}
-	
-	/**
-	 * Sets the checked status of this checkbox.
-	 * @param c true to have this checkbox be checked, false otherwise
-	 */
-	public void setChecked(boolean c)
-	{
-		this.checked = c;
-		if(this.checked)
-		{
-			_setAttribute("checked", "");
-		}
-		else
-		{
-			_removeAttribute("checked");
-		}
-	}
-	
-	public boolean getChecked()
-	{
-		return checked;
 	}
 }
