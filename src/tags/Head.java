@@ -1,5 +1,8 @@
 package tags;
 
+import java.util.Collections;
+import java.util.Map;
+
 import html.CompoundElement;
 import html.Element;
 
@@ -9,17 +12,62 @@ import html.Element;
  *
  */
 public class Head extends CompoundElement
-{	
-	/**
-	 * Constructor. Creates a Head with the given attributes.
-	 * @param attributes key-value attributes
-	 */
-	public Head()
-	{
-		super("head");
-		addElement(new Element("title"));
+{
+	public static final String TAG = "head";
+
+    public Head()
+    {
+        this(null, Collections.emptyMap());
+    }
+
+    public Head(String data)
+    {
+        this(data, Collections.emptyMap());
+    }
+
+    public Head(Map<String, Object> attributes)
+    {
+        this(null, attributes);
+    }
+
+    @SafeVarargs
+    public Head(Map.Entry<String, ?>... entries)
+    {
+        this(null, entries);
+    }
+
+    @SafeVarargs
+    public Head(String data, Map.Entry<String, ?>... entries)
+    {
+        this(data, Map.ofEntries(entries));
+    }
+
+    public Head(String data, Map<String, Object> attributes)
+    {
+        super(TAG, data, attributes);
+        addElement(new Title());
 		addElement(new Meta().setAttribute("charset", "UTF-8"));
-	}
+    }  
+
+    @Override
+    public void setTag(String tag)
+    {
+        throw new UnsupportedOperationException("Cannot change tag");
+    }
+
+    @Override
+    public Head addElements(Element... elements)
+    {
+        super.addElements(elements);
+        return this;
+    }
+
+    @Override
+    public Head addClasses(String... classes)
+    {
+        super.addClasses(classes);
+        return this;
+    }
 	
 	/**
 	 * Adds a script tag into the head with the given source.

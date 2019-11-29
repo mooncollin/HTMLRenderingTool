@@ -353,7 +353,7 @@ public class CompoundElement extends Element
 	 */
 	public void clearElements()
 	{
-		elements.forEach(this::removeElement);
+		elements.clear();
 	}
 	
 	/**
@@ -361,7 +361,7 @@ public class CompoundElement extends Element
 	 */
 	public void clearEndElements()
 	{
-		endElements.forEach(this::removeEndElement);
+		endElements.clear();
 	}
 	
 	/**

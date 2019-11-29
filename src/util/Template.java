@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import tags.Body;
 import tags.Head;
+import tags.Html;
 
 /**
  * A Template represents a whole HTML file. It has the two main
@@ -23,14 +24,19 @@ public class Template
 	 */
 	private Body body;
 	
+	private Html html;
+	
 	/**
 	 * Constructor. Creates an empty head and body
 	 * component.
 	 */
 	public Template()
 	{
+		html = new Html();
 		head = new Head();
 		body = new Body();
+		
+		reAddHeadBody();
 	}
 	
 	/**
@@ -51,14 +57,21 @@ public class Template
 		return body;
 	}
 	
+	public Html getHtmlTag()
+	{
+		return html;
+	}
+	
 	public void setHead(Head head)
 	{
 		this.head = Objects.requireNonNull(head);
+		reAddHeadBody();
 	}
 	
 	public void setBody(Body body)
 	{
 		this.body = Objects.requireNonNull(body);
+		reAddHeadBody();
 	}
 	
 	/**
@@ -69,11 +82,13 @@ public class Template
 	 */
 	public String getHtml()
 	{
-		return String.format("<!DOCTYPE HTML>"
-				+ "<html>"
-				+ "%s"
-				+ "%s"
-				+ "</html>", head, body);
+//		return String.format("<!DOCTYPE HTML>"
+//				+ "<html>"
+//				+ "%s"
+//				+ "%s"
+//				+ "</html>", head, body);
+		
+		return String.format("<!DOCTYPE HTML>\n%s", html);
 	}
 	
 	/**
@@ -84,5 +99,11 @@ public class Template
 	public String toString()
 	{
 		return getHtml();
+	}
+	
+	private void reAddHeadBody()
+	{
+		html.clearAllElements();
+		html.addElements(head, body);
 	}
 }

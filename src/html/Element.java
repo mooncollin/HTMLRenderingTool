@@ -21,9 +21,24 @@ import attributes.Attributes;
  * @author colli
  *
  */
-public class Element implements Attributes.ID, Attributes.OnClick, Attributes.OnDblClick, Attributes.OnMouseDown,
+public class Element implements 
+		Attributes.ID, Attributes.OnClick, Attributes.OnDblClick, Attributes.OnMouseDown,
 		Attributes.OnMouseUp, Attributes.OnMouseOver, Attributes.OnMouseMove, Attributes.OnMouseOut,
-		Attributes.OnKeyPress, Attributes.OnKeyDown, Attributes.OnKeyUp, Attributes.Title, Attributes.Hidden, Attributes.Style
+		Attributes.OnKeyPress, Attributes.OnKeyDown, Attributes.OnKeyUp, Attributes.OnBlur, Attributes.OnError, 
+		Attributes.OnAbort, Attributes.OnAutoComplete, Attributes.OnAutoCompleteError, Attributes.OnCancel,
+		Attributes.OnCanPlay, Attributes.OnCanPlayThrough, Attributes.OnChange, Attributes.OnClose,
+		Attributes.OnContextMenu, Attributes.OnCueChange, Attributes.OnDrag, Attributes.OnDragEnd,
+		Attributes.OnDragEnter, Attributes.OnDragExit, Attributes.OnDragLeave, Attributes.OnDragOver,
+		Attributes.OnDragStart, Attributes.OnDrop, Attributes.OnDurationChange, Attributes.OnEmptied,
+		Attributes.OnEnded, Attributes.OnFocus, Attributes.OnInput, Attributes.OnInvalid,
+		Attributes.OnLoad, Attributes.OnLoadedData, Attributes.OnLoadedMetadata, Attributes.OnLoadStart,
+		Attributes.OnMouseEnter, Attributes.OnMouseLeave, Attributes.OnMouseWheel, Attributes.OnPause,
+		Attributes.OnPlay, Attributes.OnPlaying, Attributes.OnProgress, Attributes.OnRateChange,
+		Attributes.OnReset, Attributes.OnResize, Attributes.OnScroll, Attributes.OnSeeked,
+		Attributes.OnSeeking, Attributes.OnSelect, Attributes.OnShow, Attributes.OnSort,
+		Attributes.OnStalled, Attributes.OnSubmit, Attributes.OnSuspend, Attributes.OnTimeUpdate,
+		Attributes.OnToggle, Attributes.OnVolumeChange, Attributes.OnWaiting, Attributes.Title, Attributes.Hidden, Attributes.Style,
+		Attributes.AccessKey, Attributes.ContentEditable, Attributes.Dir, Attributes.Draggable
 {
 	private static final Pattern STYLE_REGEX = Pattern.compile("\\s*(?<name>.*)?\\s*:\\s*(?<value>.*)?[^'\\\"]*;?[^'\\\"]*\\s*");
 	

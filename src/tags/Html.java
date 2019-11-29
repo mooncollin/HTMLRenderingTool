@@ -7,39 +7,39 @@ import html.CompoundElement;
 import html.Element;
 import attributes.Attributes;
 
-public class Canvas extends CompoundElement
-	implements Attributes.Width, Attributes.Height
+public class Html extends CompoundElement
+	implements Attributes.Lang
 {
-	public static final String TAG = "canvas";
+	public static final String TAG = "html";
 
-    public Canvas()
+    public Html()
     {
         this(null, Collections.emptyMap());
     }
 
-    public Canvas(String data)
+    public Html(String data)
     {
         this(data, Collections.emptyMap());
     }
 
-    public Canvas(Map<String, Object> attributes)
+    public Html(Map<String, Object> attributes)
     {
         this(null, attributes);
     }
 
     @SafeVarargs
-    public Canvas(Map.Entry<String, ?>... entries)
+    public Html(Map.Entry<String, ?>... entries)
     {
         this(null, entries);
     }
 
-    public Canvas(String data, Map<String, Object> attributes)
+    public Html(String data, Map<String, Object> attributes)
     {
         super(TAG, data, attributes);
     }
 
     @SafeVarargs
-    public Canvas(String data, Map.Entry<String, ?>... entries)
+    public Html(String data, Map.Entry<String, ?>... entries)
     {
         super(TAG, data, Map.ofEntries(entries));
     }
@@ -51,14 +51,14 @@ public class Canvas extends CompoundElement
     }
 
     @Override
-    public Canvas addElements(Element... elements)
+    public Html addElements(Element... elements)
     {
         super.addElements(elements);
         return this;
     }
 
     @Override
-    public Canvas addClasses(String... classes)
+    public Html addClasses(String... classes)
     {
         super.addClasses(classes);
         return this;

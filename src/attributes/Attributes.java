@@ -11,7 +11,6 @@ public class Attributes
 		return Map.entry(attributeName, attributeValue);
 	}
 
-
 	public interface ID
 	{
 		public static final String ATTRIBUTE_NAME = "id";
@@ -1657,6 +1656,111 @@ public class Attributes
 	}
 	
 
+	public interface OnMouseEnter
+	{
+		public static final String ATTRIBUTE_NAME = "onmouseenter";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnMouseEnter(String onmouseenter)
+		{
+			if(onmouseenter == null)
+			{
+				_removeAttribute(OnMouseEnter.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnMouseEnter.ATTRIBUTE_NAME, onmouseenter);
+			}
+		}
+		public default String getOnMouseEnter()
+		{
+			String attribute = getAttribute(OnMouseEnter.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onmouseenter)
+		{
+			return Map.entry(OnMouseEnter.ATTRIBUTE_NAME, onmouseenter);
+		}
+	}
+	
+
+	public interface OnMouseLeave
+	{
+		public static final String ATTRIBUTE_NAME = "onmouseleave";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnMouseLeave(String onmouseleave)
+		{
+			if(onmouseleave == null)
+			{
+				_removeAttribute(OnMouseLeave.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnMouseLeave.ATTRIBUTE_NAME, onmouseleave);
+			}
+		}
+		public default String getOnMouseLeave()
+		{
+			String attribute = getAttribute(OnMouseLeave.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onmouseleave)
+		{
+			return Map.entry(OnMouseLeave.ATTRIBUTE_NAME, onmouseleave);
+		}
+	}
+	
+
+	public interface OnMouseWheel
+	{
+		public static final String ATTRIBUTE_NAME = "onmousewheel";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnMouseWheel(String onmousewheel)
+		{
+			if(onmousewheel == null)
+			{
+				_removeAttribute(OnMouseWheel.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnMouseWheel.ATTRIBUTE_NAME, onmousewheel);
+			}
+		}
+		public default String getOnMouseWheel()
+		{
+			String attribute = getAttribute(OnMouseWheel.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onmousewheel)
+		{
+			return Map.entry(OnMouseWheel.ATTRIBUTE_NAME, onmousewheel);
+		}
+	}
+	
+
 	public interface OnKeyPress
 	{
 		public static final String ATTRIBUTE_NAME = "onkeypress";
@@ -2495,4 +2599,2351 @@ public class Attributes
 			return Map.entry(Hidden.ATTRIBUTE_NAME, hidden);
 		}
 	}
+	
+
+	public interface OnAfterPrint
+	{
+		public static final String ATTRIBUTE_NAME = "onafterprint";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnAfterPrint(String onafterprint)
+		{
+			if(onafterprint == null)
+			{
+				_removeAttribute(OnAfterPrint.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnAfterPrint.ATTRIBUTE_NAME, onafterprint);
+			}
+		}
+		public default String getOnAfterPrint()
+		{
+			String attribute = getAttribute(OnAfterPrint.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onafterprint)
+		{
+			return Map.entry(OnAfterPrint.ATTRIBUTE_NAME, onafterprint);
+		}
+	}
+	
+
+	public interface OnBeforePrint
+	{
+		public static final String ATTRIBUTE_NAME = "onbeforeprint";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnBeforePrint(String onbeforeprint)
+		{
+			if(onbeforeprint == null)
+			{
+				_removeAttribute(OnBeforePrint.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnBeforePrint.ATTRIBUTE_NAME, onbeforeprint);
+			}
+		}
+		public default String getOnBeforePrint()
+		{
+			String attribute = getAttribute(OnBeforePrint.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onbeforeprint)
+		{
+			return Map.entry(OnBeforePrint.ATTRIBUTE_NAME, onbeforeprint);
+		}
+	}
+	
+
+	public interface OnBeforeUnload
+	{
+		public static final String ATTRIBUTE_NAME = "onbeforeunload";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnBeforeUnload(String onbeforeunload)
+		{
+			if(onbeforeunload == null)
+			{
+				_removeAttribute(OnBeforeUnload.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnBeforeUnload.ATTRIBUTE_NAME, onbeforeunload);
+			}
+		}
+		public default String getOnBeforeUnload()
+		{
+			String attribute = getAttribute(OnBeforeUnload.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onbeforeunload)
+		{
+			return Map.entry(OnBeforeUnload.ATTRIBUTE_NAME, onbeforeunload);
+		}
+	}
+	
+
+	public interface OnBlur
+	{
+		public static final String ATTRIBUTE_NAME = "onblur";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnBlur(String onblur)
+		{
+			if(onblur == null)
+			{
+				_removeAttribute(OnBlur.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnBlur.ATTRIBUTE_NAME, onblur);
+			}
+		}
+		public default String getOnBlur()
+		{
+			String attribute = getAttribute(OnBlur.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onblur)
+		{
+			return Map.entry(OnBlur.ATTRIBUTE_NAME, onblur);
+		}
+	}
+	
+
+	public interface OnError
+	{
+		public static final String ATTRIBUTE_NAME = "onerror";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnError(String onerror)
+		{
+			if(onerror == null)
+			{
+				_removeAttribute(OnError.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnError.ATTRIBUTE_NAME, onerror);
+			}
+		}
+		public default String getOnError()
+		{
+			String attribute = getAttribute(OnError.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onerror)
+		{
+			return Map.entry(OnError.ATTRIBUTE_NAME, onerror);
+		}
+	}
+	
+
+	public interface OnFocus
+	{
+		public static final String ATTRIBUTE_NAME = "onfocus";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnFocus(String onfocus)
+		{
+			if(onfocus == null)
+			{
+				_removeAttribute(OnFocus.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnFocus.ATTRIBUTE_NAME, onfocus);
+			}
+		}
+		public default String getOnFocus()
+		{
+			String attribute = getAttribute(OnFocus.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onfocus)
+		{
+			return Map.entry(OnFocus.ATTRIBUTE_NAME, onfocus);
+		}
+	}
+	
+
+	public interface OnHashChange
+	{
+		public static final String ATTRIBUTE_NAME = "onhashchange";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnHashChange(String onhashchange)
+		{
+			if(onhashchange == null)
+			{
+				_removeAttribute(OnHashChange.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnHashChange.ATTRIBUTE_NAME, onhashchange);
+			}
+		}
+		public default String getOnHashChange()
+		{
+			String attribute = getAttribute(OnHashChange.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onhashchange)
+		{
+			return Map.entry(OnHashChange.ATTRIBUTE_NAME, onhashchange);
+		}
+	}
+	
+
+	public interface OnLoad
+	{
+		public static final String ATTRIBUTE_NAME = "onload";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnLoad(String onload)
+		{
+			if(onload == null)
+			{
+				_removeAttribute(OnLoad.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnLoad.ATTRIBUTE_NAME, onload);
+			}
+		}
+		public default String getOnLoad()
+		{
+			String attribute = getAttribute(OnLoad.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onload)
+		{
+			return Map.entry(OnLoad.ATTRIBUTE_NAME, onload);
+		}
+	}
+	
+
+	public interface OnMessage
+	{
+		public static final String ATTRIBUTE_NAME = "onmessage";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnMessage(String onmessage)
+		{
+			if(onmessage == null)
+			{
+				_removeAttribute(OnMessage.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnMessage.ATTRIBUTE_NAME, onmessage);
+			}
+		}
+		public default String getOnMessage()
+		{
+			String attribute = getAttribute(OnMessage.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onmessage)
+		{
+			return Map.entry(OnMessage.ATTRIBUTE_NAME, onmessage);
+		}
+	}
+	
+
+	public interface OnOffline
+	{
+		public static final String ATTRIBUTE_NAME = "onoffline";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnOffline(String onoffline)
+		{
+			if(onoffline == null)
+			{
+				_removeAttribute(OnOffline.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnOffline.ATTRIBUTE_NAME, onoffline);
+			}
+		}
+		public default String getOnOffline()
+		{
+			String attribute = getAttribute(OnOffline.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onoffline)
+		{
+			return Map.entry(OnOffline.ATTRIBUTE_NAME, onoffline);
+		}
+	}
+	
+
+	public interface OnOnline
+	{
+		public static final String ATTRIBUTE_NAME = "ononline";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnOnline(String ononline)
+		{
+			if(ononline == null)
+			{
+				_removeAttribute(OnOnline.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnOnline.ATTRIBUTE_NAME, ononline);
+			}
+		}
+		public default String getOnOnline()
+		{
+			String attribute = getAttribute(OnOnline.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String ononline)
+		{
+			return Map.entry(OnOnline.ATTRIBUTE_NAME, ononline);
+		}
+	}
+	
+
+	public interface OnPopState
+	{
+		public static final String ATTRIBUTE_NAME = "onpopstate";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnPopState(String onpopstate)
+		{
+			if(onpopstate == null)
+			{
+				_removeAttribute(OnPopState.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnPopState.ATTRIBUTE_NAME, onpopstate);
+			}
+		}
+		public default String getOnPopState()
+		{
+			String attribute = getAttribute(OnPopState.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onpopstate)
+		{
+			return Map.entry(OnPopState.ATTRIBUTE_NAME, onpopstate);
+		}
+	}
+	
+
+	public interface OnRedo
+	{
+		public static final String ATTRIBUTE_NAME = "onredo";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnRedo(String onredo)
+		{
+			if(onredo == null)
+			{
+				_removeAttribute(OnRedo.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnRedo.ATTRIBUTE_NAME, onredo);
+			}
+		}
+		public default String getOnRedo()
+		{
+			String attribute = getAttribute(OnRedo.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onredo)
+		{
+			return Map.entry(OnRedo.ATTRIBUTE_NAME, onredo);
+		}
+	}
+	
+
+	public interface OnResize
+	{
+		public static final String ATTRIBUTE_NAME = "onresize";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnResize(String onresize)
+		{
+			if(onresize == null)
+			{
+				_removeAttribute(OnResize.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnResize.ATTRIBUTE_NAME, onresize);
+			}
+		}
+		public default String getOnResize()
+		{
+			String attribute = getAttribute(OnResize.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onresize)
+		{
+			return Map.entry(OnResize.ATTRIBUTE_NAME, onresize);
+		}
+	}
+	
+
+	public interface OnStorage
+	{
+		public static final String ATTRIBUTE_NAME = "onstorage";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnStorage(String onstorage)
+		{
+			if(onstorage == null)
+			{
+				_removeAttribute(OnStorage.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnStorage.ATTRIBUTE_NAME, onstorage);
+			}
+		}
+		public default String getOnStorage()
+		{
+			String attribute = getAttribute(OnStorage.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onstorage)
+		{
+			return Map.entry(OnStorage.ATTRIBUTE_NAME, onstorage);
+		}
+	}
+	
+
+	public interface OnUndo
+	{
+		public static final String ATTRIBUTE_NAME = "onundo";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnUndo(String onundo)
+		{
+			if(onundo == null)
+			{
+				_removeAttribute(OnUndo.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnUndo.ATTRIBUTE_NAME, onundo);
+			}
+		}
+		public default String getOnUndo()
+		{
+			String attribute = getAttribute(OnUndo.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onundo)
+		{
+			return Map.entry(OnUndo.ATTRIBUTE_NAME, onundo);
+		}
+	}
+	
+
+	public interface OnUnload
+	{
+		public static final String ATTRIBUTE_NAME = "onunload";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnUnload(String onunload)
+		{
+			if(onunload == null)
+			{
+				_removeAttribute(OnUnload.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnUnload.ATTRIBUTE_NAME, onunload);
+			}
+		}
+		public default String getOnUnload()
+		{
+			String attribute = getAttribute(OnUnload.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onunload)
+		{
+			return Map.entry(OnUnload.ATTRIBUTE_NAME, onunload);
+		}
+	}
+	
+
+	public interface Lang
+	{
+		public static final String ATTRIBUTE_NAME = "lang";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setLang(String lang)
+		{
+			if(lang == null)
+			{
+				_removeAttribute(Lang.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Lang.ATTRIBUTE_NAME, lang);
+			}
+		}
+		public default String getLang()
+		{
+			String attribute = getAttribute(Lang.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String lang)
+		{
+			return Map.entry(Lang.ATTRIBUTE_NAME, lang);
+		}
+	}
+	
+
+	public interface OnAbort
+	{
+		public static final String ATTRIBUTE_NAME = "onabort";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnAbort(String onabort)
+		{
+			if(onabort == null)
+			{
+				_removeAttribute(OnAbort.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnAbort.ATTRIBUTE_NAME, onabort);
+			}
+		}
+		public default String getOnAbort()
+		{
+			String attribute = getAttribute(OnAbort.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onabort)
+		{
+			return Map.entry(OnAbort.ATTRIBUTE_NAME, onabort);
+		}
+	}
+	
+
+	public interface OnAutoComplete
+	{
+		public static final String ATTRIBUTE_NAME = "onautocomplete";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnAutoComplete(String onautocomplete)
+		{
+			if(onautocomplete == null)
+			{
+				_removeAttribute(OnAutoComplete.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnAutoComplete.ATTRIBUTE_NAME, onautocomplete);
+			}
+		}
+		public default String getOnAutoComplete()
+		{
+			String attribute = getAttribute(OnAutoComplete.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onautocomplete)
+		{
+			return Map.entry(OnAutoComplete.ATTRIBUTE_NAME, onautocomplete);
+		}
+	}
+	
+
+	public interface OnAutoCompleteError
+	{
+		public static final String ATTRIBUTE_NAME = "onautocompleteerror";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnAutoCompleteError(String onautocompleteerror)
+		{
+			if(onautocompleteerror == null)
+			{
+				_removeAttribute(OnAutoCompleteError.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnAutoCompleteError.ATTRIBUTE_NAME, onautocompleteerror);
+			}
+		}
+		public default String getOnAutoCompleteError()
+		{
+			String attribute = getAttribute(OnAutoCompleteError.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onautocompleteerror)
+		{
+			return Map.entry(OnAutoCompleteError.ATTRIBUTE_NAME, onautocompleteerror);
+		}
+	}
+	
+
+	public interface OnCancel
+	{
+		public static final String ATTRIBUTE_NAME = "oncancel";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnCancel(String oncancel)
+		{
+			if(oncancel == null)
+			{
+				_removeAttribute(OnCancel.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnCancel.ATTRIBUTE_NAME, oncancel);
+			}
+		}
+		public default String getOnCancel()
+		{
+			String attribute = getAttribute(OnCancel.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String oncancel)
+		{
+			return Map.entry(OnCancel.ATTRIBUTE_NAME, oncancel);
+		}
+	}
+	
+
+	public interface OnCanPlay
+	{
+		public static final String ATTRIBUTE_NAME = "oncanplay";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnCanPlay(String oncanplay)
+		{
+			if(oncanplay == null)
+			{
+				_removeAttribute(OnCanPlay.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnCanPlay.ATTRIBUTE_NAME, oncanplay);
+			}
+		}
+		public default String getOnCanPlay()
+		{
+			String attribute = getAttribute(OnCanPlay.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String oncanplay)
+		{
+			return Map.entry(OnCanPlay.ATTRIBUTE_NAME, oncanplay);
+		}
+	}
+	
+
+	public interface OnCanPlayThrough
+	{
+		public static final String ATTRIBUTE_NAME = "oncanplaythrough";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnCanPlayThrough(String oncanplaythrough)
+		{
+			if(oncanplaythrough == null)
+			{
+				_removeAttribute(OnCanPlayThrough.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnCanPlayThrough.ATTRIBUTE_NAME, oncanplaythrough);
+			}
+		}
+		public default String getOnCanPlayThrough()
+		{
+			String attribute = getAttribute(OnCanPlayThrough.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String oncanplaythrough)
+		{
+			return Map.entry(OnCanPlayThrough.ATTRIBUTE_NAME, oncanplaythrough);
+		}
+	}
+	
+
+	public interface OnClose
+	{
+		public static final String ATTRIBUTE_NAME = "onclose";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnClose(String onclose)
+		{
+			if(onclose == null)
+			{
+				_removeAttribute(OnClose.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnClose.ATTRIBUTE_NAME, onclose);
+			}
+		}
+		public default String getOnClose()
+		{
+			String attribute = getAttribute(OnClose.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onclose)
+		{
+			return Map.entry(OnClose.ATTRIBUTE_NAME, onclose);
+		}
+	}
+	
+
+	public interface OnContextMenu
+	{
+		public static final String ATTRIBUTE_NAME = "oncontextmenu";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnContextMenu(String oncontextmenu)
+		{
+			if(oncontextmenu == null)
+			{
+				_removeAttribute(OnContextMenu.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnContextMenu.ATTRIBUTE_NAME, oncontextmenu);
+			}
+		}
+		public default String getOnContextMenu()
+		{
+			String attribute = getAttribute(OnContextMenu.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String oncontextmenu)
+		{
+			return Map.entry(OnContextMenu.ATTRIBUTE_NAME, oncontextmenu);
+		}
+	}
+	
+
+	public interface OnCueChange
+	{
+		public static final String ATTRIBUTE_NAME = "oncuechange";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnCueChange(String oncuechange)
+		{
+			if(oncuechange == null)
+			{
+				_removeAttribute(OnCueChange.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnCueChange.ATTRIBUTE_NAME, oncuechange);
+			}
+		}
+		public default String getOnCueChange()
+		{
+			String attribute = getAttribute(OnCueChange.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String oncuechange)
+		{
+			return Map.entry(OnCueChange.ATTRIBUTE_NAME, oncuechange);
+		}
+	}
+	
+
+	public interface OnDrag
+	{
+		public static final String ATTRIBUTE_NAME = "ondrag";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnDrag(String ondrag)
+		{
+			if(ondrag == null)
+			{
+				_removeAttribute(OnDrag.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnDrag.ATTRIBUTE_NAME, ondrag);
+			}
+		}
+		public default String getOnDrag()
+		{
+			String attribute = getAttribute(OnDrag.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String ondrag)
+		{
+			return Map.entry(OnDrag.ATTRIBUTE_NAME, ondrag);
+		}
+	}
+	
+
+	public interface OnDragEnd
+	{
+		public static final String ATTRIBUTE_NAME = "ondragend";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnDragEnd(String ondragend)
+		{
+			if(ondragend == null)
+			{
+				_removeAttribute(OnDragEnd.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnDragEnd.ATTRIBUTE_NAME, ondragend);
+			}
+		}
+		public default String getOnDragEnd()
+		{
+			String attribute = getAttribute(OnDragEnd.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String ondragend)
+		{
+			return Map.entry(OnDragEnd.ATTRIBUTE_NAME, ondragend);
+		}
+	}
+	
+
+	public interface OnDragEnter
+	{
+		public static final String ATTRIBUTE_NAME = "ondragenter";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnDragEnter(String ondragenter)
+		{
+			if(ondragenter == null)
+			{
+				_removeAttribute(OnDragEnter.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnDragEnter.ATTRIBUTE_NAME, ondragenter);
+			}
+		}
+		public default String getOnDragEnter()
+		{
+			String attribute = getAttribute(OnDragEnter.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String ondragenter)
+		{
+			return Map.entry(OnDragEnter.ATTRIBUTE_NAME, ondragenter);
+		}
+	}
+	
+
+	public interface OnDragExit
+	{
+		public static final String ATTRIBUTE_NAME = "ondragexit";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnDragExit(String ondragexit)
+		{
+			if(ondragexit == null)
+			{
+				_removeAttribute(OnDragExit.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnDragExit.ATTRIBUTE_NAME, ondragexit);
+			}
+		}
+		public default String getOnDragExit()
+		{
+			String attribute = getAttribute(OnDragExit.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String ondragexit)
+		{
+			return Map.entry(OnDragExit.ATTRIBUTE_NAME, ondragexit);
+		}
+	}
+	
+
+	public interface OnDragLeave
+	{
+		public static final String ATTRIBUTE_NAME = "ondragleave";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnDragLeave(String ondragleave)
+		{
+			if(ondragleave == null)
+			{
+				_removeAttribute(OnDragLeave.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnDragLeave.ATTRIBUTE_NAME, ondragleave);
+			}
+		}
+		public default String getOnDragLeave()
+		{
+			String attribute = getAttribute(OnDragLeave.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String ondragleave)
+		{
+			return Map.entry(OnDragLeave.ATTRIBUTE_NAME, ondragleave);
+		}
+	}
+	
+
+	public interface OnDragOver
+	{
+		public static final String ATTRIBUTE_NAME = "ondragover";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnDragOver(String ondragover)
+		{
+			if(ondragover == null)
+			{
+				_removeAttribute(OnDragOver.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnDragOver.ATTRIBUTE_NAME, ondragover);
+			}
+		}
+		public default String getOnDragOver()
+		{
+			String attribute = getAttribute(OnDragOver.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String ondragover)
+		{
+			return Map.entry(OnDragOver.ATTRIBUTE_NAME, ondragover);
+		}
+	}
+	
+
+	public interface OnDragStart
+	{
+		public static final String ATTRIBUTE_NAME = "ondragstart";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnDragStart(String ondragstart)
+		{
+			if(ondragstart == null)
+			{
+				_removeAttribute(OnDragStart.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnDragStart.ATTRIBUTE_NAME, ondragstart);
+			}
+		}
+		public default String getOnDragStart()
+		{
+			String attribute = getAttribute(OnDragStart.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String ondragstart)
+		{
+			return Map.entry(OnDragStart.ATTRIBUTE_NAME, ondragstart);
+		}
+	}
+	
+
+	public interface OnDrop
+	{
+		public static final String ATTRIBUTE_NAME = "ondrop";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnDrop(String ondrop)
+		{
+			if(ondrop == null)
+			{
+				_removeAttribute(OnDrop.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnDrop.ATTRIBUTE_NAME, ondrop);
+			}
+		}
+		public default String getOnDrop()
+		{
+			String attribute = getAttribute(OnDrop.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String ondrop)
+		{
+			return Map.entry(OnDrop.ATTRIBUTE_NAME, ondrop);
+		}
+	}
+	
+
+	public interface OnChange
+	{
+		public static final String ATTRIBUTE_NAME = "onchange";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnChange(String onchange)
+		{
+			if(onchange == null)
+			{
+				_removeAttribute(OnChange.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnChange.ATTRIBUTE_NAME, onchange);
+			}
+		}
+		public default String getOnChange()
+		{
+			String attribute = getAttribute(OnChange.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onchange)
+		{
+			return Map.entry(OnChange.ATTRIBUTE_NAME, onchange);
+		}
+	}
+	
+
+	public interface OnDurationChange
+	{
+		public static final String ATTRIBUTE_NAME = "ondurationchange";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnDurationChange(String ondurationchange)
+		{
+			if(ondurationchange == null)
+			{
+				_removeAttribute(OnDurationChange.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnDurationChange.ATTRIBUTE_NAME, ondurationchange);
+			}
+		}
+		public default String getOnDurationChange()
+		{
+			String attribute = getAttribute(OnDurationChange.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String ondurationchange)
+		{
+			return Map.entry(OnDurationChange.ATTRIBUTE_NAME, ondurationchange);
+		}
+	}
+	
+
+	public interface OnEmptied
+	{
+		public static final String ATTRIBUTE_NAME = "onemptied";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnEmptied(String onemptied)
+		{
+			if(onemptied == null)
+			{
+				_removeAttribute(OnEmptied.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnEmptied.ATTRIBUTE_NAME, onemptied);
+			}
+		}
+		public default String getOnEmptied()
+		{
+			String attribute = getAttribute(OnEmptied.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onemptied)
+		{
+			return Map.entry(OnEmptied.ATTRIBUTE_NAME, onemptied);
+		}
+	}
+	
+
+	public interface OnEnded
+	{
+		public static final String ATTRIBUTE_NAME = "onended";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnEnded(String onended)
+		{
+			if(onended == null)
+			{
+				_removeAttribute(OnEnded.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnEnded.ATTRIBUTE_NAME, onended);
+			}
+		}
+		public default String getOnEnded()
+		{
+			String attribute = getAttribute(OnEnded.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onended)
+		{
+			return Map.entry(OnEnded.ATTRIBUTE_NAME, onended);
+		}
+	}
+	
+
+	public interface OnInput
+	{
+		public static final String ATTRIBUTE_NAME = "oninput";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnInput(String oninput)
+		{
+			if(oninput == null)
+			{
+				_removeAttribute(OnInput.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnInput.ATTRIBUTE_NAME, oninput);
+			}
+		}
+		public default String getOnInput()
+		{
+			String attribute = getAttribute(OnInput.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String oninput)
+		{
+			return Map.entry(OnInput.ATTRIBUTE_NAME, oninput);
+		}
+	}
+	
+
+	public interface OnInvalid
+	{
+		public static final String ATTRIBUTE_NAME = "oninvalid";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnInvalid(String oninvalid)
+		{
+			if(oninvalid == null)
+			{
+				_removeAttribute(OnInvalid.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnInvalid.ATTRIBUTE_NAME, oninvalid);
+			}
+		}
+		public default String getOnInvalid()
+		{
+			String attribute = getAttribute(OnInvalid.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String oninvalid)
+		{
+			return Map.entry(OnInvalid.ATTRIBUTE_NAME, oninvalid);
+		}
+	}
+	
+
+	public interface OnLoadedData
+	{
+		public static final String ATTRIBUTE_NAME = "onloadeddata";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnLoadedData(String onloadeddata)
+		{
+			if(onloadeddata == null)
+			{
+				_removeAttribute(OnLoadedData.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnLoadedData.ATTRIBUTE_NAME, onloadeddata);
+			}
+		}
+		public default String getOnLoadedData()
+		{
+			String attribute = getAttribute(OnLoadedData.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onloadeddata)
+		{
+			return Map.entry(OnLoadedData.ATTRIBUTE_NAME, onloadeddata);
+		}
+	}
+	
+
+	public interface OnLoadedMetadata
+	{
+		public static final String ATTRIBUTE_NAME = "onloadedmetadata";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnLoadedMetadata(String onloadedmetadata)
+		{
+			if(onloadedmetadata == null)
+			{
+				_removeAttribute(OnLoadedMetadata.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnLoadedMetadata.ATTRIBUTE_NAME, onloadedmetadata);
+			}
+		}
+		public default String getOnLoadedMetadata()
+		{
+			String attribute = getAttribute(OnLoadedMetadata.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onloadedmetadata)
+		{
+			return Map.entry(OnLoadedMetadata.ATTRIBUTE_NAME, onloadedmetadata);
+		}
+	}
+	
+
+	public interface OnLoadStart
+	{
+		public static final String ATTRIBUTE_NAME = "onloadstart";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnLoadStart(String onloadstart)
+		{
+			if(onloadstart == null)
+			{
+				_removeAttribute(OnLoadStart.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnLoadStart.ATTRIBUTE_NAME, onloadstart);
+			}
+		}
+		public default String getOnLoadStart()
+		{
+			String attribute = getAttribute(OnLoadStart.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onloadstart)
+		{
+			return Map.entry(OnLoadStart.ATTRIBUTE_NAME, onloadstart);
+		}
+	}
+	
+
+	public interface OnPause
+	{
+		public static final String ATTRIBUTE_NAME = "onpause";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnPause(String onpause)
+		{
+			if(onpause == null)
+			{
+				_removeAttribute(OnPause.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnPause.ATTRIBUTE_NAME, onpause);
+			}
+		}
+		public default String getOnPause()
+		{
+			String attribute = getAttribute(OnPause.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onpause)
+		{
+			return Map.entry(OnPause.ATTRIBUTE_NAME, onpause);
+		}
+	}
+	
+
+	public interface OnPlay
+	{
+		public static final String ATTRIBUTE_NAME = "onplay";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnPlay(String onplay)
+		{
+			if(onplay == null)
+			{
+				_removeAttribute(OnPlay.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnPlay.ATTRIBUTE_NAME, onplay);
+			}
+		}
+		public default String getOnPlay()
+		{
+			String attribute = getAttribute(OnPlay.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onplay)
+		{
+			return Map.entry(OnPlay.ATTRIBUTE_NAME, onplay);
+		}
+	}
+	
+
+	public interface OnPlaying
+	{
+		public static final String ATTRIBUTE_NAME = "onplaying";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnPlaying(String onplaying)
+		{
+			if(onplaying == null)
+			{
+				_removeAttribute(OnPlaying.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnPlaying.ATTRIBUTE_NAME, onplaying);
+			}
+		}
+		public default String getOnPlaying()
+		{
+			String attribute = getAttribute(OnPlaying.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onplaying)
+		{
+			return Map.entry(OnPlaying.ATTRIBUTE_NAME, onplaying);
+		}
+	}
+	
+
+	public interface OnProgress
+	{
+		public static final String ATTRIBUTE_NAME = "onprogress";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnProgress(String onprogress)
+		{
+			if(onprogress == null)
+			{
+				_removeAttribute(OnProgress.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnProgress.ATTRIBUTE_NAME, onprogress);
+			}
+		}
+		public default String getOnProgress()
+		{
+			String attribute = getAttribute(OnProgress.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onprogress)
+		{
+			return Map.entry(OnProgress.ATTRIBUTE_NAME, onprogress);
+		}
+	}
+	
+
+	public interface OnRateChange
+	{
+		public static final String ATTRIBUTE_NAME = "onratechange";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnRateChange(String onratechange)
+		{
+			if(onratechange == null)
+			{
+				_removeAttribute(OnRateChange.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnRateChange.ATTRIBUTE_NAME, onratechange);
+			}
+		}
+		public default String getOnRateChange()
+		{
+			String attribute = getAttribute(OnRateChange.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onratechange)
+		{
+			return Map.entry(OnRateChange.ATTRIBUTE_NAME, onratechange);
+		}
+	}
+	
+
+	public interface OnReset
+	{
+		public static final String ATTRIBUTE_NAME = "onreset";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnReset(String onreset)
+		{
+			if(onreset == null)
+			{
+				_removeAttribute(OnReset.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnReset.ATTRIBUTE_NAME, onreset);
+			}
+		}
+		public default String getOnReset()
+		{
+			String attribute = getAttribute(OnReset.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onreset)
+		{
+			return Map.entry(OnReset.ATTRIBUTE_NAME, onreset);
+		}
+	}
+	
+
+	public interface OnScroll
+	{
+		public static final String ATTRIBUTE_NAME = "onscroll";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnScroll(String onscroll)
+		{
+			if(onscroll == null)
+			{
+				_removeAttribute(OnScroll.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnScroll.ATTRIBUTE_NAME, onscroll);
+			}
+		}
+		public default String getOnScroll()
+		{
+			String attribute = getAttribute(OnScroll.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onscroll)
+		{
+			return Map.entry(OnScroll.ATTRIBUTE_NAME, onscroll);
+		}
+	}
+	
+
+	public interface OnSeeked
+	{
+		public static final String ATTRIBUTE_NAME = "onseeked";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnSeeked(String onseeked)
+		{
+			if(onseeked == null)
+			{
+				_removeAttribute(OnSeeked.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnSeeked.ATTRIBUTE_NAME, onseeked);
+			}
+		}
+		public default String getOnSeeked()
+		{
+			String attribute = getAttribute(OnSeeked.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onseeked)
+		{
+			return Map.entry(OnSeeked.ATTRIBUTE_NAME, onseeked);
+		}
+	}
+	
+
+	public interface OnSeeking
+	{
+		public static final String ATTRIBUTE_NAME = "onseeking";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnSeeking(String onseeking)
+		{
+			if(onseeking == null)
+			{
+				_removeAttribute(OnSeeking.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnSeeking.ATTRIBUTE_NAME, onseeking);
+			}
+		}
+		public default String getOnSeeking()
+		{
+			String attribute = getAttribute(OnSeeking.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onseeking)
+		{
+			return Map.entry(OnSeeking.ATTRIBUTE_NAME, onseeking);
+		}
+	}
+	
+
+	public interface OnSelect
+	{
+		public static final String ATTRIBUTE_NAME = "onselect";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnSelect(String onselect)
+		{
+			if(onselect == null)
+			{
+				_removeAttribute(OnSelect.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnSelect.ATTRIBUTE_NAME, onselect);
+			}
+		}
+		public default String getOnSelect()
+		{
+			String attribute = getAttribute(OnSelect.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onselect)
+		{
+			return Map.entry(OnSelect.ATTRIBUTE_NAME, onselect);
+		}
+	}
+	
+
+	public interface OnShow
+	{
+		public static final String ATTRIBUTE_NAME = "onshow";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnShow(String onshow)
+		{
+			if(onshow == null)
+			{
+				_removeAttribute(OnShow.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnShow.ATTRIBUTE_NAME, onshow);
+			}
+		}
+		public default String getOnShow()
+		{
+			String attribute = getAttribute(OnShow.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onshow)
+		{
+			return Map.entry(OnShow.ATTRIBUTE_NAME, onshow);
+		}
+	}
+	
+
+	public interface OnSort
+	{
+		public static final String ATTRIBUTE_NAME = "onsort";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnSort(String onsort)
+		{
+			if(onsort == null)
+			{
+				_removeAttribute(OnSort.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnSort.ATTRIBUTE_NAME, onsort);
+			}
+		}
+		public default String getOnSort()
+		{
+			String attribute = getAttribute(OnSort.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onsort)
+		{
+			return Map.entry(OnSort.ATTRIBUTE_NAME, onsort);
+		}
+	}
+	
+
+	public interface OnStalled
+	{
+		public static final String ATTRIBUTE_NAME = "onstalled";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnStalled(String onstalled)
+		{
+			if(onstalled == null)
+			{
+				_removeAttribute(OnStalled.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnStalled.ATTRIBUTE_NAME, onstalled);
+			}
+		}
+		public default String getOnStalled()
+		{
+			String attribute = getAttribute(OnStalled.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onstalled)
+		{
+			return Map.entry(OnStalled.ATTRIBUTE_NAME, onstalled);
+		}
+	}
+	
+
+	public interface OnSubmit
+	{
+		public static final String ATTRIBUTE_NAME = "onsubmit";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnSubmit(String onsubmit)
+		{
+			if(onsubmit == null)
+			{
+				_removeAttribute(OnSubmit.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnSubmit.ATTRIBUTE_NAME, onsubmit);
+			}
+		}
+		public default String getOnSubmit()
+		{
+			String attribute = getAttribute(OnSubmit.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onsubmit)
+		{
+			return Map.entry(OnSubmit.ATTRIBUTE_NAME, onsubmit);
+		}
+	}
+	
+
+	public interface OnSuspend
+	{
+		public static final String ATTRIBUTE_NAME = "onsuspend";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnSuspend(String onsuspend)
+		{
+			if(onsuspend == null)
+			{
+				_removeAttribute(OnSuspend.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnSuspend.ATTRIBUTE_NAME, onsuspend);
+			}
+		}
+		public default String getOnSuspend()
+		{
+			String attribute = getAttribute(OnSuspend.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onsuspend)
+		{
+			return Map.entry(OnSuspend.ATTRIBUTE_NAME, onsuspend);
+		}
+	}
+	
+
+	public interface OnTimeUpdate
+	{
+		public static final String ATTRIBUTE_NAME = "ontimeupdate";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnTimeUpdate(String ontimeupdate)
+		{
+			if(ontimeupdate == null)
+			{
+				_removeAttribute(OnTimeUpdate.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnTimeUpdate.ATTRIBUTE_NAME, ontimeupdate);
+			}
+		}
+		public default String getOnTimeUpdate()
+		{
+			String attribute = getAttribute(OnTimeUpdate.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String ontimeupdate)
+		{
+			return Map.entry(OnTimeUpdate.ATTRIBUTE_NAME, ontimeupdate);
+		}
+	}
+	
+
+	public interface OnToggle
+	{
+		public static final String ATTRIBUTE_NAME = "ontoggle";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnToggle(String ontoggle)
+		{
+			if(ontoggle == null)
+			{
+				_removeAttribute(OnToggle.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnToggle.ATTRIBUTE_NAME, ontoggle);
+			}
+		}
+		public default String getOnToggle()
+		{
+			String attribute = getAttribute(OnToggle.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String ontoggle)
+		{
+			return Map.entry(OnToggle.ATTRIBUTE_NAME, ontoggle);
+		}
+	}
+	
+
+	public interface OnVolumeChange
+	{
+		public static final String ATTRIBUTE_NAME = "onvolumechange";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnVolumeChange(String onvolumechange)
+		{
+			if(onvolumechange == null)
+			{
+				_removeAttribute(OnVolumeChange.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnVolumeChange.ATTRIBUTE_NAME, onvolumechange);
+			}
+		}
+		public default String getOnVolumeChange()
+		{
+			String attribute = getAttribute(OnVolumeChange.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onvolumechange)
+		{
+			return Map.entry(OnVolumeChange.ATTRIBUTE_NAME, onvolumechange);
+		}
+	}
+	
+
+	public interface OnWaiting
+	{
+		public static final String ATTRIBUTE_NAME = "onwaiting";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setOnWaiting(String onwaiting)
+		{
+			if(onwaiting == null)
+			{
+				_removeAttribute(OnWaiting.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(OnWaiting.ATTRIBUTE_NAME, onwaiting);
+			}
+		}
+		public default String getOnWaiting()
+		{
+			String attribute = getAttribute(OnWaiting.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String onwaiting)
+		{
+			return Map.entry(OnWaiting.ATTRIBUTE_NAME, onwaiting);
+		}
+	}
+	
+
+	public interface AccessKey
+	{
+		public static final String ATTRIBUTE_NAME = "accesskey";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setAccessKey(String accesskey)
+		{
+			if(accesskey == null)
+			{
+				_removeAttribute(AccessKey.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(AccessKey.ATTRIBUTE_NAME, accesskey);
+			}
+		}
+		public default String getAccessKey()
+		{
+			String attribute = getAttribute(AccessKey.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String accesskey)
+		{
+			return Map.entry(AccessKey.ATTRIBUTE_NAME, accesskey);
+		}
+	}
+	
+
+	public interface ContentEditable
+	{
+		public static final String ATTRIBUTE_NAME = "contenteditable";
+		public static final Class<Boolean> ATTRIBUTE_TYPE = Boolean.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setContentEditable(Boolean contenteditable)
+		{
+			if(contenteditable == null)
+			{
+				_removeAttribute(ContentEditable.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(ContentEditable.ATTRIBUTE_NAME, String.valueOf(contenteditable));
+			}
+		}
+		public default Boolean getContentEditable()
+		{
+			String attribute = getAttribute(ContentEditable.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return Boolean.valueOf(attribute);
+		}
+
+		public static Map.Entry<String, Boolean> makeAttribute(Boolean contenteditable)
+		{
+			return Map.entry(ContentEditable.ATTRIBUTE_NAME, contenteditable);
+		}
+	}
+	
+
+	public interface Dir
+	{
+		public static final String ATTRIBUTE_NAME = "dir";
+		public static final Class<String> ATTRIBUTE_TYPE = String.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setDir(String dir)
+		{
+			if(dir == null)
+			{
+				_removeAttribute(Dir.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Dir.ATTRIBUTE_NAME, dir);
+			}
+		}
+		public default String getDir()
+		{
+			String attribute = getAttribute(Dir.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return null;
+			}
+			return attribute;
+		}
+
+		public static Map.Entry<String, String> makeAttribute(String dir)
+		{
+			return Map.entry(Dir.ATTRIBUTE_NAME, dir);
+		}
+	}
+	
+
+	public interface Draggable
+	{
+		public static final String ATTRIBUTE_NAME = "draggable";
+		public static final Class<Boolean> ATTRIBUTE_TYPE = Boolean.class;
+		public void _removeAttribute(String name);
+		public void _setAttribute(String name, String e);
+		public String getAttribute(String name);
+		public default void setDraggable(Boolean draggable)
+		{
+			if(!draggable)
+			{
+				_removeAttribute(Draggable.ATTRIBUTE_NAME);
+			}
+			else
+			{
+				_setAttribute(Draggable.ATTRIBUTE_NAME, "");
+			}
+		}
+		public default Boolean getDraggable()
+		{
+			String attribute = getAttribute(Draggable.ATTRIBUTE_NAME);
+			if (attribute == null)
+			{
+				return false;
+			}
+			return true;
+		}
+
+		public static Map.Entry<String, Boolean> makeAttribute(Boolean draggable)
+		{
+			return Map.entry(Draggable.ATTRIBUTE_NAME, draggable);
+		}
+	}
+	
+
 }

@@ -3,6 +3,7 @@ package tags;
 import html.CompoundElement;
 import html.Element;
 
+import java.util.Collections;
 import java.util.Map;
 
 import attributes.Attributes;
@@ -16,12 +17,12 @@ public class TextArea extends CompoundElement implements Attributes.AutoCapitali
 
     public TextArea()
     {
-        this(null, null);
+        this(null, Collections.emptyMap());
     }
 
     public TextArea(String data)
     {
-        this(data, null);
+        this(data, Collections.emptyMap());
     }
 
     public TextArea(Map<String, Object> attributes)
@@ -29,10 +30,22 @@ public class TextArea extends CompoundElement implements Attributes.AutoCapitali
         this(null, attributes);
     }
 
+    @SafeVarargs
+    public TextArea(Map.Entry<String, ?>... entries)
+    {
+        this(null, entries);
+    }
+
+    @SafeVarargs
+    public TextArea(String data, Map.Entry<String, ?>... entries)
+    {
+        this(data, Map.ofEntries(entries));
+    }
+
     public TextArea(String data, Map<String, Object> attributes)
     {
         super(TAG, data, attributes);
-    }
+    }  
 
     @Override
     public void setTag(String tag)
