@@ -196,14 +196,14 @@ public class CompoundElement extends Element
 	 * @param index location to add the element into
 	 * @param e element to add
 	 */
-	public void addElement(int index, Element e)
+	public CompoundElement addElement(int index, Element e)
 	{
-		if(e == null)
+		if(e != null)
 		{
-			throw new NullPointerException();
+			elements.add(index, e);
 		}
 		
-		elements.add(index, e);
+		return this;
 	}
 	
 	/**
@@ -212,21 +212,22 @@ public class CompoundElement extends Element
 	 */
 	public CompoundElement addElement(Element e)
 	{
-		if(e == null)
+		if(e != null)
 		{
-			throw new NullPointerException();
+			elements.add(e);
 		}
-		
-		elements.add(e);
 		
 		return this;
 	}
 	
 	public CompoundElement addElements(Element... elements)
 	{
-		for(var e : elements)
+		if(elements != null)
 		{
-			addElement(e);
+			for(var e : elements)
+			{
+				addElement(e);
+			}
 		}
 		
 		return this;
@@ -382,9 +383,12 @@ public class CompoundElement extends Element
 	@Override
 	public CompoundElement addClasses(String... classes)
 	{
-		for (var c : classes)
+		if(classes != null)
 		{
-			addClass(c);
+			for (var c : classes)
+			{
+				addClass(c);
+			}
 		}
 		
 		return this;

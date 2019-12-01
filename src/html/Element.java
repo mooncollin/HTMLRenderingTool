@@ -1,12 +1,15 @@
 package html;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.TreeMap;
 import java.util.regex.Pattern;
 
 import attributes.Attributes;
@@ -47,6 +50,8 @@ public class Element implements
 	 * attributes in the opening tag of the html, such as an href to an 'a' tag.
 	 */
 	private Map<String, String> attributes;
+	
+	private Map<String, Method> setMethods;
 
 	/**
 	 * A list of the currently used classes for the "class" attribute. This is used
@@ -95,11 +100,40 @@ public class Element implements
 		this(tag, null, attributes);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public Element(String tag, String data, Map<String, Object> attributes)
 	{
-		this.attributes = new TreeMap<String, String>();
+		this.attributes = new HashMap<String, String>();
 		this.classes = new LinkedList<String>();
 		this.styles = new Styles();
+		this.setMethods = new HashMap<String, Method>();
+		
+		var allInterfaces = new HashSet<Class<?>>();
+		
+		var currentClass = getClass();
+		
+		while(currentClass != null)
+		{
+			allInterfaces.add(currentClass);
+			allInterfaces.addAll(Arrays.asList(currentClass.getInterfaces()));
+			currentClass = (Class<? extends Element>) currentClass.getSuperclass();
+		}
+		
+		allInterfaces.stream()
+			  .forEach(clazz -> {
+				  try
+				{
+					var className = clazz.getSimpleName();
+					var attributeType = (Class<?>) clazz.getField("ATTRIBUTE_TYPE").get(null);
+					var attributeName = String.class.cast(clazz.getField("ATTRIBUTE_NAME").get(null));
+					var method = clazz.getMethod(String.format("set%s", className), attributeType);
+					
+					this.setMethods.put(attributeName, method);
+				} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException | NoSuchMethodException e)
+				{
+				}
+			  });
+		
 		_setTag(tag);
 		setData(data);
 		
@@ -184,9 +218,12 @@ public class Element implements
 	 */
 	public Element addClasses(String... classes)
 	{
-		for (var c : classes)
+		if(classes != null)
 		{
-			addClass(c);
+			for (var c : classes)
+			{
+				addClass(c);
+			}
 		}
 		
 		return this;
@@ -200,8 +237,11 @@ public class Element implements
 	 */
 	public Element addClass(String classString)
 	{
-		classes.add(Objects.requireNonNull(classString));
-		_setAttribute("class", String.join(" ", classes));
+		if(classString != null && !classString.isEmpty())
+		{
+			classes.add(Objects.requireNonNull(classString));
+			_setAttribute("class", String.join(" ", classes));
+		}
 		return this;
 	}
 
@@ -213,8 +253,11 @@ public class Element implements
 	 */
 	public Element removeClass(String classString)
 	{
-		classes.remove(Objects.requireNonNull(classString));
-		_setAttribute("class", String.join(" ", classes));
+		if(classString != null && !classString.isEmpty())
+		{
+			classes.remove(Objects.requireNonNull(classString));
+			_setAttribute("class", String.join(" ", classes));
+		}
 		return this;
 	}
 
@@ -273,12 +316,26 @@ public class Element implements
 	@SuppressWarnings("unchecked")
 	public Element addAttributes(Map.Entry<String, ?>... entries)
 	{
-		return addAttributes(Map.ofEntries(entries));
+		if(entries == null)
+		{
+			return this;
+		}
+		
+		for(var entry : entries)
+		{
+			setAttribute(entry);
+		}
+		
+		return this;
 	}
 	
-	public Element setAttribute(Map.Entry<String, Object> attribute)
+	public Element setAttribute(Map.Entry<String, ?> attribute)
 	{
-		setAttribute(attribute.getKey(), attribute.getValue());
+		if(attribute != null)
+		{
+			setAttribute(attribute.getKey(), attribute.getValue());
+		}
+		
 		return this;
 	}
 
@@ -313,7 +370,7 @@ public class Element implements
 				}
 			}
 		}
-		else if(key == "style")
+		else if(key.equals("style"))
 		{
 			var m = STYLE_REGEX.matcher(String.valueOf(value));
 			while(m.find())
@@ -321,6 +378,18 @@ public class Element implements
 				String styleName = m.group("name");
 				String styleValue = m.group("value");
 				styles.addStyle(styleName, styleValue);
+			}
+		}
+		else if(setMethods.containsKey(key))
+		{
+			var method = setMethods.get(key);
+			var parameterType = method.getParameterTypes()[0];
+			try
+			{
+				method.invoke(this, parameterType.cast(value));
+			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
+			{
+				throw new RuntimeException(e.getMessage());
 			}
 		}
 		else

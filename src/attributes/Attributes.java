@@ -4,8 +4,6 @@ import java.util.Map;
 
 public class Attributes
 {
-	public static final String GET_ENTRY_NAME = "getEntry";
-	
 	public static final <T> Map.Entry<String, T> makeAttribute(String attributeName, T attributeValue)
 	{
 		return Map.entry(attributeName, attributeValue);
@@ -32,7 +30,7 @@ public class Attributes
 		public default String getID()
 		{
 			String attribute = getAttribute(ID.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -67,7 +65,7 @@ public class Attributes
 		public default Boolean getChecked()
 		{
 			String attribute = getAttribute(Checked.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Boolean.valueOf(attribute) == false)
 			{
 				return false;
 			}
@@ -102,7 +100,7 @@ public class Attributes
 		public default Boolean getMultiple()
 		{
 			String attribute = getAttribute(Multiple.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Boolean.valueOf(attribute) == false)
 			{
 				return false;
 			}
@@ -137,7 +135,7 @@ public class Attributes
 		public default Integer getMinLength()
 		{
 			String attribute = getAttribute(MinLength.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Integer.valueOf(attribute) == -1)
 			{
 				return -1;
 			}
@@ -172,7 +170,7 @@ public class Attributes
 		public default Integer getMaxLength()
 		{
 			String attribute = getAttribute(MaxLength.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Integer.valueOf(attribute) == -1)
 			{
 				return -1;
 			}
@@ -207,7 +205,7 @@ public class Attributes
 		public default Integer getSize()
 		{
 			String attribute = getAttribute(Size.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Integer.valueOf(attribute) == -1)
 			{
 				return -1;
 			}
@@ -242,7 +240,7 @@ public class Attributes
 		public default String getPattern()
 		{
 			String attribute = getAttribute(Pattern.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -277,7 +275,7 @@ public class Attributes
 		public default String getPlaceHolder()
 		{
 			String attribute = getAttribute(PlaceHolder.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -312,7 +310,7 @@ public class Attributes
 		public default String getSpellCheck()
 		{
 			String attribute = getAttribute(SpellCheck.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -347,7 +345,7 @@ public class Attributes
 		public default Boolean getRequired()
 		{
 			String attribute = getAttribute(Required.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Boolean.valueOf(attribute) == false)
 			{
 				return false;
 			}
@@ -382,7 +380,7 @@ public class Attributes
 		public default Boolean getAutoFocus()
 		{
 			String attribute = getAttribute(AutoFocus.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Boolean.valueOf(attribute) == false)
 			{
 				return false;
 			}
@@ -417,7 +415,7 @@ public class Attributes
 		public default Boolean getDisabled()
 		{
 			String attribute = getAttribute(Disabled.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Boolean.valueOf(attribute) == false)
 			{
 				return false;
 			}
@@ -452,7 +450,7 @@ public class Attributes
 		public default String getAutoComplete()
 		{
 			String attribute = getAttribute(AutoComplete.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -487,7 +485,7 @@ public class Attributes
 		public default String getForm()
 		{
 			String attribute = getAttribute(Form.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -522,7 +520,7 @@ public class Attributes
 		public default String getList()
 		{
 			String attribute = getAttribute(List.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -557,7 +555,7 @@ public class Attributes
 		public default String getName()
 		{
 			String attribute = getAttribute(Name.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -592,7 +590,7 @@ public class Attributes
 		public default Boolean getReadOnly()
 		{
 			String attribute = getAttribute(ReadOnly.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Boolean.valueOf(attribute) == false)
 			{
 				return false;
 			}
@@ -627,7 +625,7 @@ public class Attributes
 		public default Integer getTabIndex()
 		{
 			String attribute = getAttribute(TabIndex.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Integer.valueOf(attribute) == -1)
 			{
 				return -1;
 			}
@@ -662,7 +660,7 @@ public class Attributes
 		public default String getValue()
 		{
 			String attribute = getAttribute(Value.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -697,7 +695,7 @@ public class Attributes
 		public default String getAccept()
 		{
 			String attribute = getAttribute(Accept.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -732,7 +730,7 @@ public class Attributes
 		public default String getCapture()
 		{
 			String attribute = getAttribute(Capture.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -767,7 +765,7 @@ public class Attributes
 		public default String getAcceptCharset()
 		{
 			String attribute = getAttribute(AcceptCharset.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -802,7 +800,7 @@ public class Attributes
 		public default String getAction()
 		{
 			String attribute = getAttribute(Action.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -837,7 +835,7 @@ public class Attributes
 		public default String getAutoCapitalize()
 		{
 			String attribute = getAttribute(AutoCapitalize.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -872,7 +870,7 @@ public class Attributes
 		public default String getEnctype()
 		{
 			String attribute = getAttribute(Enctype.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -907,7 +905,7 @@ public class Attributes
 		public default String getMethod()
 		{
 			String attribute = getAttribute(Method.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -942,7 +940,7 @@ public class Attributes
 		public default Boolean getNoValidate()
 		{
 			String attribute = getAttribute(NoValidate.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Boolean.valueOf(attribute) == false)
 			{
 				return false;
 			}
@@ -977,7 +975,7 @@ public class Attributes
 		public default String getTarget()
 		{
 			String attribute = getAttribute(Target.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -1012,7 +1010,7 @@ public class Attributes
 		public default String getAlt()
 		{
 			String attribute = getAttribute(Alt.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -1047,7 +1045,7 @@ public class Attributes
 		public default String getFormAction()
 		{
 			String attribute = getAttribute(FormAction.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -1082,7 +1080,7 @@ public class Attributes
 		public default String getFormEnctype()
 		{
 			String attribute = getAttribute(FormEnctype.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -1117,7 +1115,7 @@ public class Attributes
 		public default String getFormMethod()
 		{
 			String attribute = getAttribute(FormMethod.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -1152,7 +1150,7 @@ public class Attributes
 		public default String getFormTarget()
 		{
 			String attribute = getAttribute(FormTarget.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -1187,7 +1185,7 @@ public class Attributes
 		public default Boolean getFormNoValidate()
 		{
 			String attribute = getAttribute(FormNoValidate.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Boolean.valueOf(attribute) == false)
 			{
 				return false;
 			}
@@ -1222,7 +1220,7 @@ public class Attributes
 		public default Integer getHeight()
 		{
 			String attribute = getAttribute(Height.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Integer.valueOf(attribute) == -1)
 			{
 				return -1;
 			}
@@ -1257,7 +1255,7 @@ public class Attributes
 		public default Integer getWidth()
 		{
 			String attribute = getAttribute(Width.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Integer.valueOf(attribute) == -1)
 			{
 				return -1;
 			}
@@ -1292,7 +1290,7 @@ public class Attributes
 		public default String getSrc()
 		{
 			String attribute = getAttribute(Src.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -1327,7 +1325,7 @@ public class Attributes
 		public default Double getMax()
 		{
 			String attribute = getAttribute(Max.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Double.valueOf(attribute) == Double.MAX_VALUE)
 			{
 				return Double.MAX_VALUE;
 			}
@@ -1362,7 +1360,7 @@ public class Attributes
 		public default Double getMin()
 		{
 			String attribute = getAttribute(Min.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Double.valueOf(attribute) == Double.MAX_VALUE)
 			{
 				return Double.MAX_VALUE;
 			}
@@ -1397,7 +1395,7 @@ public class Attributes
 		public default Double getStep()
 		{
 			String attribute = getAttribute(Step.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Double.valueOf(attribute) == -1d)
 			{
 				return -1d;
 			}
@@ -1432,7 +1430,7 @@ public class Attributes
 		public default String getOnClick()
 		{
 			String attribute = getAttribute(OnClick.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -1467,7 +1465,7 @@ public class Attributes
 		public default String getOnDblClick()
 		{
 			String attribute = getAttribute(OnDblClick.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -1502,7 +1500,7 @@ public class Attributes
 		public default String getOnMouseDown()
 		{
 			String attribute = getAttribute(OnMouseDown.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -1537,7 +1535,7 @@ public class Attributes
 		public default String getOnMouseUp()
 		{
 			String attribute = getAttribute(OnMouseUp.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -1572,7 +1570,7 @@ public class Attributes
 		public default String getOnMouseOver()
 		{
 			String attribute = getAttribute(OnMouseOver.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -1607,7 +1605,7 @@ public class Attributes
 		public default String getOnMouseMove()
 		{
 			String attribute = getAttribute(OnMouseMove.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -1642,7 +1640,7 @@ public class Attributes
 		public default String getOnMouseOut()
 		{
 			String attribute = getAttribute(OnMouseOut.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -1677,7 +1675,7 @@ public class Attributes
 		public default String getOnMouseEnter()
 		{
 			String attribute = getAttribute(OnMouseEnter.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -1712,7 +1710,7 @@ public class Attributes
 		public default String getOnMouseLeave()
 		{
 			String attribute = getAttribute(OnMouseLeave.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -1747,7 +1745,7 @@ public class Attributes
 		public default String getOnMouseWheel()
 		{
 			String attribute = getAttribute(OnMouseWheel.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -1782,7 +1780,7 @@ public class Attributes
 		public default String getOnKeyPress()
 		{
 			String attribute = getAttribute(OnKeyPress.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -1817,7 +1815,7 @@ public class Attributes
 		public default String getOnKeyDown()
 		{
 			String attribute = getAttribute(OnKeyDown.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -1852,7 +1850,7 @@ public class Attributes
 		public default String getOnKeyUp()
 		{
 			String attribute = getAttribute(OnKeyUp.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -1887,7 +1885,7 @@ public class Attributes
 		public default String getStyle()
 		{
 			String attribute = getAttribute(Style.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -1922,7 +1920,7 @@ public class Attributes
 		public default String getTitle()
 		{
 			String attribute = getAttribute(Title.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -1957,7 +1955,7 @@ public class Attributes
 		public default String getHref()
 		{
 			String attribute = getAttribute(Href.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -1992,7 +1990,7 @@ public class Attributes
 		public default Boolean getAsync()
 		{
 			String attribute = getAttribute(Async.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Boolean.valueOf(attribute) == false)
 			{
 				return false;
 			}
@@ -2027,7 +2025,7 @@ public class Attributes
 		public default String getCrossOrigin()
 		{
 			String attribute = getAttribute(CrossOrigin.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -2062,7 +2060,7 @@ public class Attributes
 		public default Boolean getDefer()
 		{
 			String attribute = getAttribute(Defer.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Boolean.valueOf(attribute) == false)
 			{
 				return false;
 			}
@@ -2097,7 +2095,7 @@ public class Attributes
 		public default String getIntegrity()
 		{
 			String attribute = getAttribute(Integrity.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -2132,7 +2130,7 @@ public class Attributes
 		public default Boolean getNoModule()
 		{
 			String attribute = getAttribute(NoModule.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Boolean.valueOf(attribute) == false)
 			{
 				return false;
 			}
@@ -2167,7 +2165,7 @@ public class Attributes
 		public default String getNonce()
 		{
 			String attribute = getAttribute(Nonce.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -2202,7 +2200,7 @@ public class Attributes
 		public default String getReferrerPolicy()
 		{
 			String attribute = getAttribute(ReferrerPolicy.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -2237,7 +2235,7 @@ public class Attributes
 		public default String getType()
 		{
 			String attribute = getAttribute(Type.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -2272,7 +2270,7 @@ public class Attributes
 		public default String getAs()
 		{
 			String attribute = getAttribute(As.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -2307,7 +2305,7 @@ public class Attributes
 		public default String getHrefLang()
 		{
 			String attribute = getAttribute(HrefLang.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -2342,7 +2340,7 @@ public class Attributes
 		public default String getImportance()
 		{
 			String attribute = getAttribute(Importance.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -2377,7 +2375,7 @@ public class Attributes
 		public default String getMedia()
 		{
 			String attribute = getAttribute(Media.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -2412,7 +2410,7 @@ public class Attributes
 		public default String getRel()
 		{
 			String attribute = getAttribute(Rel.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -2447,7 +2445,7 @@ public class Attributes
 		public default Double getSizes()
 		{
 			String attribute = getAttribute(Sizes.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Double.valueOf(attribute) == Double.MAX_VALUE)
 			{
 				return Double.MAX_VALUE;
 			}
@@ -2482,7 +2480,7 @@ public class Attributes
 		public default Integer getCols()
 		{
 			String attribute = getAttribute(Cols.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Integer.valueOf(attribute) == -1)
 			{
 				return -1;
 			}
@@ -2517,7 +2515,7 @@ public class Attributes
 		public default Integer getRows()
 		{
 			String attribute = getAttribute(Rows.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Integer.valueOf(attribute) == -1)
 			{
 				return -1;
 			}
@@ -2552,7 +2550,7 @@ public class Attributes
 		public default String getWrap()
 		{
 			String attribute = getAttribute(Wrap.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -2587,7 +2585,7 @@ public class Attributes
 		public default Boolean getHidden()
 		{
 			String attribute = getAttribute(Hidden.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Boolean.valueOf(attribute) == false)
 			{
 				return false;
 			}
@@ -2622,7 +2620,7 @@ public class Attributes
 		public default String getOnAfterPrint()
 		{
 			String attribute = getAttribute(OnAfterPrint.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -2657,7 +2655,7 @@ public class Attributes
 		public default String getOnBeforePrint()
 		{
 			String attribute = getAttribute(OnBeforePrint.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -2692,7 +2690,7 @@ public class Attributes
 		public default String getOnBeforeUnload()
 		{
 			String attribute = getAttribute(OnBeforeUnload.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -2727,7 +2725,7 @@ public class Attributes
 		public default String getOnBlur()
 		{
 			String attribute = getAttribute(OnBlur.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -2762,7 +2760,7 @@ public class Attributes
 		public default String getOnError()
 		{
 			String attribute = getAttribute(OnError.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -2797,7 +2795,7 @@ public class Attributes
 		public default String getOnFocus()
 		{
 			String attribute = getAttribute(OnFocus.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -2832,7 +2830,7 @@ public class Attributes
 		public default String getOnHashChange()
 		{
 			String attribute = getAttribute(OnHashChange.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -2867,7 +2865,7 @@ public class Attributes
 		public default String getOnLoad()
 		{
 			String attribute = getAttribute(OnLoad.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -2902,7 +2900,7 @@ public class Attributes
 		public default String getOnMessage()
 		{
 			String attribute = getAttribute(OnMessage.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -2937,7 +2935,7 @@ public class Attributes
 		public default String getOnOffline()
 		{
 			String attribute = getAttribute(OnOffline.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -2972,7 +2970,7 @@ public class Attributes
 		public default String getOnOnline()
 		{
 			String attribute = getAttribute(OnOnline.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3007,7 +3005,7 @@ public class Attributes
 		public default String getOnPopState()
 		{
 			String attribute = getAttribute(OnPopState.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3042,7 +3040,7 @@ public class Attributes
 		public default String getOnRedo()
 		{
 			String attribute = getAttribute(OnRedo.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3077,7 +3075,7 @@ public class Attributes
 		public default String getOnResize()
 		{
 			String attribute = getAttribute(OnResize.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3112,7 +3110,7 @@ public class Attributes
 		public default String getOnStorage()
 		{
 			String attribute = getAttribute(OnStorage.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3147,7 +3145,7 @@ public class Attributes
 		public default String getOnUndo()
 		{
 			String attribute = getAttribute(OnUndo.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3182,7 +3180,7 @@ public class Attributes
 		public default String getOnUnload()
 		{
 			String attribute = getAttribute(OnUnload.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3217,7 +3215,7 @@ public class Attributes
 		public default String getLang()
 		{
 			String attribute = getAttribute(Lang.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3252,7 +3250,7 @@ public class Attributes
 		public default String getOnAbort()
 		{
 			String attribute = getAttribute(OnAbort.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3287,7 +3285,7 @@ public class Attributes
 		public default String getOnAutoComplete()
 		{
 			String attribute = getAttribute(OnAutoComplete.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3322,7 +3320,7 @@ public class Attributes
 		public default String getOnAutoCompleteError()
 		{
 			String attribute = getAttribute(OnAutoCompleteError.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3357,7 +3355,7 @@ public class Attributes
 		public default String getOnCancel()
 		{
 			String attribute = getAttribute(OnCancel.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3392,7 +3390,7 @@ public class Attributes
 		public default String getOnCanPlay()
 		{
 			String attribute = getAttribute(OnCanPlay.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3427,7 +3425,7 @@ public class Attributes
 		public default String getOnCanPlayThrough()
 		{
 			String attribute = getAttribute(OnCanPlayThrough.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3462,7 +3460,7 @@ public class Attributes
 		public default String getOnClose()
 		{
 			String attribute = getAttribute(OnClose.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3497,7 +3495,7 @@ public class Attributes
 		public default String getOnContextMenu()
 		{
 			String attribute = getAttribute(OnContextMenu.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3532,7 +3530,7 @@ public class Attributes
 		public default String getOnCueChange()
 		{
 			String attribute = getAttribute(OnCueChange.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3567,7 +3565,7 @@ public class Attributes
 		public default String getOnDrag()
 		{
 			String attribute = getAttribute(OnDrag.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3602,7 +3600,7 @@ public class Attributes
 		public default String getOnDragEnd()
 		{
 			String attribute = getAttribute(OnDragEnd.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3637,7 +3635,7 @@ public class Attributes
 		public default String getOnDragEnter()
 		{
 			String attribute = getAttribute(OnDragEnter.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3672,7 +3670,7 @@ public class Attributes
 		public default String getOnDragExit()
 		{
 			String attribute = getAttribute(OnDragExit.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3707,7 +3705,7 @@ public class Attributes
 		public default String getOnDragLeave()
 		{
 			String attribute = getAttribute(OnDragLeave.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3742,7 +3740,7 @@ public class Attributes
 		public default String getOnDragOver()
 		{
 			String attribute = getAttribute(OnDragOver.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3777,7 +3775,7 @@ public class Attributes
 		public default String getOnDragStart()
 		{
 			String attribute = getAttribute(OnDragStart.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3812,7 +3810,7 @@ public class Attributes
 		public default String getOnDrop()
 		{
 			String attribute = getAttribute(OnDrop.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3847,7 +3845,7 @@ public class Attributes
 		public default String getOnChange()
 		{
 			String attribute = getAttribute(OnChange.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3882,7 +3880,7 @@ public class Attributes
 		public default String getOnDurationChange()
 		{
 			String attribute = getAttribute(OnDurationChange.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3917,7 +3915,7 @@ public class Attributes
 		public default String getOnEmptied()
 		{
 			String attribute = getAttribute(OnEmptied.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3952,7 +3950,7 @@ public class Attributes
 		public default String getOnEnded()
 		{
 			String attribute = getAttribute(OnEnded.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -3987,7 +3985,7 @@ public class Attributes
 		public default String getOnInput()
 		{
 			String attribute = getAttribute(OnInput.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4022,7 +4020,7 @@ public class Attributes
 		public default String getOnInvalid()
 		{
 			String attribute = getAttribute(OnInvalid.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4057,7 +4055,7 @@ public class Attributes
 		public default String getOnLoadedData()
 		{
 			String attribute = getAttribute(OnLoadedData.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4092,7 +4090,7 @@ public class Attributes
 		public default String getOnLoadedMetadata()
 		{
 			String attribute = getAttribute(OnLoadedMetadata.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4127,7 +4125,7 @@ public class Attributes
 		public default String getOnLoadStart()
 		{
 			String attribute = getAttribute(OnLoadStart.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4162,7 +4160,7 @@ public class Attributes
 		public default String getOnPause()
 		{
 			String attribute = getAttribute(OnPause.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4197,7 +4195,7 @@ public class Attributes
 		public default String getOnPlay()
 		{
 			String attribute = getAttribute(OnPlay.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4232,7 +4230,7 @@ public class Attributes
 		public default String getOnPlaying()
 		{
 			String attribute = getAttribute(OnPlaying.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4267,7 +4265,7 @@ public class Attributes
 		public default String getOnProgress()
 		{
 			String attribute = getAttribute(OnProgress.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4302,7 +4300,7 @@ public class Attributes
 		public default String getOnRateChange()
 		{
 			String attribute = getAttribute(OnRateChange.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4337,7 +4335,7 @@ public class Attributes
 		public default String getOnReset()
 		{
 			String attribute = getAttribute(OnReset.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4372,7 +4370,7 @@ public class Attributes
 		public default String getOnScroll()
 		{
 			String attribute = getAttribute(OnScroll.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4407,7 +4405,7 @@ public class Attributes
 		public default String getOnSeeked()
 		{
 			String attribute = getAttribute(OnSeeked.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4442,7 +4440,7 @@ public class Attributes
 		public default String getOnSeeking()
 		{
 			String attribute = getAttribute(OnSeeking.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4477,7 +4475,7 @@ public class Attributes
 		public default String getOnSelect()
 		{
 			String attribute = getAttribute(OnSelect.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4512,7 +4510,7 @@ public class Attributes
 		public default String getOnShow()
 		{
 			String attribute = getAttribute(OnShow.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4547,7 +4545,7 @@ public class Attributes
 		public default String getOnSort()
 		{
 			String attribute = getAttribute(OnSort.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4582,7 +4580,7 @@ public class Attributes
 		public default String getOnStalled()
 		{
 			String attribute = getAttribute(OnStalled.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4617,7 +4615,7 @@ public class Attributes
 		public default String getOnSubmit()
 		{
 			String attribute = getAttribute(OnSubmit.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4652,7 +4650,7 @@ public class Attributes
 		public default String getOnSuspend()
 		{
 			String attribute = getAttribute(OnSuspend.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4687,7 +4685,7 @@ public class Attributes
 		public default String getOnTimeUpdate()
 		{
 			String attribute = getAttribute(OnTimeUpdate.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4722,7 +4720,7 @@ public class Attributes
 		public default String getOnToggle()
 		{
 			String attribute = getAttribute(OnToggle.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4757,7 +4755,7 @@ public class Attributes
 		public default String getOnVolumeChange()
 		{
 			String attribute = getAttribute(OnVolumeChange.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4792,7 +4790,7 @@ public class Attributes
 		public default String getOnWaiting()
 		{
 			String attribute = getAttribute(OnWaiting.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4827,7 +4825,7 @@ public class Attributes
 		public default String getAccessKey()
 		{
 			String attribute = getAttribute(AccessKey.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4862,7 +4860,7 @@ public class Attributes
 		public default Boolean getContentEditable()
 		{
 			String attribute = getAttribute(ContentEditable.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Boolean.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4897,7 +4895,7 @@ public class Attributes
 		public default String getDir()
 		{
 			String attribute = getAttribute(Dir.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || String.valueOf(attribute) == null)
 			{
 				return null;
 			}
@@ -4932,7 +4930,7 @@ public class Attributes
 		public default Boolean getDraggable()
 		{
 			String attribute = getAttribute(Draggable.ATTRIBUTE_NAME);
-			if (attribute == null)
+			if (attribute == null || Boolean.valueOf(attribute) == false)
 			{
 				return false;
 			}
